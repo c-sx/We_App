@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.soft.zkrn.weilin_application">
+
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".UserInformation_PhoneNumber"></activity>
+        <activity android:name=".TaskDeleteSuccess" />
+        <activity android:name=".Gift_Record" />
+        <activity android:name=".UserInformation_ResetPhoneNumber" />
+        <activity android:name=".UserInformation_Mainpage" />
+        <activity android:name=".Recharge_Detail" />
+        <activity android:name=".Recharge_WithdrawPassword" />
+        <activity android:name=".Recharge_RechargePassword" />
+        <activity android:name=".Recharge_Mainpage" />
+        <activity android:name=".Gift_Mainpage" />
+        <activity android:name=".Message_Mainpage" />
+        <activity android:name=".Homepage_Help" /> <!-- <activity android:name=".HomepageUser" /> -->
+        <!-- <activity android:name=".HomepageTask" /> -->
+        <!-- <activity android:name=".HomepageMainpage" /> -->
+        <activity android:name=".Homepage" />
+        <activity android:name=".SuccessfulCreation" />
+        <activity android:name=".Community_Creation" />
+        <activity android:name=".Community_Creator" />
+        <activity android:name=".Community_Introduction" />
+        <activity android:name=".TaskModule" />
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ConfirmComplete" />
+        <activity android:name=".TaskAbandonAfterSuccess" />
+        <activity android:name=".TaskAbandonBeforeSuccess" />
+        <activity android:name=".TaskAbandonAfter" />
+        <activity android:name=".TaskAbandonBefore" />
+        <activity android:name=".TaskDetails" />
+        <activity android:name=".CommentSuccess" />
+        <activity android:name=".TaskComment" />
+        <activity android:name=".TaskCenter" />
+        <activity android:name=".RegisterSuccess" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".Community_Mainpage" />
+        <activity android:name=".UserList" />
+        <activity android:name=".StatisticsReceive" />
+        <activity android:name=".StatisticsPublish" />
+        <activity android:name=".TaskStatistics" />
+        <activity android:name=".ReceiveFailure" />
+        <activity android:name=".ReceiveSuccess" />
+        <activity android:name=".TaskReceiveDetails" />
+        <activity android:name=".TaskReceive" />
+        <activity android:name=".PublishFailure" />
+        <activity android:name=".PublishSuccess" />
+        <activity android:name=".TaskPublish" />
+        <activity android:name=".TaskCategory" />
+        <activity android:name=".Setting_Mainpage" />
+        <activity android:name=".Setting_Safety" />
+        <activity android:name=".Setting_SetCode" />
+        <activity android:name=".Setting_ResetPassword" />
+        <activity android:name=".Setting_Currency" />
+        <activity android:name=".Setting_Interface" />
+        <activity android:name=".Setting_Message" />
+        <activity android:name=".Setting_SeekHelp" />
+        <activity android:name=".Setting_AddContact" />
+        <activity android:name=".Setting_ChooseContact" />
+        <activity android:name=".Setting_FeedBack" />
+        <activity android:name=".Setting_About" />
+
+
+    </application>
+
+</manifest>

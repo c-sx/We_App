@@ -1,0 +1,113 @@
+<resources>
+
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+
+    <string name="app_name">生活社区</string>
+
+    <string name="menu_message">消息通知</string>
+    <string name="menu_community">我的社区</string>
+    <string name="menu_gift">兑换礼品</string>
+    <string name="menu_recharge">充值提现</string>
+    <string name="menu_setting">设置</string>
+
+    <string name="mycommunity_picker">一个人最多可以加入两个社区哦</string>
+    <string name="mycommunity_name">搜索社区</string>
+    <string name="mycommunity_type">类别</string>
+    <string name="mycommunity_distance">距离</string>
+    <string name="mycommunity_num">人数</string>
+    <string name="mycommunity_description">搜索社区</string>
+    <string name="mycommunity_next">下一步</string>
+
+    <string name="communityintroduction_intro">社区介绍</string>
+    <string name="communityintroduction_join">加入社区</string>
+
+    <string name="createcommunity_question">没有找到感兴趣的社区？你也可以现在</string>
+    <string name="createcommunity_create">创建社区</string>
+    <string name="createcommunity_enter">进入主页</string>
+
+    <string name="creation_location">选择社区地点</string>
+    <string name="creation_type">社区类别</string>
+    <string name="creation_name">社区名称</string>
+
+    <string name="successfulcommunity_prompt">快来开启你的社区之旅吧</string>
+    <string name="successfulcommuntiy_button">我知道了</string>
+
+    <string name="homepage_main">主页</string>
+    <string name="homepage_task">任务</string>
+    <string name="homepage_user">我的</string>
+
+    <string name="homepage_mainpage_button">一键呼救</string>
+
+    <string name="homepage_task_headline">任务</string>
+    <string name="homepage_task_center">任务中心</string>
+    <string name="homepage_task_receive">领取任务</string>
+    <string name="homepage_task_publish">发布任务</string>
+    <string name="homepage_task_statistic">任务统计</string>
+
+    <string name="homepage_user_head">查看或编辑用户信息</string>
+    <string name="homepage_user_headportrait">头像</string>
+    <string name="homepage_user_information">用户信息</string>
+    <string name="homepage_user_message">消息通知</string>
+    <string name="homepage_user_community">我的社区</string>
+    <string name="homepage_user_gift">兑换礼物</string>
+    <string name="homepage_user_recharge">充值提现</string>
+    <string name="homepage_user_legalinformation">法律信息</string>
+    <string name="homepage_user_about">关于产品</string>
+    <string name="homepage_user_setting">设置</string>
+    <string name="homepage_user_signout">退出登录</string>
+
+    <string name="recharge_main_num">$</string>
+    <string name="recharge_main_detail">账单明细</string>
+    <string name="recharge_main_recharge">我要充值</string>
+    <string name="recharge_main_withdraw">我要提现</string>
+
+    <string name="userinformation_main_headportrait">头像</string>
+    <string name="userinformation_main_id">用户ID</string>
+    <string name="userinformation_main_sex">性别</string>
+    <string name="userinformation_main_description">描述</string>
+    <string name="userinformation_main_mobilephone">手机号</string>
+    <string name="userinformation_main_creditcard">银行卡</string>
+    <string name="userinformation_main_address">我的地址</string>
+
+    <string name="gift_main_accumulatepoint">我的积分</string>
+    <string name="gift_main_record">兑奖记录</string>
+    <string name="gift_adapter_number">所需积分</string>
+
+    <string name="gift_emptyrecord">您还没有兑换过奖品</string>
+
+    <string name="gift_adapter_point">所需积分 </string>
+
+    <string name="userinformation_phone_editText1">+86</string>
+    <string name="userinformation_phone_editText2">请输入您的手机号</string>
+    <string name="userinformation_phone_next">完成</string>
+
+    <string name="message_click">点击查看</string>
+
+
+    <string name="title_home">主页</string>
+    <string name="title_task">任务</string>
+    <string name="title_mine">我的</string>
+    <string name="task">任务</string>
+    <string name="task_publish">发布任务</string>
+    <string name="task_receive">领取任务</string>
+    <string name="task_center">任务中心</string>
+    <string name="task_statistics">任务统计</string>
+    <string name="account_integrals">¥520</string>
+    <string name="title_activity_task_category">TaskCategory</string>
+    <string name="title_activity_task_module">TaskModule</string>
+    <string name="title_activity_task_publish">发布任务</string>
+    <string name="title_activity_task_receive">TaskReceive</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_task_receive_details">任务详情</string>
+    <string name="title_activity_personal_center">PersonalCenter</string>
+    <string name="user_id">用户ID</string>
+    <string name="user_info">查看或编辑用户信息</string>
+
+    <string name="setting_feedback_choose1">功能异常：功能故障或不可用</string>
+    <string name="setting_feedback_choose2">产品建议：用的不爽，我有建议</string>
+    <string name="setting_feedback_choose3">安全问题：密码、隐私、欺诈等</string>
+    <string name="setting_feedback_choose4">其他问题</string>
+
+</resources>

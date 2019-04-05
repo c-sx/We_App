@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TaskReceive">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_task_receive"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/pickerview_topbar_height"
+        android:id="@+id/rl_task_receive"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_task_receive"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:id="@+id/ll_task_receive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spi_task_receive_category"
+                style="@style/Spinner"
+                android:entries="@array/category" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spi_task_receive_price"
+                style="@style/Spinner"
+                android:entries="@array/price" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end">
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/spi_task_receive_distance"
+                    style="@style/Spinner"
+                    android:entries="@array/distance" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider_task_receive"
+            style="@style/Divider"
+            android:layout_below="@id/ll_task_receive" />
+
+        <RelativeLayout
+            android:id="@+id/rl_task_receive_content"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_below="@id/divider_task_receive"
+            android:layout_margin="20dp"
+            android:background="@drawable/view_receive">
+
+            <TextView
+                android:id="@+id/tv_task_receive_pending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginVertical="5dp"
+                android:layout_marginRight="20dp"
+                android:text="待领取"
+                android:textSize="10dp" />
+
+            <LinearLayout
+                android:id="@+id/ll_task_receive_content"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_below="@id/tv_task_receive_pending"
+                android:layout_marginHorizontal="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:background="@color/colorPrimary"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginLeft="30dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginRight="30dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="【标题】" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="  这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_task_receive_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_task_receive_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:text="价格：￥5.00"
+                android:textSize="15dp" />
+
+            <Button
+                android:id="@+id/btn_task_receive_confirm"
+                style="@style/ButtonBlueRound"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_below="@id/tv_task_receive_price"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:text="领取任务"
+                android:textSize="15dp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <!--<com.google.android.material.bottomnavigation.BottomNavigationView-->
+        <!--android:id="@+id/navigation_task_receive"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="0dp"-->
+        <!--android:layout_marginEnd="0dp"-->
+        <!--android:background="?android:attr/windowBackground"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:menu="@menu/navigation" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

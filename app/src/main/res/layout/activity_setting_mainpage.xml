@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#ffaaaa"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <TextView
+            android:id="@+id/text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="设置"
+            android:textColor="#000000"
+            android:textSize="24sp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+   <Button
+       android:id="@+id/zhanghu"
+       android:layout_width="match_parent"
+       android:layout_height="50dp"
+       android:text="账户安全"
+
+       android:paddingRight="250dp"/>
+
+    <Button
+        android:id="@+id/tongyong"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="通用"
+
+        android:paddingRight="275dp"/>
+    <Button
+        android:id="@+id/qiujiu"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        android:text="一键求救"
+        android:paddingRight="250dp"/>
+    <Button
+        android:id="@+id/fankui"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        android:text="意见反馈"
+        android:paddingRight="250dp"/>
+    <Button
+        android:id="@+id/guanyu"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="关于"
+
+        android:paddingRight="275dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="100dp"/>
+    <Button
+        android:id="@+id/bt_SettingMainpage_signout"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+
+        android:text="退出登录"
+        android:textColor="#ff00"
+        android:textSize="30dp" />
+
+
+
+
+
+    
+
+</LinearLayout>

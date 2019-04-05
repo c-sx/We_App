@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TaskAbandonBefore">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_task_abandon_before"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <LinearLayout
+        android:id="@+id/ll_task_abandon_before_1"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/view_receive"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_task_abandon_before">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginVertical="5dp"
+                android:layout_marginLeft="30dp"
+                android:background="@color/colorPrimary" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginVertical="5dp"
+                android:layout_marginRight="30dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_task_abandon_before_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="【标题】" />
+
+                <TextView
+                    android:id="@+id/tv_task_abandon_before_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="  这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="悬赏积分："
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/tv_task_abandon_before_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginRight="20dp"
+                android:text="5.00"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+
+        <!--<Button-->
+        <!--android:id="@+id/btn_task_receive_confirm"-->
+        <!--style="@style/ButtonBlueRound"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_gravity="end"-->
+        <!--android:layout_marginRight="20dp"-->
+        <!--android:text="领取任务"-->
+        <!--android:textSize="15dp" />-->
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_task_abandon_before_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/ll_task_abandon_before_1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="您确定要放弃此项任务吗？"
+            android:textSize="18dp" />
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_task_abandon_before_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_white"
+                android:text="是的" />
+
+            <Button
+                android:id="@+id/btn_task_abandon_before_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_white"
+                android:text="我再考虑下" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

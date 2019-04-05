@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TaskCategory">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_task_category"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/pickerview_topbar_height"
+        android:id="@+id/rl_task_category"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_task_category">
+
+        <TextView
+            android:id="@+id/tv_task_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:paddingLeft="20dp"
+            android:text="我需要："
+            android:textColor="@color/colorText"
+            android:textSize="30dp" />
+
+        <Button
+            android:id="@+id/btn_category_1"
+            style="@style/ButtonBlue"
+            android:layout_below="@+id/tv_task_category"
+            android:text="找人取东西" />
+
+        <Button
+            android:id="@+id/btn_category_2"
+            style="@style/ButtonBlue"
+            android:layout_below="@id/btn_category_1"
+            android:text="找人送东西" />
+
+        <Button
+            android:id="@+id/btn_category_3"
+            style="@style/ButtonBlue"
+            android:layout_below="@id/btn_category_2"
+            android:text="找人借东西" />
+
+        <Button
+            android:id="@+id/btn_category_4"
+            style="@style/ButtonBlue"
+            android:layout_below="@id/btn_category_3"
+            android:text="其他服务" />
+
+    </RelativeLayout>
+
+    <!--<com.google.android.material.bottomnavigation.BottomNavigationView-->
+        <!--android:id="@+id/navigation_task_category"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="0dp"-->
+        <!--android:layout_marginEnd="0dp"-->
+        <!--android:background="?android:attr/windowBackground"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:menu="@menu/navigation" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

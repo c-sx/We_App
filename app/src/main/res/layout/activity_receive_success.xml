@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReceiveSuccess">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_task_receive_success"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_receive_success"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="110dp"
+            android:text="您已经成功领取任务"
+            android:textAlignment="center"
+            android:textColor="@color/colorText"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/btn_receive_success_list"
+            style="@style/ButtonWhiteRound"
+            android:layout_height="45dp"
+            android:layout_below="@+id/tv_receive_success"
+            android:layout_marginTop="60dp"
+            android:width="100dp"
+            android:text="查看任务"
+            android:textSize="11dp" />
+
+        <Button
+            android:id="@+id/btn_receive_success_return"
+            style="@style/ButtonBlueRound"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/btn_receive_success_list"
+            android:layout_marginTop="30dp"
+            android:text="返回"
+            android:textSize="12dp" />
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

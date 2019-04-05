@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior = "single">
+        <item
+            android:id="@+id/mem_message"
+            android:icon = "@drawable/menu_message"
+            android:title = "@string/menu_message"
+            />
+        <item
+            android:id = "@+id/mem_community"
+            android:icon = "@drawable/menu_community"
+            android:title = "@string/menu_community"
+            />
+        <item
+            android:id = "@+id/mem_gift"
+            android:icon = "@drawable/menu_gift"
+            android:title = "@string/menu_gift"
+            />
+        <item
+            android:id = "@+id/mem_recharge"
+            android:icon = "@drawable/menu_recharge"
+            android:title = "@string/menu_recharge"
+            />
+    </group>
+</menu>

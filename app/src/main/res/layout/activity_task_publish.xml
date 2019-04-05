@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TaskPublish">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_task_publish"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <RelativeLayout
+        android:layout_marginTop="?attr/actionBarSize"
+        android:id="@+id/rl_task_publish"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_task_publish">
+
+        <TextView
+            android:id="@+id/tv_publish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:text="标题"
+            android:textColor="#999999"
+            android:textSize="50dp" />
+
+        <View
+            android:id="@+id/divider_task_publish"
+            style="@style/Divider"
+            android:layout_below="@+id/tv_publish"
+            android:layout_marginVertical="5dp" />
+
+        <EditText
+            android:id="@+id/et_publish"
+            android:layout_width="350dp"
+            android:layout_height="200dp"
+            android:layout_below="@+id/divider_task_publish"
+            android:layout_centerHorizontal="true"
+            android:layout_marginVertical="30dp"
+            android:background="@drawable/et_publish"
+            android:hint="请在此处填写详细的任务描述，最好留下您的联系方式"
+            android:inputType="textImeMultiLine"
+            android:maxLines="8"
+            android:minLines="5"
+            android:padding="25dp"
+            android:selectAllOnFocus="true"
+            android:textColorHint="#999999"
+            android:textSize="12dp" />
+
+        <Button
+            android:id="@+id/btn_publish_camera"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_below="@+id/et_publish"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/ic_camera" />
+
+        <Button
+            android:id="@+id/btn_publish_clock"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_below="@+id/et_publish"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/ic_clock" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spi_publish"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/btn_publish_camera"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/btn_white"
+            android:entries="@array/integrals"
+            android:spinnerMode="dropdown"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/btn_publish_confirm"
+            style="@style/ButtonWhite"
+            android:layout_below="@+id/spi_publish"
+            android:layout_centerHorizontal="true"
+            android:layout_marginVertical="20dp"
+            android:width="150dp"
+            android:text="发布任务信息" />
+    </RelativeLayout>
+
+    <!--<com.google.android.material.bottomnavigation.BottomNavigationView-->
+        <!--android:id="@+id/navigation_task_publish"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="0dp"-->
+        <!--android:layout_marginEnd="0dp"-->
+        <!--android:background="?android:attr/windowBackground"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:menu="@menu/navigation" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

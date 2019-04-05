@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserInformation_Mainpage"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_UserInformation_HeadPortrait"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:text="@string/userinformation_main_headportrait"
+                android:textSize="30sp"/>
+
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center_vertical"
+               android:gravity="right"
+               android:paddingRight="15dp"
+               >
+
+               <de.hdodenhof.circleimageview.CircleImageView
+                   android:id="@+id/iv_UserInformation_Picture"
+                   android:layout_width="60dp"
+                   android:layout_height="60dp"
+                   android:scaleType="centerCrop"
+                   android:src="#949494"
+                   />
+
+           </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:background="#7A8B8B"
+            android:layout_width="wrap_content"
+            android:layout_height="1sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"/>
+
+        <LinearLayout
+            android:id="@+id/ll_UserInformation_ID"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:text="@string/userinformation_main_id"
+                android:textSize="30sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="right"
+                android:paddingRight="15dp"
+                >
+
+                <TextView
+                    android:id="@+id/tv_UserInformation_TrueID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30sp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="right"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:background="#7A8B8B"
+            android:layout_width="wrap_content"
+            android:layout_height="1sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"/>
+
+        <LinearLayout
+            android:id="@+id/ll_UserInformation_Sex"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:text="@string/userinformation_main_sex"
+                android:textSize="30sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="right"
+                android:paddingRight="15dp"
+                >
+
+                <TextView
+                    android:id="@+id/tv_UserInformation_Sex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30sp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="right"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:background="#7A8B8B"
+            android:layout_width="wrap_content"
+            android:layout_height="1sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"/>
+
+        <LinearLayout
+            android:id="@+id/ll_UserInformation_Description"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:text="@string/userinformation_main_description"
+                android:textSize="30sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="right"
+                android:paddingRight="15dp"
+                >
+
+                <TextView
+                    android:id="@+id/tv_UserInformation_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30sp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="right"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:background="#7A8B8B"
+            android:layout_width="wrap_content"
+            android:layout_height="8sp"/>
+
+        <LinearLayout
+            android:id="@+id/ll_UserInformation_MobilePhone"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:text="@string/userinformation_main_mobilephone"
+                android:textSize="30sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="right"
+                android:paddingRight="15dp"
+                >
+
+                <TextView
+                    android:id="@+id/tv_UserInformation_PhoneNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30sp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="right"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:background="#7A8B8B"
+            android:layout_width="wrap_content"
+            android:layout_height="1sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"/>
+
+        <LinearLayout
+            android:id="@+id/ll_UserInformation_CreditCard"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:text="@string/userinformation_main_creditcard"
+                android:textSize="30sp"/>
+
+        </LinearLayout>
+
+        <View
+            android:background="#7A8B8B"
+            android:layout_width="wrap_content"
+            android:layout_height="8sp"/>
+
+        <LinearLayout
+            android:id="@+id/ll_UserInformation_Address"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:text="@string/userinformation_main_address"
+                android:textSize="30sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

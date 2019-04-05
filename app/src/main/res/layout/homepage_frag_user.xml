@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="horizontal"
+            android:background="#1E90FF"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp">
+
+            <LinearLayout
+                android:id="@+id/ll_HomepageUser_information"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ID"
+                    android:textSize="60sp"
+                    android:textColor="#FFFFFF"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/homepage_user_head"
+                    android:textSize="20sp"
+                    android:textColor="#FFFFFF"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="20dp"
+                >
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_Homepage_User_picture"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="right"
+                    android:scaleType="centerCrop"
+                    android:src="#949494"
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10sp"
+            android:id="@+id/ll_HomepageUser_message">
+
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:src="@drawable/menu_message"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15sp"
+                android:layout_marginRight="15sp"
+                />
+
+            <TextView
+                android:layout_weight="4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="@string/homepage_user_message"
+                android:textSize="40sp"
+                />
+
+        </LinearLayout>
+
+
+        <View
+            android:background="#7A8B8B"
+            android:layout_width="wrap_content"
+            android:layout_height="1sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10sp"
+            android:id="@+id/ll_HomepageUser_community">
+
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:src="@drawable/menu_community"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15sp"
+                android:layout_marginRight="15sp"
+                />
+
+            <TextView
+                android:layout_weight="4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="@string/homepage_user_community"
+                android:textSize="40sp"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:background="#7A8B8B"
+            android:layout_width="wrap_content"
+            android:layout_height="1sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10sp"
+            android:id="@+id/ll_HomepageUser_gift">
+
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:src="@drawable/menu_gift"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15sp"
+                android:layout_marginRight="15sp"
+                />
+
+            <TextView
+                android:layout_weight="4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="@string/homepage_user_gift"
+                android:textSize="40sp"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:background="#7A8B8B"
+            android:layout_width="wrap_content"
+            android:layout_height="1sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10sp"
+            android:id="@+id/ll_HomepageUser_recharge">
+
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:src="@drawable/menu_recharge"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15sp"
+                android:layout_marginRight="15sp"
+                />
+
+            <TextView
+                android:layout_weight="4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="@string/homepage_user_recharge"
+                android:textSize="40sp"
+                />
+
+        </LinearLayout>
+
+        <!--<View-->
+            <!--android:background="#7A8B8B"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="5sp"/>-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:layout_margin="10sp"-->
+            <!--android:id="@+id/ll__HomepageUserlegal">-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="start"-->
+                <!--android:text="@string/homepage_user_legalinformation"-->
+                <!--android:textSize="40sp"-->
+                <!--/>-->
+
+        <!--</LinearLayout>-->
+
+
+        <!--<View-->
+            <!--android:background="#7A8B8B"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="1sp"-->
+            <!--android:layout_marginLeft="5sp"-->
+            <!--android:layout_marginRight="5sp"/>-->
+
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:layout_margin="10sp"-->
+            <!--android:id="@+id/ll_HomepageUser_about">-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="start"-->
+                <!--android:text="@string/homepage_user_about"-->
+                <!--android:textSize="40sp"-->
+                <!--/>-->
+
+        <!--</LinearLayout>-->
+
+        <!--<View-->
+            <!--android:background="#7A8B8B"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="5sp"/>-->
+
+        <View
+            android:background="#7A8B8B"
+            android:layout_width="wrap_content"
+            android:layout_height="1sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10sp"
+            android:id="@+id/ll_HomepageUser_setting">
+
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:src="@drawable/menu_setting"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15sp"
+                android:layout_marginRight="15sp"
+                />
+
+            <TextView
+                android:layout_weight="4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="@string/homepage_user_setting"
+                android:textSize="40sp"
+                />
+
+        </LinearLayout>
+
+
+        <!--<Button-->
+            <!--android:id="@+id/bt_HomepageUser_signout"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/homepage_user_signout"-->
+            <!--android:textSize="35sp"-->
+            <!--android:textColor="#ffffff"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:background="@drawable/oval_button"-->
+            <!--android:layout_margin="30dp"/>-->
+
+
+    </LinearLayout>
+</ScrollView>
