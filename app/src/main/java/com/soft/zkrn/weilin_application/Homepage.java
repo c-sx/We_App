@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,6 +45,8 @@ public class Homepage extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
 
+    private SharedPreferences userSettings;
+
 
     ////////////////////
 //    private OkHttpClient client = new OkHttpClient();
@@ -83,6 +86,10 @@ public class Homepage extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             if(action.equals("com.example.SignOut")){
+
+                SharedPreferences.Editor editor = userSettings.edit();
+                editor.clear();
+                editor.commit();
 
                 startActivity(new Intent(Homepage.this,LoginActivity.class));
                 finish();
@@ -144,6 +151,17 @@ public class Homepage extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
+
+        Intent intent = getIntent();
+        String s_userName = intent.getStringExtra("userName");
+        String s_userPW = intent.getStringExtra("userPW");
+
+        userSettings = getSharedPreferences("setting", 0);
+        SharedPreferences.Editor editor = userSettings.edit();
+        editor.putString("userName",s_userName);
+        editor.putString("userPW",s_userPW);
+        editor.putString("url","http://www.xinxianquan.xyz:8080/zhaqsq/user/login");
+        editor.commit();
 
         //广播退出账号
         IntentFilter intentFilter=new IntentFilter("com.example.SignOut");
