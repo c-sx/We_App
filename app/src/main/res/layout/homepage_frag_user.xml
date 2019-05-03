@@ -37,7 +37,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/homepage_user_head"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/card_title_size"
                     android:textColor="#FFFFFF"/>
 
             </LinearLayout>
@@ -82,9 +82,10 @@
                 android:layout_weight="4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:gravity="start"
                 android:text="@string/homepage_user_message"
-                android:textSize="40sp"
+                android:textSize="@dimen/card_title_size"
                 />
 
         </LinearLayout>
@@ -119,8 +120,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
+                android:layout_gravity="center_vertical"
                 android:text="@string/homepage_user_community"
-                android:textSize="40sp"
+                android:textSize="@dimen/card_title_size"
                 />
 
         </LinearLayout>
@@ -154,8 +156,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
+                android:layout_gravity="center_vertical"
                 android:text="@string/homepage_user_gift"
-                android:textSize="40sp"
+                android:textSize="@dimen/card_title_size"
                 />
 
         </LinearLayout>
@@ -190,8 +193,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
+                android:layout_gravity="center_vertical"
                 android:text="@string/homepage_user_recharge"
-                android:textSize="40sp"
+                android:textSize="@dimen/card_title_size"
                 />
 
         </LinearLayout>
@@ -279,8 +283,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
+                android:layout_gravity="center_vertical"
                 android:text="@string/homepage_user_setting"
-                android:textSize="40sp"
+                android:textSize="@dimen/card_title_size"
                 />
 
         </LinearLayout>

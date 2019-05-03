@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Community_Introduction"
+    tools:context=".Activities.Community.Community_Introduction"
     android:orientation="vertical">
 
     <LinearLayout
@@ -103,12 +103,10 @@
             android:layout_marginRight="5sp" />
 
         <TextView
+            android:id="@+id/tv_introduction_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8sp"
-            android:text="text
-test
-test"
             android:textSize="20sp" />
         <View
             android:layout_width="match_parent"

@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:gravity="left"
-                android:textSize="30sp"
+                android:textSize="@dimen/card_title_size"
                 android:background="@null"
                 />
         </LinearLayout>
@@ -55,7 +55,7 @@
                 android:layout_height="match_parent"
                 android:layout_width="wrap_content"
                 android:layout_margin="8dp"
-                android:textSize="14sp"
+                android:textSize="@dimen/card_content_size"
                 android:layout_weight="1"
                 android:layout_gravity="center_vertical"/>
 
@@ -64,7 +64,7 @@
                 android:layout_height="match_parent"
                 android:layout_width="wrap_content"
                 android:layout_margin="8dp"
-                android:textSize="14sp"
+                android:textSize="@dimen/card_content_size"
                 android:layout_weight="1"
                 android:layout_gravity="center_vertical"/>
 

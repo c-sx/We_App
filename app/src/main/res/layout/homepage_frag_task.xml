@@ -5,7 +5,7 @@
     android:id="@+id/container_task_module"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TaskModule">
+    tools:context=".Activities.Task.TaskModule">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_task_module"

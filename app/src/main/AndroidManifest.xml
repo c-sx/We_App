@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.soft.zkrn.weilin_application">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -14,71 +13,70 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".UserInformation_PhoneNumber"></activity>
-        <activity android:name=".TaskDeleteSuccess" />
-        <activity android:name=".Gift_Record" />
-        <activity android:name=".UserInformation_ResetPhoneNumber" />
-        <activity android:name=".UserInformation_Mainpage" />
-        <activity android:name=".Recharge_Detail" />
-        <activity android:name=".Recharge_WithdrawPassword" />
-        <activity android:name=".Recharge_RechargePassword" />
-        <activity android:name=".Recharge_Mainpage" />
-        <activity android:name=".Gift_Mainpage" />
-        <activity android:name=".Message_Mainpage" />
-        <activity android:name=".Homepage_Help" /> <!-- <activity android:name=".HomepageUser" /> -->
-        <!-- <activity android:name=".HomepageTask" /> -->
-        <!-- <activity android:name=".HomepageMainpage" /> -->
-        <activity android:name=".Homepage" />
-        <activity android:name=".SuccessfulCreation" />
-        <activity android:name=".Community_Creation" />
-        <activity android:name=".Community_Creator" />
-        <activity android:name=".Community_Introduction" />
-        <activity android:name=".TaskModule" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".Activities.Task.TaskPublish_setEndTime"></activity>
+        <activity android:name=".Activities.Community.SuccessfulCreation" />
+        <activity android:name=".Activities.Community.Community_Creation" />
+        <activity android:name=".Activities.Community.Community_Creator" />
+        <activity android:name=".Activities.Community.Community_Introduction" />
+        <activity android:name=".Activities.Community.Community_Mainpage" />
+        <activity android:name=".Activities.Gift.Gift_Mainpage" />
+        <activity android:name=".Activities.Gift.Gift_Record" />
+        <activity android:name=".Activities.Home.Homepage" />
+        <activity android:name=".Activities.Home.Homepage_Help" />
+        <activity android:name=".Activities.Login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ConfirmComplete" />
-        <activity android:name=".TaskAbandonAfterSuccess" />
-        <activity android:name=".TaskAbandonBeforeSuccess" />
-        <activity android:name=".TaskAbandonAfter" />
-        <activity android:name=".TaskAbandonBefore" />
-        <activity android:name=".TaskDetails" />
-        <activity android:name=".CommentSuccess" />
-        <activity android:name=".TaskComment" />
-        <activity android:name=".TaskCenter" />
-        <activity android:name=".RegisterSuccess" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".Community_Mainpage" />
+        <activity android:name=".Activities.Login.RegisterSuccess" />
+        <activity android:name=".Activities.Login.RegisterActivity" />
+        <activity android:name=".Activities.Message.Message_Mainpage" />
+        <activity android:name=".Activities.Recharge.Recharge_Detail" />
+        <activity android:name=".Activities.Recharge.Recharge_WithdrawPassword" />
+        <activity android:name=".Activities.Recharge.Recharge_RechargePassword" />
+        <activity android:name=".Activities.Recharge.Recharge_Mainpage" />
+        <activity android:name=".Activities.Setting.Setting_Mainpage" />
+        <activity android:name=".Activities.Setting.Setting_Safety" />
+        <activity android:name=".Activities.Setting.Setting_SetCode" />
+        <activity android:name=".Activities.Setting.Setting_ResetPassword" />
+        <activity android:name=".Activities.Setting.Setting_Currency" />
+        <activity android:name=".Activities.Setting.Setting_Interface" />
+        <activity android:name=".Activities.Setting.Setting_Message" />
+        <activity android:name=".Activities.Setting.Setting_SeekHelp" />
+        <activity android:name=".Activities.Setting.Setting_AddContact" />
+        <activity android:name=".Activities.Setting.Setting_ChooseContact" />
+        <activity android:name=".Activities.Setting.Setting_FeedBack" />
+        <activity android:name=".Activities.Setting.Setting_About" />
+        <activity android:name=".Activities.Task.TaskModule" />
+        <activity android:name=".Activities.Task.TaskStatistics" />
+        <activity android:name=".Activities.Task.ConfirmComplete" />
+        <activity android:name=".Activities.Task.TaskAbandonAfterSuccess" />
+        <activity android:name=".Activities.Task.TaskAbandonBeforeSuccess" />
+        <activity android:name=".Activities.Task.TaskAbandonAfter" />
+        <activity android:name=".Activities.Task.TaskAbandonBefore" />
+        <activity android:name=".Activities.Task.TaskDetails" />
+        <activity android:name=".Activities.Task.CommentSuccess" />
+        <activity android:name=".Activities.Task.TaskComment" />
+        <activity android:name=".Activities.Task.TaskCenter" />
+        <activity android:name=".Activities.Task.StatisticsReceive" />
+        <activity android:name=".Activities.Task.StatisticsPublish" />
+        <activity android:name=".Activities.Task.ReceiveFailure" />
+        <activity android:name=".Activities.Task.ReceiveSuccess" />
+        <activity android:name=".Activities.Task.TaskReceiveDetails" />
+        <activity android:name=".Activities.Task.TaskReceive" />
+        <activity android:name=".Activities.Task.PublishFailure" />
+        <activity android:name=".Activities.Task.PublishSuccess" />
+        <activity android:name=".Activities.Task.TaskPublish" />
+        <activity android:name=".Activities.Task.TaskCategory" />
+        <activity android:name=".Activities.Task.TaskDeleteSuccess" />
+        <activity android:name=".Activities.User.UserInformation_PhoneNumber" />
+        <activity android:name=".Activities.User.UserInformation_ResetPhoneNumber" />
+        <activity android:name=".Activities.User.UserInformation_Mainpage" /> <!-- <activity android:name=".HomepageUser" /> -->
+        <!-- <activity android:name=".HomepageTask" /> -->
+        <!-- <activity android:name=".HomepageMainpage" /> -->
         <activity android:name=".UserList" />
-        <activity android:name=".StatisticsReceive" />
-        <activity android:name=".StatisticsPublish" />
-        <activity android:name=".TaskStatistics" />
-        <activity android:name=".ReceiveFailure" />
-        <activity android:name=".ReceiveSuccess" />
-        <activity android:name=".TaskReceiveDetails" />
-        <activity android:name=".TaskReceive" />
-        <activity android:name=".PublishFailure" />
-        <activity android:name=".PublishSuccess" />
-        <activity android:name=".TaskPublish" />
-        <activity android:name=".TaskCategory" />
-        <activity android:name=".Setting_Mainpage" />
-        <activity android:name=".Setting_Safety" />
-        <activity android:name=".Setting_SetCode" />
-        <activity android:name=".Setting_ResetPassword" />
-        <activity android:name=".Setting_Currency" />
-        <activity android:name=".Setting_Interface" />
-        <activity android:name=".Setting_Message" />
-        <activity android:name=".Setting_SeekHelp" />
-        <activity android:name=".Setting_AddContact" />
-        <activity android:name=".Setting_ChooseContact" />
-        <activity android:name=".Setting_FeedBack" />
-        <activity android:name=".Setting_About" />
-
-
     </application>
 
 </manifest>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserInformation_Mainpage"
+    tools:context=".Activities.User.UserInformation_Mainpage"
     >
 
     <LinearLayout
@@ -23,9 +23,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:gravity="center"
                 android:layout_gravity="center_vertical"
                 android:text="@string/userinformation_main_headportrait"
-                android:textSize="30sp"/>
+                android:textSize="@dimen/text_1_size"/>
 
 
            <LinearLayout
@@ -66,9 +67,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:gravity="center"
                 android:layout_gravity="center_vertical"
                 android:text="@string/userinformation_main_id"
-                android:textSize="30sp"/>
+                android:textSize="@dimen/text_1_size"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -82,7 +84,7 @@
                     android:id="@+id/tv_UserInformation_TrueID"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="30sp"
+                    android:textSize="@dimen/text_1_size"
                     android:layout_gravity="center_vertical"
                     android:gravity="right"
                     />
@@ -109,9 +111,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:gravity="center"
                 android:layout_gravity="center_vertical"
                 android:text="@string/userinformation_main_sex"
-                android:textSize="30sp"/>
+                android:textSize="@dimen/text_1_size"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -125,7 +128,7 @@
                     android:id="@+id/tv_UserInformation_Sex"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="30sp"
+                    android:textSize="@dimen/text_1_size"
                     android:layout_gravity="center_vertical"
                     android:gravity="right"
                     />
@@ -152,9 +155,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:gravity="center"
                 android:layout_gravity="center_vertical"
                 android:text="@string/userinformation_main_description"
-                android:textSize="30sp"/>
+                android:textSize="@dimen/text_1_size"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -193,9 +197,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:gravity="center"
                 android:layout_gravity="center_vertical"
                 android:text="@string/userinformation_main_mobilephone"
-                android:textSize="30sp"/>
+                android:textSize="@dimen/text_1_size"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -209,7 +214,7 @@
                     android:id="@+id/tv_UserInformation_PhoneNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="30sp"
+                    android:textSize="@dimen/text_1_size"
                     android:layout_gravity="center_vertical"
                     android:gravity="right"
                     />
@@ -236,9 +241,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:gravity="center"
                 android:layout_gravity="center_vertical"
                 android:text="@string/userinformation_main_creditcard"
-                android:textSize="30sp"/>
+                android:textSize="@dimen/text_1_size"/>
 
         </LinearLayout>
 
@@ -258,9 +264,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:gravity="center"
                 android:layout_gravity="center_vertical"
                 android:text="@string/userinformation_main_address"
-                android:textSize="30sp"/>
+                android:textSize="@dimen/text_1_size"/>
 
         </LinearLayout>
 

@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/gift_adapter_point"
-                android:textSize="30sp"
+                android:textSize="@dimen/card_content_size"
                 />
 
             <TextView
@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textSize="35sp"
+                android:textSize="@dimen/card_content_size"
                 android:textColor="#3CB371"/>
 
         </LinearLayout>

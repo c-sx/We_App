@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserInformation_PhoneNumber"
+    tools:context=".Activities.User.UserInformation_PhoneNumber"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
@@ -14,6 +14,14 @@
         android:background="#ffaaaa"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        <!--<androidx.appcompat.widget.Toolbar-->
+            <!--android:id="@+id/toolbar6"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="?attr/actionBarSize"-->
+            <!--android:background="?attr/colorPrimary"-->
+            <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+            <!--app:layout_constraintTop_toTopOf="parent"-->
+            <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />-->
 
         <TextView
             android:id="@+id/text_view"
