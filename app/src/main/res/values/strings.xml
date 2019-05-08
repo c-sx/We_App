@@ -93,6 +93,12 @@
     <string name="task_receive">领取任务</string>
     <string name="task_center">任务中心</string>
     <string name="task_statistics">任务统计</string>
+    <string name="task_publish_dialog_title">请选择任务截止日期</string>
+    <string name="task_publish_dialog_day">日</string>
+    <string name="task_publish_dialog_month">月</string>
+    <string name="task_publish_dialog_hour">时</string>
+    <string name="task_publish_dialog_sure">确认</string>
+    <string name="task_publish_dialog_cancel">我要修改</string>
     <string name="account_integrals">¥520</string>
     <string name="title_activity_task_category">TaskCategory</string>
     <string name="title_activity_task_module">TaskModule</string>
@@ -109,5 +115,6 @@
     <string name="setting_feedback_choose2">产品建议：用的不爽，我有建议</string>
     <string name="setting_feedback_choose3">安全问题：密码、隐私、欺诈等</string>
     <string name="setting_feedback_choose4">其他问题</string>
+
 
 </resources>

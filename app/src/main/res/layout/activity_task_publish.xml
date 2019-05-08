@@ -30,11 +30,11 @@
         <EditText
             android:id="@+id/et_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:paddingLeft="15dp"
-            android:text="标题"
+            android:hint="标题"
             android:textColor="#999999"
-            android:textSize="50dp" />
+            />
 
         <View
             android:id="@+id/divider_task_publish"

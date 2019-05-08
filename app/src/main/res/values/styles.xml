@@ -34,11 +34,29 @@
         <item name="android:textSize">20dp</item>
     </style>
 
+    <style name="ButtonGreenRound" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:background">@drawable/btn_green_round</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
     <style name="ButtonWhite" parent="Widget.AppCompat.Button.Borderless">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">20dp</item>
         <item name="android:background">@drawable/btn_white</item>
+    </style>
+
+    <style name="ButtonGreen" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:width">230dp</item>
+        <item name="android:height">70dp</item>
+        <item name="android:background">@drawable/btn_green</item>
+        <item name="android:textSize">20dp</item>
     </style>
 
     <style name="ButtonWhiteRound" parent="Widget.AppCompat.Button.Borderless">

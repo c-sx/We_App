@@ -1,4 +1,4 @@
-package com.soft.zkrn.weilin_application.Fragment;
+package com.soft.zkrn.weilin_application.Widget;
 
 import android.app.Fragment;
 import android.app.FragmentManager;

@@ -16,6 +16,13 @@ public class StatisticsPublish extends AppCompatActivity {
     static Button btn_3;
     static Button btn_4;
 
+    private Task_CenterWhole fragment_task_whole;
+    private Task_CenterPublish fragment_task_publish;
+    private Task_CenterComment fragment_task_comment;
+    private Task_CenterComplete fragment_task_complete;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.soft.zkrn.weilin_application.Activities.Login.LoginActivity;
@@ -14,10 +16,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class TaskModule extends AppCompatActivity implements View.OnClickListener {
-    private Button button_publish;
-    private Button button_receive;
-    private Button button_center;
-    private Button button_login_test;
+    private LinearLayout button_publish;
+    private LinearLayout button_receive;
+    private TextView button_center;
+    private TextView button_login_test;
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

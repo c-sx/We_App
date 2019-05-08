@@ -5,6 +5,7 @@ import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -31,7 +32,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         TextView taskTitle;
         TextView taskDesp;
         TextView taskMoney;
-        RelativeLayout taskItem;
+        LinearLayout taskItem;
 
         public ViewHolder(View view){
             super(view);
@@ -40,7 +41,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             taskTitle = (TextView) view.findViewById(R.id.tv_task_title);
             taskDesp = (TextView) view.findViewById(R.id.tv_task_description);
             taskMoney = (TextView) view.findViewById(R.id.tv_task_money);
-            taskItem = (RelativeLayout)view.findViewById(R.id.task_item);
+            taskItem = (LinearLayout)view.findViewById(R.id.task_item);
         }
     }
 

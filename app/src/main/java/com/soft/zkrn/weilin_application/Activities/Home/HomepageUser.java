@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.soft.zkrn.weilin_application.Activities.Community.Community_Mainpage;
 import com.soft.zkrn.weilin_application.Activities.Gift.Gift_Mainpage;
@@ -25,6 +26,7 @@ public class HomepageUser extends Fragment {
     private LinearLayout ll_recharge;
     private LinearLayout ll_setting;
     private LinearLayout ll_information;
+    private TextView tv_id;
 //    private Button bt_signout;
 
     @Override
@@ -44,8 +46,12 @@ public class HomepageUser extends Fragment {
         ll_recharge = getActivity().findViewById(R.id.ll_HomepageUser_recharge);
         ll_setting = getActivity().findViewById(R.id.ll_HomepageUser_setting);
         ll_information = getActivity().findViewById(R.id.ll_HomepageUser_information);
+        tv_id = getActivity().findViewById(R.id.tv_id);
 
-
+        Intent intent = getActivity().getIntent();
+        if(intent.getBooleanExtra("ifID",false) == true){
+            tv_id.setText(String.valueOf(intent.getIntExtra("userID",0)));
+        }
 
         ll_information.setOnClickListener(new View.OnClickListener(){
             @Override

@@ -6,8 +6,7 @@ import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.soft.zkrn.weilin_application.Class.Task;
-import com.soft.zkrn.weilin_application.Fragment.FragmentSwitchTool;
+import com.soft.zkrn.weilin_application.Widget.FragmentSwitchTool;
 import com.soft.zkrn.weilin_application.R;
 
 import androidx.appcompat.app.AppCompatActivity;

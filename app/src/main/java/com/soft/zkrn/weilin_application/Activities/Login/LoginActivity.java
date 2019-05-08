@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,9 +16,11 @@ import android.widget.Toast;
 
 import com.soft.zkrn.weilin_application.Activities.Home.Homepage;
 import com.soft.zkrn.weilin_application.GsonClass.LoginData;
+import com.soft.zkrn.weilin_application.GsonClass.UserInformationData;
 import com.soft.zkrn.weilin_application.NewGson.CallBackGson;
 import com.soft.zkrn.weilin_application.NewGson.GsonUtil;
 import com.soft.zkrn.weilin_application.R;
+import com.soft.zkrn.weilin_application.okhttp.CallBack_Get;
 import com.soft.zkrn.weilin_application.okhttp.CallBack_Post;
 import com.soft.zkrn.weilin_application.okhttp.HttpUtil;
 
@@ -33,6 +36,7 @@ public class LoginActivity extends AppCompatActivity{
     private GsonUtil gsonUtil = new GsonUtil();
 
     private String userName, userPW;
+    private int uId;
     private Button btn_login;
     private EditText et_user;
     private EditText et_pw;
@@ -42,6 +46,9 @@ public class LoginActivity extends AppCompatActivity{
     private static final int SUCCESS = 1;
     private static final int FAIL = 2;
     private static final int ERROR = 3;
+    private static final int SUCCESSID = 4;
+    private static final int FAILID = 5;
+
 
     private Handler handler = new Handler() {
         @Override
@@ -50,14 +57,37 @@ public class LoginActivity extends AppCompatActivity{
             //获取数据 //
             switch (msg.what){
                 case SUCCESS:
-                    startActivity(new Intent(LoginActivity.this, Homepage.class));
-                    finish();
+                    SharedPreferences userSettings = getSharedPreferences("setting", MODE_PRIVATE);
+                    SharedPreferences.Editor editors = userSettings.edit();
+                    editors.putString("userName",userName);
+                    editors.putString("userPW",userPW);
+//                    editor.putString(,);
+                    editors.putString("url","http://www.xinxianquan.xyz:8080/zhaqsq/user/login");
+                    editors.commit();
+                    getId();
                     break;
                 case FAIL:
                     Toast.makeText(LoginActivity.this,"账号信息有误", Toast.LENGTH_SHORT).show();
                     break;
                 case ERROR:
                     Toast.makeText(LoginActivity.this,"网络状态异常", Toast.LENGTH_SHORT).show();
+                    break;
+                case SUCCESSID:
+                    SharedPreferences userSetting = getSharedPreferences("setting", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = userSetting.edit();
+                    editor.putInt("userID",uId);
+                    editor.commit();
+                    Intent intent1 = new Intent(LoginActivity.this, Homepage.class);
+                    intent1.putExtra("ifID",true);
+                    intent1.putExtra("userID",uId);
+                    startActivity(intent1);
+                    finish();
+                    break;
+                case FAILID:
+                    Intent intent2 = new Intent(LoginActivity.this, Homepage.class);
+                    intent2.putExtra("ifID",false);
+                    startActivity(intent2);
+                    finish();
                     break;
                 default:
                     break;
@@ -155,6 +185,42 @@ public class LoginActivity extends AppCompatActivity{
             @Override
             public void onError(Exception e) {
                 msg.what = ERROR;
+                handler.sendMessage(msg);
+            }
+        });
+    }
+
+    private void getId(){
+        httpUtil.GET("http://www.xinxianquan.xyz:8080/zhaqsq/user/get", "userName", userName, new CallBack_Get() {
+            @Override
+            public void onFinish(String response) {
+                gsonUtil.translateJson(response, UserInformationData.class, new CallBackGson() {
+                    @Override
+                    public void onSuccess(Object obj) {
+                        Message msg = Message.obtain();
+                        UserInformationData data = (UserInformationData) obj;
+                        if(data.getCode() == 100){
+                            uId = data.getExtend().getUser().getUid();
+                            msg.what = SUCCESSID;
+                        }else{
+                            msg.what = FAILID;
+                        }
+                        handler.sendMessage(msg);
+                    }
+
+                    @Override
+                    public void onFail(Exception e) {
+                        Message msg = Message.obtain();
+                        msg.what = FAILID;
+                        handler.sendMessage(msg);
+                    }
+                });
+            }
+
+            @Override
+            public void onError(Exception e) {
+                Message msg = Message.obtain();
+                msg.what = FAILID;
                 handler.sendMessage(msg);
             }
         });

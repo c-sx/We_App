@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.soft.zkrn.weilin_application.Activities.Login.LoginActivity;
-import com.soft.zkrn.weilin_application.Fragment.FragmentSwitchTool;
+import com.soft.zkrn.weilin_application.Widget.FragmentSwitchTool;
 import com.soft.zkrn.weilin_application.R;
 
 import androidx.annotation.NonNull;
@@ -155,16 +155,16 @@ public class Homepage extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
 
-        Intent intent = getIntent();
-        String s_userName = intent.getStringExtra("userName");
-        String s_userPW = intent.getStringExtra("userPW");
+//        Intent intent = getIntent();
+//        String s_userName = intent.getStringExtra("userName");
+//        String s_userPW = intent.getStringExtra("userPW");
 
-        userSettings = getSharedPreferences("setting", 0);
-        SharedPreferences.Editor editor = userSettings.edit();
-        editor.putString("userName",s_userName);
-        editor.putString("userPW",s_userPW);
-        editor.putString("url","http://www.xinxianquan.xyz:8080/zhaqsq/user/login");
-        editor.commit();
+//        userSettings = getSharedPreferences("setting", 0);
+//        SharedPreferences.Editor editor = userSettings.edit();
+//        editor.putString("userName",s_userName);
+//        editor.putString("userPW",s_userPW);
+//        editor.putString("url","http://www.xinxianquan.xyz:8080/zhaqsq/user/login");
+//        editor.commit();
 
         //广播退出账号
         IntentFilter intentFilter=new IntentFilter("com.example.SignOut");

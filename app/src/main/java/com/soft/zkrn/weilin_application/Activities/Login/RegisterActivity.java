@@ -121,7 +121,7 @@ public class RegisterActivity extends AppCompatActivity {
          */
         et_user = findViewById(R.id.et_reg_user);
         et_tel = findViewById(R.id.et_reg_tel);
-        et_verCode = findViewById(R.id.et_reg_verCode);
+//        et_verCode = findViewById(R.id.et_reg_verCode);
         et_setPassword = findViewById(R.id.et_reg_set_password);
         et_conPassword = findViewById(R.id.et_reg_confirm_password);
         btn_confirm = findViewById(R.id.btn_reg_confirm);

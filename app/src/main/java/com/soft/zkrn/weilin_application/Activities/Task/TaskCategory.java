@@ -65,25 +65,24 @@ public class TaskCategory extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        Intent intent = new Intent(this, TaskPublish.class);
+
         switch (v.getId()) {
             case R.id.btn_category_1:
-                Intent intent1 = new Intent(this, TaskPublish.class);
-                startActivity(intent1);
+                intent.putExtra("type","receive");
                 break;
             case R.id.btn_category_2:
-                Intent intent2 = new Intent(this, TaskPublish.class);
-                startActivity(intent2);
+                intent.putExtra("type","send");
                 break;
             case R.id.btn_category_3:
-                Intent intent3 = new Intent(this, TaskPublish.class);
-                startActivity(intent3);
+                intent.putExtra("type","borrow");
                 break;
             case R.id.btn_category_4:
-                Intent intent4 = new Intent(this, TaskPublish.class);
-                startActivity(intent4);
+                intent.putExtra("type","other");
                 break;
             default:
                 break;
         }
+        startActivity(intent);
     }
 }
