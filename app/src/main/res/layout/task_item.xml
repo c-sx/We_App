@@ -29,7 +29,6 @@
             android:id="@+id/ll_task_center_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_task_center_pending"
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingHorizontal="30dp">
@@ -72,7 +71,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="right"
                 android:orientation="horizontal">
 
                 <TextView
@@ -90,29 +89,29 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal">
+            <!--<LinearLayout-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:gravity="center"-->
+                <!--android:orientation="horizontal">-->
 
-                <Button
-                    android:id="@+id/btn_task_center_left"
-                    style="@style/ButtonWhiteRound"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:text="放弃任务"
-                    android:textSize="15dp" />
+                <!--<Button-->
+                    <!--android:id="@+id/btn_task_center_left"-->
+                    <!--style="@style/ButtonWhiteRound"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="30dp"-->
+                    <!--android:text="放弃任务"-->
+                    <!--android:textSize="15dp" />-->
 
-                <Button
-                    android:id="@+id/btn_task"
-                    style="@style/ButtonGreenRound"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="确认完成"
-                    android:textSize="15dp" />
-            </LinearLayout>
+                <!--<Button-->
+                    <!--android:id="@+id/btn_task"-->
+                    <!--style="@style/ButtonGreenRound"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:text="确认完成"-->
+                    <!--android:textSize="15dp" />-->
+            <!--</LinearLayout>-->
 
         </LinearLayout>
 

@@ -84,10 +84,11 @@ public class LoginActivity extends AppCompatActivity{
                     finish();
                     break;
                 case FAILID:
-                    Intent intent2 = new Intent(LoginActivity.this, Homepage.class);
-                    intent2.putExtra("ifID",false);
-                    startActivity(intent2);
-                    finish();
+//                    Intent intent2 = new Intent(LoginActivity.this, Homepage.class);
+//                    intent2.putExtra("ifID",false);
+//                    startActivity(intent2);
+//                    finish();
+                    Toast.makeText(LoginActivity.this,"网络状态异常", Toast.LENGTH_SHORT).show();
                     break;
                 default:
                     break;

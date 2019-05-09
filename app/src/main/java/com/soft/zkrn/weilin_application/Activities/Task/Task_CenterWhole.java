@@ -103,9 +103,9 @@ public class Task_CenterWhole extends Fragment {
                         adapter.setOnItemClickLitener(new TaskAdapter.OnItemClickLitener() {
                             @Override
                             public void onItemClick(View view, int position,int callId) {
-                                Intent intent = new Intent(getActivity(), Community_Introduction.class);
-                                intent.putExtra("extra_id",callId);
-                                getActivity().startActivity(intent);
+//                                Intent intent = new Intent(getActivity(), Community_Introduction.class);
+//                                intent.putExtra("extra_id",callId);
+//                                getActivity().startActivity(intent);
                             }
                         });
                         recyclerView.setAdapter(adapter);

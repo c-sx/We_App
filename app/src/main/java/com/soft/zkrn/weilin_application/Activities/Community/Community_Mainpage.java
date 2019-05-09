@@ -366,11 +366,11 @@ public class Community_Mainpage extends AppCompatActivity {
 //        NavigationView navView = (NavigationView)findViewById(R.id.menu_view);
 //        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-        tvType = findViewById(R.id.mycommunity_type);
-        tvNum = findViewById(R.id.mycommunity_num);
-        tvDistance = findViewById(R.id.mycommunity_distance);
+//        tvType = findViewById(R.id.mycommunity_type);
+//        tvNum = findViewById(R.id.mycommunity_num);
+//        tvDistance = findViewById(R.id.mycommunity_distance);
         btNext = findViewById(R.id.bt_mycommunity_next);
-        btSearch = findViewById(R.id.bt_mycommunity_searching);
+//        btSearch = findViewById(R.id.bt_mycommunity_searching);
 
         //////////
         //////////////
@@ -394,12 +394,12 @@ public class Community_Mainpage extends AppCompatActivity {
             }
         });
 
-        btSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(Community_Mainpage.this,"木大", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        btSearch.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(Community_Mainpage.this,"木大", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
 //        /**
 //         * 刷新
@@ -458,29 +458,29 @@ public class Community_Mainpage extends AppCompatActivity {
 //        });
 //        recyclerView.setAdapter(adapter);
 
-        /**
-         * 选项卡
-         */
-        tvType.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPickerView(0,tvType);
-            }
-        });
-
-        tvNum.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPickerView(1,tvNum);
-            }
-        });
-
-        tvDistance.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPickerView(2,tvDistance);
-            }
-        });
+//        /**
+//         * 选项卡
+//         */
+//        tvType.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showPickerView(0,tvType);
+//            }
+//        });
+//
+//        tvNum.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showPickerView(1,tvNum);
+//            }
+//        });
+//
+//        tvDistance.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showPickerView(2,tvDistance);
+//            }
+//        });
 
 
 

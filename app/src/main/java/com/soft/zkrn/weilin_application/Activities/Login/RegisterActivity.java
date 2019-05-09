@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.soft.zkrn.weilin_application.GsonClass.RegisterData;
+import com.soft.zkrn.weilin_application.GsonClass.StateData;
 import com.soft.zkrn.weilin_application.NewGson.CallBackGson;
 import com.soft.zkrn.weilin_application.NewGson.GsonUtil;
 import com.soft.zkrn.weilin_application.R;
@@ -156,11 +157,11 @@ public class RegisterActivity extends AppCompatActivity {
         httpUtil.POST("http://www.xinxianquan.xyz:8080/zhaqsq/user/register", paramsMap, new CallBack_Post() {
             @Override
             public void onFinish(String response) {
-                gson.translateJson(response, RegisterData.class, new CallBackGson() {
+                gson.translateJson(response, StateData.class, new CallBackGson() {
                     @Override
                     public void onSuccess(Object obj) {
                         Message msg = Message.obtain();
-                        RegisterData data = (RegisterData)obj;
+                        StateData data = (StateData)obj;
                         if(data.getCode() == 100){
                             msg.what = SUCCESS;
                             msg.obj = data;

@@ -42,89 +42,88 @@
             android:layout_width = "match_parent"
             android:layout_height="match_parent">
 
-            <com.google.android.material.appbar.AppBarLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-                >
+            <!--<com.google.android.material.appbar.AppBarLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="35dp"-->
+                <!--android:theme="@style/Theme.AppCompat.Light.NoActionBar"-->
+                <!--&gt;-->
 
 
-                <com.google.android.material.appbar.CollapsingToolbarLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-                    app:contentScrim="#ffffff"
-                    app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                <!--&lt;!&ndash;<com.google.android.material.appbar.CollapsingToolbarLayout&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:theme="@style/Theme.AppCompat.Light.NoActionBar"&ndash;&gt;-->
+                    <!--&lt;!&ndash;app:contentScrim="#ffffff"&ndash;&gt;-->
+                    <!--&lt;!&ndash;app:layout_scrollFlags="scroll|exitUntilCollapsed"&ndash;&gt;-->
 
-                    >
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <EditText
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="8dp"
-                            android:layout_weight="3"
-                            android:hint="@string/mycommunity_description" />
-
-                        <TextView
-                            android:id="@+id/mycommunity_distance"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_weight="2"
-                            android:gravity="center_horizontal"
-                            android:text="@string/mycommunity_distance"
-                            android:textSize="18sp" />
-
-                        <TextView
-                            android:id="@+id/mycommunity_type"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_weight="2"
-                            android:gravity="center_horizontal"
-                            android:text="@string/mycommunity_type"
-                            android:textSize="18sp"
-                            android:clickable="true"
-                            />
-
-                        <TextView
-                            android:id="@+id/mycommunity_num"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_weight="2"
-                            android:gravity="center_horizontal"
-                            android:text="@string/mycommunity_num"
-                            android:textSize="18sp" />
-
-                        <TextView
-                            android:id="@+id/bt_mycommunity_searching"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginEnd="8dp"
-                            android:background="@drawable/mycommunity_searching"
-                            android:layout_marginRight="9dp"/>
-
-                    </LinearLayout>
+                    <!--&lt;!&ndash;&gt;&ndash;&gt;-->
 
 
-                </com.google.android.material.appbar.CollapsingToolbarLayout>
+                    <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_weight="1"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:orientation="horizontal">&ndash;&gt;-->
 
-            </com.google.android.material.appbar.AppBarLayout>
+                        <!--&lt;!&ndash;<EditText&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_gravity="center_vertical"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_marginLeft="8dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_weight="3"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:hint="@string/mycommunity_description" />&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:id="@+id/mycommunity_distance"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_gravity="center_vertical"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_weight="2"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:gravity="center_horizontal"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:text="@string/mycommunity_distance"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:textSize="18sp" />&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:id="@+id/mycommunity_type"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_gravity="center_vertical"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_weight="2"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:gravity="center_horizontal"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:text="@string/mycommunity_type"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:textSize="18sp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:clickable="true"&ndash;&gt;-->
+                            <!--&lt;!&ndash;/>&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:id="@+id/mycommunity_num"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_gravity="center_vertical"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_weight="2"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:gravity="center_horizontal"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:text="@string/mycommunity_num"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:textSize="18sp" />&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:id="@+id/bt_mycommunity_searching"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_gravity="center_vertical"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_marginEnd="8dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:background="@drawable/mycommunity_searching"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_marginRight="9dp"/>&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+
+                <!--&lt;!&ndash;</com.google.android.material.appbar.CollapsingToolbarLayout>&ndash;&gt;-->
+
+            <!--</com.google.android.material.appbar.AppBarLayout>-->
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     xmlns:android="http://schemas.android.com/apk/res/android"

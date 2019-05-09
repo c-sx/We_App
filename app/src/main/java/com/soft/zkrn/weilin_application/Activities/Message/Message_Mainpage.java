@@ -27,11 +27,7 @@ public class Message_Mainpage extends AppCompatActivity {
     private Message[] initData(){
         Message[] cmy = {
                 //int point,int num,String name,String description,Image image
-                new Message(201900202,"不知道"),
-                new Message(2003033,"该说啥"),
-                new Message(2044343,"那么就"),
-                new Message(4524242,"不说了"),
-                new Message(433335,"好不好")
+                new Message(201900202,"消息功能尚未开启，敬请期待"),
         };
         return cmy;
     }
@@ -39,9 +35,10 @@ public class Message_Mainpage extends AppCompatActivity {
     private void initGift(){
         messageList.clear();
         messages = initData();
-        for(int i = 0 ; i < 10 ; i++ ){
-            messageList.add(messages[i % 5]);
-        }
+//        for(int i = 0 ; i < 10 ; i++ ){
+//            messageList.add(messages[i % 5]);
+//        }
+        messageList.add(messages[0]);
     }
 
     @Override
