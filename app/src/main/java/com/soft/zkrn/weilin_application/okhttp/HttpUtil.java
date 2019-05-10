@@ -103,7 +103,6 @@ public class HttpUtil {
         return formBody.build();
     }
 
-
     public String getGetJson() {
         return getJson;
     }
