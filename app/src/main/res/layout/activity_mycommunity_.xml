@@ -154,7 +154,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_margin="15dp"
                         android:background="@drawable/oval_button"
-                        android:text="@string/mycommunity_next"
+                        android:text="@string/mycommunity_create"
                         android:textColor="#ffffff"
                         android:textSize="22sp"/>
 

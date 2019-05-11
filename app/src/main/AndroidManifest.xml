@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Activities.Task.TaskPublish_setEndTime"></activity>
+        <activity android:name=".Activities.Community.MyCommunity"></activity>
+        <activity android:name=".Activities.Task.TaskPublish_setEndTime" />
         <activity android:name=".Activities.Community.SuccessfulCreation" />
         <activity android:name=".Activities.Community.Community_Creation" />
         <activity android:name=".Activities.Community.Community_Creator" />

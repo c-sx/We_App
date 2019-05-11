@@ -1,19 +1,40 @@
 package com.soft.zkrn.weilin_application.Activities.Setting;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.soft.zkrn.weilin_application.GsonClass.UserInformationData;
+import com.soft.zkrn.weilin_application.NewGson.GsonUtil;
 import com.soft.zkrn.weilin_application.R;
+import com.soft.zkrn.weilin_application.okhttp.HttpUtil;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class Setting_Safety extends AppCompatActivity {
+    private String userPhonenumber;
+    private String userName;
+
     private LinearLayout code;
+    private TextView tv_userName;
+    private TextView tv_userPhone;
+
+    private static final int SUCCESS = 1;
+    private static final int FAIL = 2;
+
+    private String readPsw(String userName){
+        SharedPreferences userSettings = (SharedPreferences) getSharedPreferences("setting",MODE_PRIVATE);
+        return userSettings.getString(userName,"");
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +51,14 @@ public class Setting_Safety extends AppCompatActivity {
 //                startActivity(intent);
             }
         });
+        tv_userName = findViewById(R.id.tv_name);
+        tv_userPhone = findViewById(R.id.tv_number);
+
+        userName = readPsw("userName");
+        userPhonenumber = readPsw("userPhone");
+
+        tv_userName.setText(userName);
+        tv_userPhone.setText(userPhonenumber);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);

@@ -72,10 +72,15 @@ public class Community_Introduction extends AppCompatActivity {
         }
     };
 
-    private String readPsw(String userName){
+    private String readPsw_String(String userName){
         SharedPreferences userSettings = (SharedPreferences) getSharedPreferences("setting",MODE_PRIVATE);
         return userSettings.getString(userName,"");
     }
+
+//    private String readPsw_Int(String userID){
+//        SharedPreferences userSettings = (SharedPreferences) getSharedPreferences("setting",MODE_PRIVATE);
+//        return userSettings.getString(userID,"");
+//    }
 
     /**
      * 接受关闭社区页面广播
@@ -126,7 +131,7 @@ public class Community_Introduction extends AppCompatActivity {
         bt_join.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                userName = readPsw("userName");
+                userName = readPsw_String("userName");
                 httpUtil.GET("http://www.xinxianquan.xyz:8080/zhaqsq/user/get", "userName", userName, new CallBack_Get() {
                     @Override
                     public void onFinish(String response) {
@@ -174,13 +179,13 @@ public class Community_Introduction extends AppCompatActivity {
         HashMap<String, String> paramsMap = new HashMap<>();
         paramsMap.put("uId" , String.valueOf(uId));
         paramsMap.put("cId", String.valueOf(cId));
+        Message msg = Message.obtain();
         httpUtil.POST("http://www.xinxianquan.xyz:8080/zhaqsq/unc/insert", paramsMap, new CallBack_Post() {
             @Override
             public void onFinish(String response) {
                 gsonUtil.translateJson(response, StateData.class, new CallBackGson() {
                     @Override
                     public void onSuccess(Object obj) {
-                        Message msg = Message.obtain();
                         StateData data = (StateData) obj;
                         if(data.getCode() == 100){
                             msg.what = SUCCESS;
@@ -192,7 +197,6 @@ public class Community_Introduction extends AppCompatActivity {
 
                     @Override
                     public void onFail(Exception e) {
-                        Message msg = Message.obtain();
                         msg.what = FAIL;
                         handler.sendMessage(msg);
                     }
@@ -201,7 +205,6 @@ public class Community_Introduction extends AppCompatActivity {
 
             @Override
             public void onError(Exception e) {
-                Message msg = Message.obtain();
                 msg.what = FAIL;
                 handler.sendMessage(msg);
             }

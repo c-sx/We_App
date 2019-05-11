@@ -39,7 +39,7 @@
                 style="@style/et_login"
                 android:layout_marginRight="80dp"
                 android:drawableLeft="@mipmap/ic_user"
-                android:hint="请输入用户名/手机号" />
+                android:hint="请输入手机号" />
 
         </LinearLayout>
 

@@ -236,13 +236,9 @@ public class TaskPublish extends AppCompatActivity {
         final PickerView pv_day = view.findViewById(R.id.pv_day);
         final PickerView pv_hour = view.findViewById(R.id.pv_hour);
 
-
         Calendar cal = Calendar.getInstance();
         cal.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
 
-//        String getMonth;
-//        String getDay;
-//        String getHour;
         //获得当前时间
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH)+1;
@@ -254,8 +250,6 @@ public class TaskPublish extends AppCompatActivity {
         System.out.println("hour:" + cal.get(Calendar.HOUR_OF_DAY));
         System.out.println("minute:" + cal.get(Calendar.MINUTE));
 
-        //是否日期底线到明年
-//        boolean nextYear;
         //今年是否为闰年
         boolean leapThis = judge(year);
         //明年是否为闰年
@@ -279,8 +273,6 @@ public class TaskPublish extends AppCompatActivity {
         }
         pv_month.setData(time_month);
 
-
-
         /*
          *设定日期栏
          */
@@ -291,29 +283,12 @@ public class TaskPublish extends AppCompatActivity {
         final List<String> time_day = setDayTime(month, Integer.parseInt(getMonth), leapThis, leapNext,day);
         pv_day.setData(time_day);
 
-
-
         /*
          *设定小时栏
          */
-//        getDay = time_day.get(getDayNum);
-        final List<String> time_hour = setHourTime(day,Integer.valueOf(pv_day.getText()),month,Integer.valueOf(getMonth),hour);//new ArrayList<String>();
-//        for (int i = 0; i <= 23; i++){
-//            time_hour.add(String.valueOf(i));
-//        }
+        final List<String> time_hour = setHourTime(day,Integer.valueOf(pv_day.getText()),month,Integer.valueOf(getMonth),hour);
         pv_hour.setData(time_hour);
-//        pv_hour.setOnSelectListener(new PickerView.onSelectListener() {
-//            @Override
-//            public void onSelect(String text) {
-//            }
-//        });
-//        pv_month.setData(time_month);
-//        pv_day.setData(time_day);
-//        pv_hour.setData(time_hour);
 
-//        final int[] i_month = new int[1];
-//        final int[] i_day = new int[1];
-//        final int[] i_hour = new int[1];
         final int[] i_month = new int[1];
         final int[] i_day = new int[1];
         final int[] i_hour = new int[1];
@@ -321,29 +296,18 @@ public class TaskPublish extends AppCompatActivity {
         pv_month.setOnSelectListener(new PickerView.onSelectListener() {
             @Override
             public void onSelect(String text) {
-//                System.out.println("Coco"+text);
-//                System.out.println("Coco"+pv_month.getmCurrentSelected());
                 String s1;
                 if(text.length() >= 3)
                     s1 = text.toString().replace("明","9").replace("年","9");
                 else
                     s1 = text;
-//                time_month_int.get(pv_month.getmCurrentSelected())
-//                System.out.println("text:" + s1);
-//                System.out.println("text:" + s1);
 
                 List<String> time_day = setDayTime(month, Integer.parseInt(s1),leapThis,leapNext,day);
                 if(time_day.size()!=0){
                     pv_day.setData(time_day);
                 }
-//                i_month[0] = Integer.getInteger(s);
-//                else{
-//                    System.out.println("Coco fff");
-//                }
             }
         });
-
-
 
         pv_day.setOnSelectListener(new PickerView.onSelectListener() {
             @Override
@@ -406,6 +370,8 @@ public class TaskPublish extends AppCompatActivity {
         androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(TaskPublish.this);
         LayoutInflater inflater = LayoutInflater.from(TaskPublish.this);
         View v = inflater.inflate(R.layout.dialog_task_publish, null);
+
+        System.out.println("read:" + readPsw_Int("userID"));
 
         TextView tv_title = v.findViewById(R.id.dialog_publish_tv_title);
         TextView tv_category = v.findViewById(R.id.dialog_publish_tv_category);
@@ -494,7 +460,6 @@ public class TaskPublish extends AppCompatActivity {
 
     private List setHourTime(int today,int getDay,int month,int getMonth,int now){
         List<String> time_hour = new ArrayList<String>();
-//        int start;
         if(today == getDay && month == getMonth){
             for(int i = now + 1 ;i <= 23;i ++){
                 time_hour.add(String.valueOf(i));
@@ -564,61 +529,24 @@ public class TaskPublish extends AppCompatActivity {
         return time_day;
     }
 
-//    List setDayTime(int month,int getMonthNum ,boolean leapThis ,boolean leapNext){
-//        System.out.println("month"+month+"get:"+getMonthNum);
-//        List<String> time_day = new ArrayList<String>();
-//        boolean leap;
-//        if(month + getMonthNum >= 14){
-//            leap = leapNext;
-//        }else{
-//            leap = leapThis;
-//        }
-//        switch ((month + getMonthNum)%12){
-//            case 1:
-//            case 3:
-//            case 5:
-//            case 7:
-//            case 8:
-//            case 10:
-//            case 0:
-//                for(int i = 1 ;i <= 31;i ++){
-//                    time_day.add(String.valueOf(i));
-//                }
-//                break;
-//            case 4:
-//            case 6:
-//            case 9:
-//            case 11:
-//                for(int i = 1;i <= 30;i ++){
-//                    time_day.add(String.valueOf(i));
-//                }
-//                break;
-//            case 2:
-//                if(leap == true){
-//                    for(int i = 1;i <= 29;i ++){
-//                        time_day.add(String.valueOf(i));
-//                    }
-//                }else{
-//                    for(int i = 1;i <= 28;i ++){
-//                        time_day.add(String.valueOf(i));
-//                    }
-//                }
-//                break;
-//            default:
-//                break;
-//        }
-//        return time_day;
-//    }
-    private String readPsw(String username) {
-        SharedPreferences sp = getSharedPreferences("loginInfo",MODE_PRIVATE);
-        return sp.getString(username,"");
+    private int readPsw_Int(String s) {
+        SharedPreferences sp = getSharedPreferences("setting",MODE_PRIVATE);
+        return sp.getInt(s,0);
+    }
+
+    private String readPsw_String(String s) {
+        SharedPreferences sp = getSharedPreferences("setting",MODE_PRIVATE);
+        return sp.getString(s,"");
     }
 
     public long dateToStamp(String s) throws ParseException {
 //        String res;
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT+8"));
         Date date = simpleDateFormat.parse(s);
+        System.out.println("date:" + date);
         long ts = date.getTime();
+        System.out.println("原ts:" + date.getTime());
 //        res = String.valueOf(ts);
         return ts;
     }
@@ -665,18 +593,22 @@ public class TaskPublish extends AppCompatActivity {
 //        recName	否	string	接收人昵称
 //        callAddress	否	string	发布人地址
 
+        System.out.println("sub:"+ String.valueOf(SetTime) + " end:" + String.valueOf(ThisTime));
         HashMap<String, String> paramsMap = new HashMap<>();
-        paramsMap.put("subId",readPsw("userID"));
-        paramsMap.put("subTime", String.valueOf(SetTime));
-        paramsMap.put("endTime",String.valueOf(ThisTime));
+        paramsMap.put("subId", String.valueOf(readPsw_Int("userID")));
+//        paramsMap.put("subTime",String.valueOf(ThisTime));
+//        paramsMap.put("endTime",String.valueOf(SetTime));
+//        paramsMap.put("subTime","1557600053000");
+//        paramsMap.put("endTime","1570819253000");
         paramsMap.put("callTitle",title);
         paramsMap.put("callDesp",content);
         paramsMap.put("callMoney",String.valueOf(money));
         paramsMap.put("callNow","y");
         paramsMap.put("recId","");
-        paramsMap.put("subName",readPsw("userName"));
+        paramsMap.put("subName",readPsw_String("userName"));
         paramsMap.put("recName","");
         paramsMap.put("callAddress","");
+////        paramsMap.put("cal
         Message msg = Message.obtain();
         for(int i=0;i<paramsMap.size();i++){
             System.out.println(paramsMap.get(i));

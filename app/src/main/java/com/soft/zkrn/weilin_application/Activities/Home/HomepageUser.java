@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.soft.zkrn.weilin_application.Activities.Community.Community_Mainpage;
+import com.soft.zkrn.weilin_application.Activities.Community.MyCommunity;
 import com.soft.zkrn.weilin_application.Activities.Gift.Gift_Mainpage;
 import com.soft.zkrn.weilin_application.Activities.Message.Message_Mainpage;
 import com.soft.zkrn.weilin_application.Activities.Recharge.Recharge_Mainpage;
@@ -70,7 +71,7 @@ public class HomepageUser extends Fragment {
         ll_community.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                getActivity().startActivity(new Intent(getActivity(), Community_Mainpage.class));
+                getActivity().startActivity(new Intent(getActivity(), MyCommunity.class));
             }
         });
 

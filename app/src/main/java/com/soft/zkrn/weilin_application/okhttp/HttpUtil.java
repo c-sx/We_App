@@ -36,6 +36,8 @@ public class HttpUtil {
         }.start();
     }
 
+
+
     public void GET(final String url,final CallBack_Get callback){
 
         new Thread() {

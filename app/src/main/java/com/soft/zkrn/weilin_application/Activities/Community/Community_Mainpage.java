@@ -168,7 +168,7 @@ public class Community_Mainpage extends AppCompatActivity {
         httpUtil.GET("http://www.xinxianquan.xyz:8080/zhaqsq/community/all", new CallBack_Get() {
             @Override
             public void onFinish(String response) {
-//                System.out.println(response);
+                System.out.println(response);
                 gsonUtil.translateJson(response, CommunityData.class, new CallBackGson() {
                     @Override
                     public void onSuccess(Object obj) {
@@ -181,16 +181,21 @@ public class Community_Mainpage extends AppCompatActivity {
 //                        TaskData.Extend.Pageinfo pageinfo = dataForPage.getextend().getpageinfo();
 //                        System.out.println("获得页数");
                             handler.sendMessage(msg);
+                        }else{
+                            System.out.println(3);
                         }
                     }
                     @Override
                     public void onFail(Exception e) {
-//                        Toast.makeText(Community_Mainpage.this,"木大", Toast.LENGTH_SHORT).show();
+                        System.out.println(1);
+//                        Toast.makeText(Community_Mainpage.this,"1", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
             @Override
             public void onError(Exception e) {
+                System.out.println(2);
+//                Toast.makeText(Community_Mainpage.this,"2", Toast.LENGTH_SHORT).show();
             }
         });
 //        communityList.clear();

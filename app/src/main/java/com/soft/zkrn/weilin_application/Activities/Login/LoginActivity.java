@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity{
     private HttpUtil httpUtil = new HttpUtil();
     private GsonUtil gsonUtil = new GsonUtil();
 
-    private String userName, userPW;
+    private String userPhonenumber, userPW,userName;
     private int uId;
     private Button btn_login;
     private EditText et_user;
@@ -57,39 +57,53 @@ public class LoginActivity extends AppCompatActivity{
             //获取数据 //
             switch (msg.what){
                 case SUCCESS:
+                    LoginData data = (LoginData) msg.obj;
+//                    System.out.println("data:" + data.getCode() + " + " + data.getExtend().getUser().getUserName());
+                    userName = data.getExtend().getUser().getUserName();
+                    uId = data.getExtend().getUser().getUid();
                     SharedPreferences userSettings = getSharedPreferences("setting", MODE_PRIVATE);
                     SharedPreferences.Editor editors = userSettings.edit();
                     editors.putString("userName",userName);
                     editors.putString("userPW",userPW);
+                    editors.putString("userPhone",userPhonenumber);
+                    editors.putInt("userID",uId);
 //                    editor.putString(,);
                     editors.putString("url","http://www.xinxianquan.xyz:8080/zhaqsq/user/login");
                     editors.commit();
-                    getId();
-                    break;
-                case FAIL:
-                    Toast.makeText(LoginActivity.this,"账号信息有误", Toast.LENGTH_SHORT).show();
-                    break;
-                case ERROR:
-                    Toast.makeText(LoginActivity.this,"网络状态异常", Toast.LENGTH_SHORT).show();
-                    break;
-                case SUCCESSID:
-                    SharedPreferences userSetting = getSharedPreferences("setting", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = userSetting.edit();
-                    editor.putInt("userID",uId);
-                    editor.commit();
+
                     Intent intent1 = new Intent(LoginActivity.this, Homepage.class);
                     intent1.putExtra("ifID",true);
                     intent1.putExtra("userID",uId);
                     startActivity(intent1);
                     finish();
+//                    getId();
                     break;
-                case FAILID:
+                case FAIL:
+                    Toast.makeText(LoginActivity.this,"账号信息有误", Toast.LENGTH_SHORT).show();
+                    btn_login.setEnabled(true);
+                    break;
+                case ERROR:
+                    Toast.makeText(LoginActivity.this,"网络状态异常", Toast.LENGTH_SHORT).show();
+                    btn_login.setEnabled(true);
+                    break;
+//                case SUCCESSID:
+//                    SharedPreferences userSetting = getSharedPreferences("setting", MODE_PRIVATE);
+//                    SharedPreferences.Editor editor = userSetting.edit();
+//                    editor.putInt("userID",uId);
+//                    editor.commit();
+//                    Intent intent1 = new Intent(LoginActivity.this, Homepage.class);
+//                    intent1.putExtra("ifID",true);
+//                    intent1.putExtra("userID",uId);
+//                    startActivity(intent1);
+//                    finish();
+//                    break;
+//                case FAILID:
 //                    Intent intent2 = new Intent(LoginActivity.this, Homepage.class);
 //                    intent2.putExtra("ifID",false);
 //                    startActivity(intent2);
 //                    finish();
-                    Toast.makeText(LoginActivity.this,"网络状态异常", Toast.LENGTH_SHORT).show();
-                    break;
+//                    Toast.makeText(LoginActivity.this,"网络状态异常", Toast.LENGTH_SHORT).show();
+//                    break;
                 default:
                     break;
             }
@@ -144,19 +158,20 @@ public class LoginActivity extends AppCompatActivity{
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                btn_login.setEnabled(false);
                 login();
             }
         });
     }
 
     private void login(){
-        userName = et_user.getText().toString().trim();
+        userPhonenumber = et_user.getText().toString().trim();
         userPW = et_pw.getText().toString().trim();
 
         Message msg = Message.obtain();
 
         HashMap<String, String> paramsMap = new HashMap<>();
-        paramsMap.put("userName" ,userName);
+        paramsMap.put("userPhonenumber" ,userPhonenumber);
         paramsMap.put("userPassword",userPW);
         httpUtil.POST("http://www.xinxianquan.xyz:8080/zhaqsq/user/login", paramsMap, new CallBack_Post() {
             @Override
@@ -167,7 +182,9 @@ public class LoginActivity extends AppCompatActivity{
                         LoginData data = (LoginData)obj;
                         if(data.getCode() == 100){
                             msg.what = SUCCESS;
+                            msg.obj = obj;
                             handler.sendMessage(msg);
+//                            System.out.println(response);
 //                            startActivity(new Intent(LoginActivity.this, Homepage.class));
                         }else if(data.getCode() == 200){
                             msg.what = FAIL;
@@ -191,41 +208,41 @@ public class LoginActivity extends AppCompatActivity{
         });
     }
 
-    private void getId(){
-        httpUtil.GET("http://www.xinxianquan.xyz:8080/zhaqsq/user/get", "userName", userName, new CallBack_Get() {
-            @Override
-            public void onFinish(String response) {
-                gsonUtil.translateJson(response, UserInformationData.class, new CallBackGson() {
-                    @Override
-                    public void onSuccess(Object obj) {
-                        Message msg = Message.obtain();
-                        UserInformationData data = (UserInformationData) obj;
-                        if(data.getCode() == 100){
-                            uId = data.getExtend().getUser().getUid();
-                            msg.what = SUCCESSID;
-                        }else{
-                            msg.what = FAILID;
-                        }
-                        handler.sendMessage(msg);
-                    }
-
-                    @Override
-                    public void onFail(Exception e) {
-                        Message msg = Message.obtain();
-                        msg.what = FAILID;
-                        handler.sendMessage(msg);
-                    }
-                });
-            }
-
-            @Override
-            public void onError(Exception e) {
-                Message msg = Message.obtain();
-                msg.what = FAILID;
-                handler.sendMessage(msg);
-            }
-        });
-    }
+//    private void getId(){
+//        httpUtil.GET("http://www.xinxianquan.xyz:8080/zhaqsq/user/get", "userName", userName, new CallBack_Get() {
+//            @Override
+//            public void onFinish(String response) {
+//                gsonUtil.translateJson(response, UserInformationData.class, new CallBackGson() {
+//                    @Override
+//                    public void onSuccess(Object obj) {
+//                        Message msg = Message.obtain();
+//                        UserInformationData data = (UserInformationData) obj;
+//                        if(data.getCode() == 100){
+//                            uId = data.getExtend().getUser().getUid();
+//                            msg.what = SUCCESSID;
+//                        }else{
+//                            msg.what = FAILID;
+//                        }
+//                        handler.sendMessage(msg);
+//                    }
+//
+//                    @Override
+//                    public void onFail(Exception e) {
+//                        Message msg = Message.obtain();
+//                        msg.what = FAILID;
+//                        handler.sendMessage(msg);
+//                    }
+//                });
+//            }
+//
+//            @Override
+//            public void onError(Exception e) {
+//                Message msg = Message.obtain();
+//                msg.what = FAILID;
+//                handler.sendMessage(msg);
+//            }
+//        });
+//    }
 
 //    private void processJson(String res){
 //        Json_Login login_json = gson.fromJson(res,Json_Login.class);

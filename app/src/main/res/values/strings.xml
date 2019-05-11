@@ -17,7 +17,8 @@
     <string name="mycommunity_distance">距离</string>
     <string name="mycommunity_num">人数</string>
     <string name="mycommunity_description">搜索社区</string>
-    <string name="mycommunity_next">下一步</string>
+    <string name="mycommunity_create">创建社区</string>
+    <string name="mycommunity_join">搜索社区</string>
 
     <string name="communityintroduction_intro">社区介绍</string>
     <string name="communityintroduction_join">加入社区</string>
@@ -29,6 +30,10 @@
     <string name="creation_location">选择社区地点</string>
     <string name="creation_type">社区类别</string>
     <string name="creation_name">社区名称</string>
+    <string name="creation_description">关于社区的描述...</string>
+    <string name="creation_join">创建社区成功，要加入吗</string>
+    <string name="creation_confirm">好的</string>
+    <string name="creation_cancel">不了</string>
 
     <string name="successfulcommunity_prompt">快来开启你的社区之旅吧</string>
     <string name="successfulcommuntiy_button">我知道了</string>
@@ -69,6 +74,7 @@
     <string name="userinformation_main_mobilephone">手机号</string>
     <string name="userinformation_main_creditcard">银行卡</string>
     <string name="userinformation_main_address">我的地址</string>
+    <string name="userinformation_main_hardware">IMEI号</string>
 
     <string name="gift_main_accumulatepoint">我的积分</string>
     <string name="gift_main_record">兑奖记录</string>

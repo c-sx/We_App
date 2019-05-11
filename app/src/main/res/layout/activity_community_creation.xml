@@ -7,101 +7,145 @@
     tools:context=".Activities.Community.Community_Creation"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/iv_add"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="60dp"
-        android:src="@drawable/communitycreation_add"/>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_community_creation"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:layout_gravity="right"
-        android:layout_marginRight="20dp"
-        android:orientation="horizontal"
-        >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            android:layout_marginRight="15dp"
-            android:layout_gravity="center_vertical"
-            android:text="@string/creation_location"
-            android:textSize="22sp"/>
+            <ImageView
+                android:id="@+id/iv_add"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="60dp"
+                android:src="@drawable/communitycreation_add"/>
 
-        <TextView
-            android:id="@+id/tv_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/create_location"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="?attr/actionBarSize"
+                android:layout_gravity="right"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginRight="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/creation_location"
+                    android:textSize="22sp"/>
+
+                <TextView
+                    android:id="@+id/tv_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/create_location"/>
 
 
-    </LinearLayout>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:orientation="horizontal"
-        >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="horizontal"
+                >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/creation_name"
-            android:textSize="22sp"
-            android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/creation_name"
+                    android:textSize="22sp"
+                    android:layout_weight="1"/>
 
-        <EditText
-            android:id="@+id/et_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"/>
+                <EditText
+                    android:id="@+id/et_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"/>
 
-    </LinearLayout>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:orientation="horizontal"
-        >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="horizontal"
+                >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/creation_type"
-            android:textSize="22sp"
-            android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/creation_type"
+                    android:textSize="22sp"
+                    android:layout_weight="1"/>
 
-        <TextView
-            android:id="@+id/tv_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="待选择"
-            android:textSize="22sp"
-            android:gravity="center_horizontal"
-            android:textColor="#7A8B8B"
-            android:layout_weight="5"/>
+                <TextView
+                    android:id="@+id/tv_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="待选择"
+                    android:textSize="22sp"
+                    android:gravity="center_horizontal"
+                    android:textColor="#7A8B8B"
+                    android:layout_weight="5"/>
 
-    </LinearLayout>
 
-    <Button
-        android:id="@+id/bt_complete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/createcommunity_create"
-        android:textSize="22sp"
-        android:textColor="#ffffff"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/oval_button"/>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/et_content"
+                android:layout_width="350dp"
+                android:layout_height="200dp"
+                android:layout_margin="15dp"
+                android:background="@drawable/et_publish"
+                android:hint="@string/creation_description"
+                android:inputType="textImeMultiLine"
+                android:maxLines="8"
+                android:minLines="5"
+                android:padding="25dp"
+                android:selectAllOnFocus="true"
+                android:textColorHint="#999999"
+                android:textSize="12dp"
+                android:layout_gravity="center"
+                />
+
+            <Button
+                android:id="@+id/bt_complete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/createcommunity_create"
+                android:textSize="22sp"
+                android:textColor="#ffffff"
+                android:layout_margin="40dp"
+                android:background="@drawable/oval_button"/>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
 
 
 </LinearLayout>
