@@ -26,6 +26,7 @@
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/btn_1_size"
             android:text="@string/cancel"
             android:background="@null"/>
 
@@ -35,6 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/creation_confirm"
+            android:textSize="@dimen/btn_1_size"
             android:background="@null"/>
 
     </LinearLayout>

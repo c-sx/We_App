@@ -39,7 +39,7 @@ public class Setting_Safety extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting_safety);
-        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar2);
+        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar_my_community);
         toolbar.setTitle(" ");
         setSupportActionBar(toolbar);
         LinearLayout linearLayout=(LinearLayout)findViewById(R.id.phone);

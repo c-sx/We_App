@@ -60,16 +60,15 @@ public class LoginActivity extends AppCompatActivity{
                     LoginData data = (LoginData) msg.obj;
 //                    System.out.println("data:" + data.getCode() + " + " + data.getExtend().getUser().getUserName());
                     userName = data.getExtend().getUser().getUserName();
+                    System.out.println("userName:" + userName);
                     uId = data.getExtend().getUser().getUid();
                     SharedPreferences userSettings = getSharedPreferences("setting", MODE_PRIVATE);
                     SharedPreferences.Editor editors = userSettings.edit();
-                    editors.putString("userName",userName);
-                    editors.putString("userPW",userPW);
-                    editors.putString("userPhone",userPhonenumber);
-                    editors.putInt("userID",uId);
-//                    editor.putString(,);
-                    editors.putString("url","http://www.xinxianquan.xyz:8080/zhaqsq/user/login");
-                    editors.commit();
+                    editors.putString("userName",userName)
+                            .putString("userPW",userPW)
+                            .putString("userPhone",userPhonenumber)
+                            .putInt("userID",uId)
+                            .putString("url","http://www.xinxianquan.xyz:8080/zhaqsq/user/login").commit();
 
                     Intent intent1 = new Intent(LoginActivity.this, Homepage.class);
                     intent1.putExtra("ifID",true);

@@ -50,9 +50,6 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.View
      */
     public CommunityAdapter(List<community> communityList){
         this.mCommunityList = communityList;
-///////////////////
-//        this.mContext = context;
-//        this.mDatas = mDatas;
     }
 
     @Override

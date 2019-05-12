@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.soft.zkrn.weilin_application.Activities.Login.LoginActivity;
 import com.soft.zkrn.weilin_application.Widget.FragmentSwitchTool;
@@ -41,15 +42,20 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 public class Homepage extends AppCompatActivity {
 
-    private LinearLayout ll_main, ll_task, ll_user;
-    private ImageView bt_main, bt_task, bt_user;
-    private TextView tv_main, tv_task, tv_user;
-    private FragmentSwitchTool tool;
-
-    private DrawerLayout mDrawerLayout;
+//    private LinearLayout ll_main, ll_task, ll_user;
+//    private ImageView bt_main, bt_task, bt_user;
+//    private TextView tv_main, tv_task, tv_user;
+//    private FragmentSwitchTool tool;
+//
+//    private DrawerLayout mDrawerLayout;
 
     private SharedPreferences userSettings;
-
+    /**
+     * Fragment
+     */
+    private HomepageTask fragment_home_task;
+    private HomepageMainpage fragment_home_main;
+    private HomepageUser fragment_home_user;
 
     ////////////////////
 //    private OkHttpClient client = new OkHttpClient();
@@ -64,21 +70,52 @@ public class Homepage extends AppCompatActivity {
 //    private LinearLayout linearLayout1;
 //    private LinearLayout linearLayout2;
 
-
-
-
     /**
-     * 菜单
+     * BottomNavigation 底部菜单栏使用
      */
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch(item.getItemId()){
-            case android.R.id.home:
-                mDrawerLayout.openDrawer(GravityCompat.START);
-                break;
-            default:
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    if (fragment_home_main == null) {
+                        fragment_home_main = new HomepageMainpage();
+                    }
+                    getSupportFragmentManager().beginTransaction().replace(R.id.ll_homepage, fragment_home_main).commitAllowingStateLoss();
+                    return true;
+                case R.id.navigation_task:
+                    if (fragment_home_task == null) {
+                        fragment_home_task = new HomepageTask();
+                    }
+                    getSupportFragmentManager().beginTransaction().replace(R.id.ll_homepage, fragment_home_task).commitAllowingStateLoss();
+                    return true;
+                case R.id.navigation_mine:
+                    if (fragment_home_user == null) {
+                        fragment_home_user = new HomepageUser();
+                    }
+                    getSupportFragmentManager().beginTransaction().replace(R.id.ll_homepage, fragment_home_user).commitAllowingStateLoss();
+                    return true;
+            }
+            return false;
         }
-        return true;
-    }
+    };
+
+
+
+//    /**
+//     * 菜单
+//     */
+//    public boolean onOptionsItemSelected(MenuItem item){
+//        switch(item.getItemId()){
+//            case android.R.id.home:
+//                mDrawerLayout.openDrawer(GravityCompat.START);
+//                break;
+//            default:
+//        }
+//        return true;
+//    }
 
     /**
      * 接受退出广播
@@ -130,41 +167,52 @@ public class Homepage extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_homepage);
 
-        ll_main = (LinearLayout) findViewById(R.id.ll_main);
-        ll_task = (LinearLayout) findViewById(R.id.ll_task);
-        ll_user = (LinearLayout) findViewById(R.id.ll_user);
+//        ll_main = (LinearLayout) findViewById(R.id.ll_main);
+//        ll_task = (LinearLayout) findViewById(R.id.ll_task);
+//        ll_user = (LinearLayout) findViewById(R.id.ll_user);
+//
+//        bt_main = (ImageView) findViewById(R.id.bt_main);
+//        bt_task = (ImageView) findViewById(R.id.bt_task);
+//        bt_user = (ImageView) findViewById(R.id.bt_user);
+//
+//        tv_main = (TextView) findViewById(R.id.tv_main);
+//        tv_task = (TextView) findViewById(R.id.tv_task);
+//        tv_user = (TextView) findViewById(R.id.tv_user);
+//
+//        tool = new FragmentSwitchTool(getFragmentManager(), R.id.flContainer);
+//        tool.setClickableViews(ll_main, ll_task, ll_user);
+//        tool.addSelectedViews(new View[]{bt_main, tv_main}).addSelectedViews(new View[]{bt_task, tv_task}).addSelectedViews(new View[]{bt_user, tv_user});
+//        tool.setFragments(HomepageMainpage.class, HomepageTask.class, HomepageUser.class);
+//        tool.changeTag(ll_main);
 
-        bt_main = (ImageView) findViewById(R.id.bt_main);
-        bt_task = (ImageView) findViewById(R.id.bt_task);
-        bt_user = (ImageView) findViewById(R.id.bt_user);
 
-        tv_main = (TextView) findViewById(R.id.tv_main);
-        tv_task = (TextView) findViewById(R.id.tv_task);
-        tv_user = (TextView) findViewById(R.id.tv_user);
+        /**
+         * Fragment使用
+         */
 
-        tool = new FragmentSwitchTool(getFragmentManager(), R.id.flContainer);
-        tool.setClickableViews(ll_main, ll_task, ll_user);
-        tool.addSelectedViews(new View[]{bt_main, tv_main}).addSelectedViews(new View[]{bt_task, tv_task}).addSelectedViews(new View[]{bt_user, tv_user});
-        tool.setFragments(HomepageMainpage.class, HomepageTask.class, HomepageUser.class);
-        tool.changeTag(ll_main);
+        //实例化Fragment_Home_Main
+        fragment_home_main = new HomepageMainpage();
+        //把Fragment添加到Activity中,复写不要忘了调用commmit
+        getSupportFragmentManager().beginTransaction().add(R.id.ll_homepage, fragment_home_main).commitAllowingStateLoss();
 
 
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
-        NavigationView navView = (NavigationView)findViewById(R.id.menu_view);
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-        setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
 
+
+//        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+//        NavigationView navView = (NavigationView)findViewById(R.id.menu_view);
+//        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+//        setSupportActionBar(toolbar);
+//        ActionBar actionBar = getSupportActionBar();
+//
 //        Intent intent = getIntent();
 //        String s_userName = intent.getStringExtra("userName");
 //        String s_userPW = intent.getStringExtra("userPW");
-
-//        userSettings = getSharedPreferences("setting", 0);
-//        SharedPreferences.Editor editor = userSettings.edit();
+        userSettings = getSharedPreferences("setting", MODE_PRIVATE);
+        SharedPreferences.Editor editor = userSettings.edit();
 //        editor.putString("userName",s_userName);
 //        editor.putString("userPW",s_userPW);
-//        editor.putString("url","http://www.xinxianquan.xyz:8080/zhaqsq/user/login");
-//        editor.commit();
+        editor.putString("url","http://www.xinxianquan.xyz:8080/zhaqsq/user/login");
+        editor.commit();
 
         //广播退出账号
         IntentFilter intentFilter=new IntentFilter("com.example.SignOut");
@@ -180,21 +228,25 @@ public class Homepage extends AppCompatActivity {
 //            }
 //        });
 
-        /**
-         * 菜单
-         */
-        if(actionBar != null){
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(R.drawable.menu);
-        }
-//        navView.setCheckedItem(R.id.);
-        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                mDrawerLayout.closeDrawers();
-                return true;
-            }
-        });
+//        /**
+//         * 菜单
+//         */
+//        if(actionBar != null){
+//            actionBar.setDisplayHomeAsUpEnabled(true);
+//            actionBar.setHomeAsUpIndicator(R.drawable.menu);
+//        }
+////        navView.setCheckedItem(R.id.);
+//        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                mDrawerLayout.closeDrawers();
+//                return true;
+//            }
+//        });
+
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_homepage);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
 
     }

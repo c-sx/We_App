@@ -115,10 +115,12 @@ public class UserInformation_Mainpage extends AppCompatActivity {
         tv_phone = findViewById(R.id.tv_UserInformation_PhoneNumber);
 
 
-        String userName = readPsw("userName");
+        userName = readPsw("userName");
+        System.out.println("userName :" + userName);
         httpUtil.GET("http://www.xinxianquan.xyz:8080/zhaqsq/user/get", "userName", userName, new CallBack_Get() {
             @Override
             public void onFinish(String response) {
+                System.out.println("json:" +response);
                 gsonUtil.translateJson(response, UserInformationData.class, new CallBackGson() {
                     @Override
                     public void onSuccess(Object obj) {
@@ -127,8 +129,10 @@ public class UserInformation_Mainpage extends AppCompatActivity {
                         if(data.getCode() == 100){
                             msg.what = SUCCESS;
                             msg.obj = obj;
+                            System.out.println(1);
                         }else{
                             msg.what = FAIL;
+                            System.out.println(2);
                         }
                         handler.sendMessage(msg);
                     }
@@ -137,6 +141,7 @@ public class UserInformation_Mainpage extends AppCompatActivity {
                     public void onFail(Exception e) {
                         Message msg = Message.obtain();
                         msg.what = FAIL;
+                        System.out.println(3);
                         handler.sendMessage(msg);
                     }
                 });
@@ -146,6 +151,7 @@ public class UserInformation_Mainpage extends AppCompatActivity {
             public void onError(Exception e) {
                 Message msg = Message.obtain();
                 msg.what = FAIL;
+                System.out.println(4);
                 handler.sendMessage(msg);
             }
         });
@@ -216,7 +222,4 @@ public class UserInformation_Mainpage extends AppCompatActivity {
         return list;
     }
 
-//    private void passSexData(){
-//
-//    }
 }

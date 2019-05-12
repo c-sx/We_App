@@ -117,6 +117,14 @@
     <string name="user_id">用户ID</string>
     <string name="user_info">查看或编辑用户信息</string>
 
+
+    <string name="setting_main_safety">账户安全</string>
+    <string name="setting_main_currency">通用</string>
+    <string name="setting_main_help">一键求救服务</string>
+    <string name="setting_main_suggestion">意见反馈</string>
+    <string name="setting_main_about">关于</string>
+    <string name="setting_main_out">退出登录</string>
+
     <string name="setting_feedback_choose1">功能异常：功能故障或不可用</string>
     <string name="setting_feedback_choose2">产品建议：用的不爽，我有建议</string>
     <string name="setting_feedback_choose3">安全问题：密码、隐私、欺诈等</string>

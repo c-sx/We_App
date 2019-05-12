@@ -21,6 +21,7 @@ import com.soft.zkrn.weilin_application.NewGson.GsonUtil;
 import com.soft.zkrn.weilin_application.R;
 import com.soft.zkrn.weilin_application.okhttp.CallBack_Get;
 import com.soft.zkrn.weilin_application.okhttp.CallBack_Post;
+import com.soft.zkrn.weilin_application.okhttp.CallBack_Put;
 import com.soft.zkrn.weilin_application.okhttp.HttpUtil;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,16 +39,19 @@ public class Community_Introduction extends AppCompatActivity {
     private TextView tv_name;
     private TextView tv_description;
 
-    private int uId;
+    private int number;
+    private int uId = 0;
     private int cId;
     private String userName;
     private String type;
     private String des;
     private String num;
+    private String title;
 
     private static final int SUCCESS = 1;
     private static final int FAIL = 2;
     private static final int SUCCESSID = 3;
+    private static final int SUCCESS_ADD = 4;
 
     private Handler handler = new Handler(){
         @Override
@@ -56,15 +60,21 @@ public class Community_Introduction extends AppCompatActivity {
             switch (msg.what){
                 case SUCCESSID:
                     CallForJoin();
+//                    Toast.makeText(Community_Introduction.this,"申请成功", Toast.LENGTH_SHORT).show();
+//                    Intent intent = new Intent(Community_Introduction.this, Homepage.class);
+//                    startActivity(intent);
                     break;
                 case FAIL:
                     Toast.makeText(Community_Introduction.this,"申请失败", Toast.LENGTH_SHORT).show();
                     break;
                 case SUCCESS:
-                    //页面跳转
+                    callForNumber();
+                    break;
+                case SUCCESS_ADD:
                     Toast.makeText(Community_Introduction.this,"申请成功", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Community_Introduction.this, Homepage.class);
                     startActivity(intent);
+                    //页面跳转
                     break;
                 default:
                     break;
@@ -77,10 +87,10 @@ public class Community_Introduction extends AppCompatActivity {
         return userSettings.getString(userName,"");
     }
 
-//    private String readPsw_Int(String userID){
-//        SharedPreferences userSettings = (SharedPreferences) getSharedPreferences("setting",MODE_PRIVATE);
-//        return userSettings.getString(userID,"");
-//    }
+    private int readPsw_Int(String userID){
+        SharedPreferences userSettings = (SharedPreferences) getSharedPreferences("setting",MODE_PRIVATE);
+        return userSettings.getInt(userID,0);
+    }
 
     /**
      * 接受关闭社区页面广播
@@ -111,10 +121,11 @@ public class Community_Introduction extends AppCompatActivity {
 
         Intent intent = getIntent();
         cId = intent.getIntExtra("extra_id",0);
-        int n = intent.getIntExtra("extra_num",0);
+        number = intent.getIntExtra("extra_num",0);
         type = intent.getStringExtra("extra_type");
         des = intent.getStringExtra("extra_description");
-        num = String.valueOf(n);
+        title = intent.getStringExtra("extra_title");
+        num = String.valueOf(number);
 
         bt_join = findViewById(R.id.bt_communityintroduction);
         tv_type = findViewById(R.id.communityIntroduction_type);
@@ -132,45 +143,107 @@ public class Community_Introduction extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 userName = readPsw_String("userName");
-                httpUtil.GET("http://www.xinxianquan.xyz:8080/zhaqsq/user/get", "userName", userName, new CallBack_Get() {
-                    @Override
-                    public void onFinish(String response) {
-                        gsonUtil.translateJson(response, UserInformationData.class, new CallBackGson() {
-                            @Override
-                            public void onSuccess(Object obj) {
-                                Message msg = Message.obtain();
-                                UserInformationData data = (UserInformationData) obj;
-                                if(data.getCode() == 100){
-                                    uId = data.getExtend().getUser().getUid();
-                                    msg.what = SUCCESSID;
-                                }else{
-                                    msg.what = FAIL;
-                                }
-                                handler.sendMessage(msg);
-                            }
+                uId = readPsw_Int("userID");
 
-                            @Override
-                            public void onFail(Exception e) {
-                                Message msg = Message.obtain();
-                                msg.what = FAIL;
-                                handler.sendMessage(msg);
-                            }
-                        });
-                    }
+                if(uId == 0){
+                    getID();
+                }else{
+                    System.out.println("得到uid为" + uId);
+                    Message msg = Message.obtain();
+                    msg.what = SUCCESSID;
+                    handler.sendMessage(msg);
+                }
 
-                    @Override
-                    public void onError(Exception e) {
-                        Message msg = Message.obtain();
-                        msg.what = FAIL;
-                        handler.sendMessage(msg);
-                    }
-                });
 
                 //广播退出社区页面
                 Intent close_intent = new Intent();
                 close_intent.setAction("com.example.Close_Community");
                 sendBroadcast(close_intent);
 //                finish();
+            }
+        });
+    }
+    private void getID(){
+        httpUtil.GET("http://www.xinxianquan.xyz:8080/zhaqsq/user/get", "userName", userName, new CallBack_Get() {
+            @Override
+            public void onFinish(String response) {
+                gsonUtil.translateJson(response, UserInformationData.class, new CallBackGson() {
+                    @Override
+                    public void onSuccess(Object obj) {
+                        Message msg = Message.obtain();
+                        UserInformationData data = (UserInformationData) obj;
+                        if(data.getCode() == 100){
+                            uId = data.getExtend().getUser().getUid();
+                            msg.what = SUCCESSID;
+                        }else{
+                            msg.what = FAIL;
+                        }
+                        handler.sendMessage(msg);
+                    }
+
+                    @Override
+                    public void onFail(Exception e) {
+                        Message msg = Message.obtain();
+                        msg.what = FAIL;
+                        handler.sendMessage(msg);
+                    }
+                });
+            }
+
+            @Override
+            public void onError(Exception e) {
+                Message msg = Message.obtain();
+                msg.what = FAIL;
+                handler.sendMessage(msg);
+            }
+        });
+    }
+
+    private void callForNumber(){
+//        comId	是	int	社区id
+//        comTitle	否	string	社区标题
+//        comCategory	否	string	社区种类
+//        comNumber	否	int	社区人数
+//        comDesp	否	string	社区描述
+//        comAddress	否	string	社区地址
+//        comPicture	否	byte[]	社区头像*/
+        HashMap<String, String> paramsMap = new HashMap<>();
+        paramsMap.put("comTitle", title);
+        paramsMap.put("comId", String.valueOf(cId));
+        paramsMap.put("comNumber" , String.valueOf(number + 1));
+        Message msg = Message.obtain();
+        httpUtil.PUT("http://www.xinxianquan.xyz:8080/zhaqsq/community/updatepic/{comId}", paramsMap, new CallBack_Put() {
+            @Override
+            public void onFinish(String response) {
+                System.out.println(response);
+                gsonUtil.translateJson(response, StateData.class, new CallBackGson() {
+                    @Override
+                    public void onSuccess(Object obj) {
+                        StateData data = (StateData) obj;
+                        if(data.getCode() == 100){
+                            msg.what = SUCCESS_ADD;
+                            System.out.println(1);
+                        }else{
+                            System.out.println(2);
+                            msg.what = FAIL;
+                        }
+                        handler.sendMessage(msg);
+                    }
+
+                    @Override
+                    public void onFail(Exception e) {
+                        msg.what = FAIL;
+                        System.out.println(3);
+                        handler.sendMessage(msg);
+                    }
+                });
+            }
+
+            @Override
+            public void onError(Exception e) {
+                msg.what = FAIL;
+                System.out.println(4);
+                handler.sendMessage(msg);
             }
         });
     }

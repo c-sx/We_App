@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/divider_b">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar_my_community"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#ffaaaa"
+        android:background="?attr/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
 
         <TextView
             android:id="@+id/text_view"
@@ -20,64 +21,142 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="设置"
-            android:textColor="#000000"
+            android:textColor="#FFFFFF"
             android:textSize="24sp" />
 
     </androidx.appcompat.widget.Toolbar>
 
-   <Button
-       android:id="@+id/zhanghu"
-       android:layout_width="match_parent"
-       android:layout_height="50dp"
-       android:text="账户安全"
-
-       android:paddingRight="250dp"/>
-
-    <Button
-        android:id="@+id/tongyong"
+    <ScrollView
+        android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="通用"
+        android:layout_height="match_parent">
 
-        android:paddingRight="275dp"/>
-    <Button
-        android:id="@+id/qiujiu"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_task_module">
 
-        android:text="一键求救"
-        android:paddingRight="250dp"/>
-    <Button
-        android:id="@+id/fankui"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        <TextView
+            android:layout_marginVertical="5dp"
+            android:background="@color/colorTextWhite"
+            android:id="@+id/tv_setting_main_safety"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="账户安全"
+            android:gravity="left|center"
+            android:padding="15dp"
+            android:textSize="@dimen/text_1_size"
+            android:paddingRight="250dp"/>
 
-        android:text="意见反馈"
-        android:paddingRight="250dp"/>
-    <Button
-        android:id="@+id/guanyu"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="关于"
+        <TextView
+            android:layout_marginVertical="5dp"
+            android:background="@color/colorTextWhite"
+            android:id="@+id/tv_setting_main_currency"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/setting_main_currency"
+            android:gravity="left|center"
+            android:padding="15dp"
+            android:textSize="@dimen/text_1_size"
+            android:paddingRight="250dp"/>
 
-        android:paddingRight="275dp"/>
+        <TextView
+            android:layout_marginVertical="5dp"
+            android:background="@color/colorTextWhite"
+            android:id="@+id/tv_setting_main_help"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/setting_main_help"
+            android:gravity="left|center"
+            android:padding="15dp"
+            android:textSize="@dimen/text_1_size"
+            android:paddingRight="250dp"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="100dp"/>
-    <Button
-        android:id="@+id/bt_SettingMainpage_signout"
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
+        <TextView
+            android:layout_marginVertical="5dp"
+            android:background="@color/colorTextWhite"
+            android:id="@+id/tv_setting_main_suggestion"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/setting_main_suggestion"
+            android:gravity="left|center"
+            android:padding="15dp"
+            android:textSize="@dimen/text_1_size"
+            android:paddingRight="250dp"/>
 
-        android:text="退出登录"
-        android:textColor="#ff00"
-        android:textSize="30dp" />
+        <TextView
+            android:layout_marginVertical="5dp"
+            android:id="@+id/tv_setting_main_about"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/setting_main_about"
+            android:gravity="left|center"
+            android:background="@color/colorTextWhite"
+            android:padding="15dp"
+            android:textSize="@dimen/text_1_size"
+            android:paddingRight="250dp"/>
+
+        <TextView
+            android:layout_marginTop="70dp"
+            android:id="@+id/tv_setting_main_out"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/setting_main_out"
+            android:gravity="center"
+            android:padding="15dp"
+            android:textSize="@dimen/text_1_size"
+            android:paddingRight="250dp"
+            android:background="@color/colorTextWhite"
+            android:textColor="@color/colorSignOut"/>
+
+    </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
 
+    <!--<Button-->
+        <!--android:id="@+id/tongyong"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:text="通用"-->
 
-    
+        <!--android:paddingRight="275dp"/>-->
+    <!--<Button-->
+        <!--android:id="@+id/qiujiu"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
 
-</LinearLayout>
+        <!--android:text="一键求救"-->
+        <!--android:paddingRight="250dp"/>-->
+    <!--<Button-->
+        <!--android:id="@+id/fankui"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
+
+        <!--android:text="意见反馈"-->
+        <!--android:paddingRight="250dp"/>-->
+    <!--<Button-->
+        <!--android:id="@+id/guanyu"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:text="关于"-->
+
+        <!--android:paddingRight="275dp"/>-->
+
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="100dp"/>-->
+    <!--<Button-->
+        <!--android:id="@+id/bt_SettingMainpage_signout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="75dp"-->
+
+        <!--android:text="退出登录"-->
+        <!--android:textColor="#ff00"-->
+        <!--android:textSize="30dp" />-->

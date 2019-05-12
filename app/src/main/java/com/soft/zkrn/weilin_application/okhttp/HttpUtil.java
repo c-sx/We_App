@@ -36,8 +36,6 @@ public class HttpUtil {
         }.start();
     }
 
-
-
     public void GET(final String url,final CallBack_Get callback){
 
         new Thread() {
@@ -93,6 +91,77 @@ public class HttpUtil {
             }
         });
     }
+
+    public void PUT(final String url,final HashMap<String,String> paramsMap,final CallBack_Put callBack_put){
+//        FormBody body = new FormBody.Builder();
+        FormBody body = getFormBody(paramsMap);
+        Request request = new Request.Builder()
+                .url(url)
+                .put(body)
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                callBack_put.onError(e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                callBack_put.onFinish(response.body().string());
+            }
+        });
+    }
+
+
+//    public void PUT(final String url,final HashMap<String, String> paramsMap,final CallBack_Put callBack_put){
+//        FormBody build = new FormBody.Builder()
+//                .add("Rfid", Rfid)
+//                .build();
+//        String format = String.format(url,Rfid, 1, username, key, current_timestamp);
+//        Request build1 = new Request.Builder()
+//                .url(format)
+//                .put(build)
+//                .build();
+//
+//        client.newCall(build1).enqueue(new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//                String string = response.body().string();
+//                if (string != null) {
+//                    try {
+//                        final JSONObject jsonObject = new JSONObject(string);
+//                        int status = jsonObject.getInt("status");
+//                        if (status == 0) {
+//                            mHandler.post(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    Toast.makeText(Home_Thelibrary.this, "修改状态成功！", Toast.LENGTH_SHORT).show();
+//                                    show();
+//                                }
+//                            });
+//                        }else {
+//                            mHandler.post(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    Toast.makeText(Home_Thelibrary.this, "修改状态失败，请稍后重试！", Toast.LENGTH_SHORT).show();
+//                                }
+//                            });
+//                        }
+//
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    } finally {
+//                        progressDlgEx.closeHandleThread();
+//                    }
+//                }
+//            }
+//        });
+//    }
 
     private FormBody getFormBody(HashMap<String, String> paramsMap) {
 

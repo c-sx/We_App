@@ -14,7 +14,7 @@ public class Setting_About extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting_about);
-        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar16);
+        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar_my_community);
         toolbar.setTitle(" ");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

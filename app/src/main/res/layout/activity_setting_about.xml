@@ -13,37 +13,52 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar16"
+            android:id="@+id/toolbar_my_community"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#ffaaaa"
+            android:background="?attr/colorPrimary"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+            app:layout_constraintTop_toTopOf="parent"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        <!--<androidx.appcompat.widget.Toolbar-->
+            <!--android:id="@+id/toolbar16"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="?attr/actionBarSize"-->
+            <!--android:background="#ffaaaa"-->
+            <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+            <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light">-->
 
 
 
-        </androidx.appcompat.widget.Toolbar>
+        <!--</androidx.appcompat.widget.Toolbar>-->
 
         <Button
             android:layout_marginTop="20dp"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:text="治安社区"
+            android:background="@drawable/logo"
             android:layout_gravity="center"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="坂本号1.1.0"
+            android:text="版本号1.1.0"
             android:layout_gravity="center"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/colorPrimary"
+            android:layout_marginBottom="40dp"/>
+
+        <View
+            android:background="#7A8B8B"
+            android:layout_width="wrap_content"
+            android:layout_height="1sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"/>
 
         <LinearLayout
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="vertical"
-            android:showDividers="end|beginning"
-            android:divider="@drawable/devide_line">
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -59,13 +74,19 @@
 
             </RelativeLayout>
         </LinearLayout>
+
+        <View
+            android:background="#7A8B8B"
+            android:layout_width="wrap_content"
+            android:layout_height="1sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"/>
+
         <LinearLayout
 
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="vertical"
-            android:showDividers="end|beginning"
-            android:divider="@drawable/devide_line">
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -81,13 +102,19 @@
 
             </RelativeLayout>
         </LinearLayout>
+
+        <View
+            android:background="#7A8B8B"
+            android:layout_width="wrap_content"
+            android:layout_height="1sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"/>
+
         <LinearLayout
 
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="vertical"
-            android:showDividers="end|beginning"
-            android:divider="@drawable/devide_line">
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -103,13 +130,19 @@
 
             </RelativeLayout>
         </LinearLayout>
+
+        <View
+            android:background="#7A8B8B"
+            android:layout_width="wrap_content"
+            android:layout_height="1sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"/>
+
         <LinearLayout
 
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="vertical"
-            android:showDividers="end|beginning"
-            android:divider="@drawable/devide_line">
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -125,13 +158,19 @@
 
             </RelativeLayout>
         </LinearLayout>
+
+        <View
+            android:background="#7A8B8B"
+            android:layout_width="wrap_content"
+            android:layout_height="1sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"/>
+
         <LinearLayout
 
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="vertical"
-            android:showDividers="end|beginning"
-            android:divider="@drawable/devide_line">
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -147,6 +186,13 @@
 
             </RelativeLayout>
         </LinearLayout>
+
+        <View
+            android:background="#7A8B8B"
+            android:layout_width="wrap_content"
+            android:layout_height="1sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"/>
 
 
 

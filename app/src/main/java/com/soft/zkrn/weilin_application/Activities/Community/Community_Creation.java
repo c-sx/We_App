@@ -41,6 +41,7 @@ import com.soft.zkrn.weilin_application.R;
 import com.soft.zkrn.weilin_application.Widget.ScreenUtils;
 import com.soft.zkrn.weilin_application.okhttp.CallBack_Get;
 import com.soft.zkrn.weilin_application.okhttp.CallBack_Post;
+import com.soft.zkrn.weilin_application.okhttp.CallBack_Put;
 import com.soft.zkrn.weilin_application.okhttp.HttpUtil;
 
 import java.util.ArrayList;
@@ -68,6 +69,7 @@ public class Community_Creation extends AppCompatActivity {
     private Button btn_cancel;
     private Button btn_agree;
 
+    private int cId;
     private int communityNumber = 0;
     private String communityName;
     private String communityDescription;
@@ -83,6 +85,7 @@ public class Community_Creation extends AppCompatActivity {
     public static final int FINISH = 5;
     public static final int FAIL_JOIN = 6;
     public static final int NEXT = 7;
+    public static final int ADD = 8;
 
     private Handler handler = new Handler(){
         @Override
@@ -108,8 +111,11 @@ public class Community_Creation extends AppCompatActivity {
                     break;
                 case NEXT:
                     CommunityData_Search cd = (CommunityData_Search) msg.obj;
-                    int cId = cd.getExtend().getCommunity().getComId();
+                    cId = cd.getExtend().getCommunity().getComId();
                     join(cId);
+                    break;
+                case ADD:
+                    callForNumber(cId);
                     break;
                 default:
                     break;
@@ -359,7 +365,7 @@ public class Community_Creation extends AppCompatActivity {
         HashMap<String, String> paramsMap = new HashMap<>();
         paramsMap.put("comTitle", communityName);
 //        System.out.println("comTitle" + communityName);
-//        paramsMap.put("comCategory",communityType);
+        paramsMap.put("comCategory",communityType);
 //        System.out.println("comCategory" + communityType);
         paramsMap.put("comNumber", String.valueOf(communityNumber));
 //        System.out.println("comNumber" + String.valueOf(communityNumber));
@@ -420,7 +426,7 @@ public class Community_Creation extends AppCompatActivity {
                         StateData data = (StateData) obj;
                         if(data.getCode() == 100){
                             System.out.println("1");
-                            msg.what = FINISH;
+                            msg.what = ADD;
                             handler.sendMessage(msg);
                         }else{
                             System.out.println("2");
@@ -442,6 +448,55 @@ public class Community_Creation extends AppCompatActivity {
             public void onError(Exception e) {
                 msg.what = FAIL_JOIN;
                 System.out.println("4");
+                handler.sendMessage(msg);
+            }
+        });
+    }
+
+    private void callForNumber(int cId){
+//        comId	是	int	社区id
+//        comTitle	否	string	社区标题
+//        comCategory	否	string	社区种类
+//        comNumber	否	int	社区人数
+//        comDesp	否	string	社区描述
+//        comAddress	否	string	社区地址
+//        comPicture	否	byte[]	社区头像*/
+        HashMap<String, String> paramsMap = new HashMap<>();
+        paramsMap.put("comTitle", communityName);
+        paramsMap.put("comId", String.valueOf(cId));
+        paramsMap.put("comNumber" , String.valueOf(1));
+        Message msg = Message.obtain();
+        httpUtil.PUT("http://www.xinxianquan.xyz:8080/zhaqsq/community/updatepic/{comId}", paramsMap, new CallBack_Put() {
+            @Override
+            public void onFinish(String response) {
+                System.out.println(response);
+                gsonUtil.translateJson(response, StateData.class, new CallBackGson() {
+                    @Override
+                    public void onSuccess(Object obj) {
+                        StateData data = (StateData) obj;
+                        if(data.getCode() == 100){
+                            msg.what = FINISH;
+                            System.out.println(1);
+                        }else{
+                            System.out.println(2);
+                            msg.what = FAIL_JOIN;
+                        }
+                        handler.sendMessage(msg);
+                    }
+
+                    @Override
+                    public void onFail(Exception e) {
+                        msg.what = FAIL_JOIN;
+                        System.out.println(3);
+                        handler.sendMessage(msg);
+                    }
+                });
+            }
+
+            @Override
+            public void onError(Exception e) {
+                msg.what = FAIL_JOIN;
+                System.out.println(4);
                 handler.sendMessage(msg);
             }
         });

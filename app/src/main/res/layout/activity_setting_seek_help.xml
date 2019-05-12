@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.Setting.Setting_SeekHelp">
+    tools:context=".Activities.Setting.Setting_SeekHelp"
+    android:background="@color/divider_b">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,28 +17,30 @@
             android:id="@+id/toolbar12"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#ffaaaa"
+            android:background="?attr/colorPrimary"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+            app:layout_constraintTop_toTopOf="parent"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
 
             <TextView
                 android:id="@+id/text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="一键求救"
-                android:textColor="#000000"
+                android:text="一键呼救"
+                android:textColor="#FFFFFF"
                 android:textSize="24sp" />
 
         </androidx.appcompat.widget.Toolbar>
+
+
         <LinearLayout
             android:id="@+id/tianjia"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="vertical"
-            android:showDividers="end|beginning"
-            android:divider="@drawable/devide_line">
+            android:background="@color/colorTextWhite"
+>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -53,13 +56,14 @@
 
             </RelativeLayout>
         </LinearLayout>
+
         <LinearLayout
+            android:layout_marginTop="1dp"
            android:id="@+id/xuanze"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="vertical"
-            android:showDividers="end|beginning"
-            android:divider="@drawable/devide_line">
+            android:background="@color/colorTextWhite">
 
             <RelativeLayout
                 android:layout_width="wrap_content"

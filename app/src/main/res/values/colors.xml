@@ -21,5 +21,6 @@
     <color name="divider_b">#D7D7D7</color>
     <color name="colorTheme">#61A584</color>
     <color name="colorGrayBar">#F2F2F2</color>
+    <color name="colorSignOut">#FF3030</color>
 
 </resources>

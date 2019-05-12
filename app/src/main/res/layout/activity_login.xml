@@ -17,7 +17,7 @@
             android:layout_width="250dp"
             android:layout_height="160dp"
             android:layout_marginTop="70dp"
-            android:background="@color/colorPrimary" />
+            android:src="@drawable/logo" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -101,11 +101,14 @@
 
         <Button
             android:id="@+id/btn_login"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="150dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/btn_white"
+            android:textColor="@color/colorTextWhite"
+            android:paddingVertical="15dp"
+            android:paddingHorizontal="80dp"
+            android:textSize="@dimen/btn_1_size"
+            android:background="@drawable/btn_green_round"
             android:text="登录" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

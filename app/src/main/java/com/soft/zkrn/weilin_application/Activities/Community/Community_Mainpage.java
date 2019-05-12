@@ -137,6 +137,7 @@ public class Community_Mainpage extends AppCompatActivity {
                                 intent.putExtra("extra_type",type);
                                 intent.putExtra("extra_title",title);
                                 intent.putExtra("extra_description",description);
+
                                 startActivity(intent);
                             }
                         });

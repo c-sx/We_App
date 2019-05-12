@@ -7,12 +7,13 @@
     android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
+        android:id="@+id/toolbar_my_community"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#ffaaaa"
+        android:background="?attr/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
 
         <TextView
             android:id="@+id/text_view"
@@ -20,21 +21,25 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="账户安全"
-            android:textColor="#000000"
+            android:textColor="#FFFFFF"
             android:textSize="24sp" />
 
     </androidx.appcompat.widget.Toolbar>
+
+
+
+
     <LinearLayout
         android:id="@+id/username"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:showDividers="end"
-        android:divider="@drawable/devide_line">
+        android:layout_height="50dp">
 
-  <RelativeLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/username1"
                 android:layout_width="wrap_content"
@@ -55,16 +60,25 @@
                 android:layout_marginLeft="140dp"/>
 
 
-  </RelativeLayout>
+        </RelativeLayout>
+
+
     </LinearLayout>
+
+    <View
+        android:background="#7A8B8B"
+        android:layout_width="wrap_content"
+        android:layout_height="1sp"
+        android:layout_marginLeft="5sp"
+        android:layout_marginRight="5sp"/>
+
     <LinearLayout
         android:id="@+id/phone"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:clickable="true"
         android:layout_height="50dp"
-        android:showDividers="end"
-        android:divider="@drawable/devide_line">
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -87,16 +101,24 @@
                 android:gravity="center"
                 android:layout_toRightOf="@+id/phonenumber"
                 android:layout_marginLeft="135dp"/>
+
         </RelativeLayout>
+
     </LinearLayout>
+
+    <View
+        android:background="#7A8B8B"
+        android:layout_width="wrap_content"
+        android:layout_height="1sp"
+        android:layout_marginLeft="5sp"
+        android:layout_marginRight="5sp"/>
 
     <LinearLayout
         android:id="@+id/code"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:showDividers="end"
-        android:divider="@drawable/devide_line">
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -115,6 +137,14 @@
 
         </RelativeLayout>
     </LinearLayout>
+
+    <View
+        android:background="#7A8B8B"
+        android:layout_width="wrap_content"
+        android:layout_height="1sp"
+        android:layout_marginLeft="5sp"
+        android:layout_marginRight="5sp"/>
+
     <LinearLayout
 
         android:id="@+id/paycode"
@@ -122,8 +152,7 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:showDividers="end"
-        android:divider="@drawable/devide_line">
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -139,17 +168,25 @@
                 android:gravity="center" />
             <TextView
                 android:id="@+id/set"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
 
                 android:text="未设置"
                 android:textSize="15dp"
-                android:gravity="center"
-                android:layout_toRightOf="@+id/pay"
+                android:gravity="right|center"
+                android:layout_marginEnd="10dp"
                 android:layout_marginLeft="140dp"/>
 
 
         </RelativeLayout>
+
+        <View
+            android:background="#7A8B8B"
+            android:layout_width="wrap_content"
+            android:layout_height="1sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"/>
+
     </LinearLayout>
 
 
@@ -158,5 +195,5 @@
 
 
 
-    </LinearLayout>
+</LinearLayout>
 
