@@ -45,7 +45,7 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.View
         }
     }
 
-    /*
+    /**
      * 构造函数
      */
     public CommunityAdapter(List<community> communityList){

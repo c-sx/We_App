@@ -76,6 +76,7 @@ public class TaskPublish extends AppCompatActivity {
 
     private HttpUtil httpUtil = new HttpUtil();
     private GsonUtil gsonUtil = new GsonUtil();
+    private String url = "http://119.23.190.83:8080/zhaqsq/call/save";
 
     private Spinner spinner;
     private Button button;
@@ -255,7 +256,7 @@ public class TaskPublish extends AppCompatActivity {
         //明年是否为闰年
         boolean leapNext = judge(year + 1);
 
-        /*
+        /**
          *设定月份栏
          */
         final List<String> time_month = new ArrayList<String>();
@@ -273,7 +274,7 @@ public class TaskPublish extends AppCompatActivity {
         }
         pv_month.setData(time_month);
 
-        /*
+        /**
          *设定日期栏
          */
         String getMonth = pv_month.getText();
@@ -283,7 +284,7 @@ public class TaskPublish extends AppCompatActivity {
         final List<String> time_day = setDayTime(month, Integer.parseInt(getMonth), leapThis, leapNext,day);
         pv_day.setData(time_day);
 
-        /*
+        /**
          *设定小时栏
          */
         final List<String> time_hour = setHourTime(day,Integer.valueOf(pv_day.getText()),month,Integer.valueOf(getMonth),hour);
@@ -329,7 +330,13 @@ public class TaskPublish extends AppCompatActivity {
         btn_agree_high_opion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                i_month[0] = Integer.valueOf(pv_month.getText());
+                int month;
+                try{
+                    month = Integer.valueOf(pv_month.getText());
+                }catch (Exception e){
+                    month = Integer.valueOf(pv_month.getText().replaceAll("明年",""));
+                }
+                i_month[0] = month;
                 i_day[0] = Integer.valueOf(pv_day.getText());
                 i_hour[0] = Integer.valueOf(pv_hour.getText());
 
@@ -613,7 +620,7 @@ public class TaskPublish extends AppCompatActivity {
         for(int i=0;i<paramsMap.size();i++){
             System.out.println(paramsMap.get(i));
         }
-        httpUtil.POST("http://www.xinxianquan.xyz:8080/zhaqsq/call/save", paramsMap, new CallBack_Post() {
+        httpUtil.POST(TaskPublish.this,url, paramsMap, new CallBack_Post() {
             @Override
             public void onFinish(String response) {
                 System.out.println("gson:" + response);

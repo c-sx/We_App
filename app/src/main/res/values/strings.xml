@@ -23,6 +23,9 @@
     <string name="communityintroduction_intro">社区介绍</string>
     <string name="communityintroduction_join">加入社区</string>
 
+    <string name="communityintroduction_quit">退出社区</string>
+    <string name="communityintroduction_quit_dialog">确定要退出社区吗？</string>
+
     <string name="createcommunity_question">没有找到感兴趣的社区？你也可以现在</string>
     <string name="createcommunity_create">创建社区</string>
     <string name="createcommunity_enter">进入主页</string>
@@ -105,6 +108,9 @@
     <string name="task_publish_dialog_hour">时</string>
     <string name="task_publish_dialog_sure">确认</string>
     <string name="task_publish_dialog_cancel">我要修改</string>
+    <string name="task_receive_dialog_cancel">再看看</string>
+    <string name="task_receive_dialog_confirm">接受</string>
+    <string name="task_receive_other_xml">没有能接收的任务</string>
     <string name="account_integrals">¥520</string>
     <string name="title_activity_task_category">TaskCategory</string>
     <string name="title_activity_task_module">TaskModule</string>

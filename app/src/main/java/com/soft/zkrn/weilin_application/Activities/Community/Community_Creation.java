@@ -59,7 +59,7 @@ import androidx.core.content.ContextCompat;
 
 public class Community_Creation extends AppCompatActivity {
 
-    private  AlertDialog dialog;
+    private AlertDialog dialog;
     private TextView tv_location;
     private TextView tv_type;
     private Button bt_complete;
@@ -78,6 +78,10 @@ public class Community_Creation extends AppCompatActivity {
 
     private HttpUtil httpUtil = new HttpUtil();
     private GsonUtil gsonUtil = new GsonUtil();
+    private String create_url = "http://119.23.190.83:8080/zhaqsq/community/insert";
+    private String join_url = "http://119.23.190.83:8080/zhaqsq/unc/insert";
+    private String get_url = "http://119.23.190.83:8080/zhaqsq/community/select";
+    private String number_url = "http://119.23.190.83:8080/zhaqsq/community/updatepic/{comId}";
 
     public static final int CHOOSE_PHOTO = 2;
     public static final int SUCCESS = 3;
@@ -124,28 +128,23 @@ public class Community_Creation extends AppCompatActivity {
     };
 
 
-    /**
-     * 接受关闭社区页面广播
-     *
-     */
+    //接受关闭社区页面广播
     private BroadcastReceiver close_receiver =new BroadcastReceiver(){
         @Override
         public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if(action.equals("com.example.Close_Community"))
-                finish();
+        String action = intent.getAction();
+        if(action.equals("com.example.Close_Community"))
+            finish();
         }
     };
 
-    /**
-     * 注销广播
-     *
-     */
+    //注销广播
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(close_receiver);
     }
 
+    //选择种类
     private void showPickerView() {
 //      要展示的数据
         final List<String> listData = getData();
@@ -167,9 +166,7 @@ public class Community_Creation extends AppCompatActivity {
         pvOptions.show();
     }
 
-    /**
-     * 数据
-     */
+    //选择框
     private List<String> getData() {
         List<String> list = new ArrayList<>();
         list.add("学校");
@@ -180,10 +177,7 @@ public class Community_Creation extends AppCompatActivity {
         return list;
     }
 
-    /**
-     *
-     * 调取相册
-     */
+    //调取相册
     private void openAlbum(){
         Intent intent = new Intent("android.intent.action.GET_CONTENT");
         intent.setType("image/*");
@@ -270,7 +264,7 @@ public class Community_Creation extends AppCompatActivity {
             Toast.makeText(this,"失败了", Toast.LENGTH_SHORT).show();
         }
     }
-
+    //调取相册
 
 
     @Override
@@ -364,17 +358,12 @@ public class Community_Creation extends AppCompatActivity {
 //        comPicture	否	byte[]	社区头像
         HashMap<String, String> paramsMap = new HashMap<>();
         paramsMap.put("comTitle", communityName);
-//        System.out.println("comTitle" + communityName);
         paramsMap.put("comCategory",communityType);
-//        System.out.println("comCategory" + communityType);
         paramsMap.put("comNumber", String.valueOf(communityNumber));
-//        System.out.println("comNumber" + String.valueOf(communityNumber));
         paramsMap.put("comDesp", communityDescription);
-//        System.out.println("comDesp" + communityDescription);
         paramsMap.put("comAddress", "");
-//        paramsMap.put("comPicture", "");
         Message msg = Message.obtain();
-        httpUtil.POST("http://www.xinxianquan.xyz:8080/zhaqsq/community/insert", paramsMap, new CallBack_Post() {
+        httpUtil.POST(Community_Creation.this,create_url, paramsMap, new CallBack_Post() {
             @Override
             public void onFinish(String response) {
                 System.out.println("json:" + response);
@@ -404,7 +393,6 @@ public class Community_Creation extends AppCompatActivity {
             @Override
             public void onError(Exception e) {
                 msg.what = FAIL_CREATE;
-//                System.out.println("3");
                 handler.sendMessage(msg);
             }
         });
@@ -416,7 +404,8 @@ public class Community_Creation extends AppCompatActivity {
         paramsMap.put("uId", String.valueOf(readPsw_Int("userID")));
         paramsMap.put("cId", String.valueOf(cId));
         Message msg = Message.obtain();
-        httpUtil.POST("http://www.xinxianquan.xyz:8080/zhaqsq/unc/insert", paramsMap, new CallBack_Post() {
+
+        httpUtil.POST(Community_Creation.this,join_url, paramsMap, new CallBack_Post() {
             @Override
             public void onFinish(String response) {
                 System.out.println("join_json" + response);
@@ -438,7 +427,6 @@ public class Community_Creation extends AppCompatActivity {
                     @Override
                     public void onFail(Exception e) {
                         msg.what = FAIL_JOIN;
-                        System.out.println("3");
                         handler.sendMessage(msg);
                     }
                 });
@@ -447,7 +435,6 @@ public class Community_Creation extends AppCompatActivity {
             @Override
             public void onError(Exception e) {
                 msg.what = FAIL_JOIN;
-                System.out.println("4");
                 handler.sendMessage(msg);
             }
         });
@@ -466,7 +453,7 @@ public class Community_Creation extends AppCompatActivity {
         paramsMap.put("comId", String.valueOf(cId));
         paramsMap.put("comNumber" , String.valueOf(1));
         Message msg = Message.obtain();
-        httpUtil.PUT("http://www.xinxianquan.xyz:8080/zhaqsq/community/updatepic/{comId}", paramsMap, new CallBack_Put() {
+        httpUtil.PUT(Community_Creation.this,number_url, paramsMap, new CallBack_Put() {
             @Override
             public void onFinish(String response) {
                 System.out.println(response);
@@ -506,7 +493,7 @@ public class Community_Creation extends AppCompatActivity {
 //        HashMap<String, String> paramsMap = new HashMap<>();
 //        paramsMap.put("comTitle",communityName);
         Message msg = Message.obtain();
-        httpUtil.GET("http://www.xinxianquan.xyz:8080/zhaqsq/community/select", "comTitle",communityName,new CallBack_Get() {
+        httpUtil.GET(Community_Creation.this,get_url, "comTitle",communityName,new CallBack_Get() {
             @Override
             public void onFinish(String response) {
                 System.out.println("get_json" + response);
@@ -549,9 +536,6 @@ public class Community_Creation extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setAction("com.example.Refresh_MyCommunity");
         sendBroadcast(intent);
-
-//        Intent intent1 = new Intent(Community_Creation.this, SuccessfulCreation.class);
-//        startActivity(intent1);
 
         finish();
     }

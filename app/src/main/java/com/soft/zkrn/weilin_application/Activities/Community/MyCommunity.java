@@ -48,6 +48,7 @@ public class MyCommunity extends AppCompatActivity {
 
     private HttpUtil httpUtil = new HttpUtil();
     private GsonUtil gsonUtil = new GsonUtil();
+    private String url = "http://119.23.190.83:8080/zhaqsq/unc/getc";
 
     private Handler handler = new Handler(){
         @Override
@@ -87,7 +88,7 @@ public class MyCommunity extends AppCompatActivity {
                     adapter.setOnItemClickLitener(new CommunityAdapter.OnItemClickLitener() {
                         @Override
                         public void onItemClick(View view, int position,int callId,int num,String type,String title,String description) {
-                            Intent intent = new Intent(MyCommunity.this,Community_Introduction.class);
+                            Intent intent = new Intent(MyCommunity.this,Community_Introduction2.class);
                             intent.putExtra("extra_id",callId);
                             intent.putExtra("extra_num",num);
                             intent.putExtra("extra_type",type);
@@ -102,23 +103,17 @@ public class MyCommunity extends AppCompatActivity {
         }
     };
 
-    /**
-     * 接受刷新广播
-     *
-     */
+    //接受刷新广播
     private BroadcastReceiver receiver =new BroadcastReceiver(){
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             if(action.equals("com.example.Refresh_MyCommunity"))
-                finish();
+                initCommunity();
         }
     };
 
-    /**
-     * 接受关闭社区页面广播
-     *
-     */
+    //接受关闭社区页面广播
     private BroadcastReceiver close_receiver =new BroadcastReceiver(){
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -128,10 +123,7 @@ public class MyCommunity extends AppCompatActivity {
         }
     };
 
-    /**
-     * 注销广播
-     *
-     */
+    //注销广播
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(receiver);
@@ -189,6 +181,7 @@ public class MyCommunity extends AppCompatActivity {
 
     }
 
+    //从后台读取String
     private int readPsw(String username) {
         SharedPreferences sp = getSharedPreferences("setting",MODE_PRIVATE);
         return sp.getInt(username,0);
@@ -197,7 +190,7 @@ public class MyCommunity extends AppCompatActivity {
     private void initCommunity(){
         communityList.clear();
 
-        httpUtil.GET("http://www.xinxianquan.xyz:8080/zhaqsq/unc/getc","uId", String.valueOf(readPsw("userID")),new CallBack_Get() {
+        httpUtil.GET(MyCommunity.this,url,"uId", String.valueOf(readPsw("userID")),new CallBack_Get() {
             @Override
             public void onFinish(String response) {
 //                System.out.println(response);

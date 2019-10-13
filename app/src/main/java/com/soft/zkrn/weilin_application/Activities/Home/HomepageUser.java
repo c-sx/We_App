@@ -1,6 +1,6 @@
 package com.soft.zkrn.weilin_application.Activities.Home;
-//import android.app.Fragment;
 import androidx.fragment.app.Fragment;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.soft.zkrn.weilin_application.Activities.Community.Community_Mainpage;
 import com.soft.zkrn.weilin_application.Activities.Community.MyCommunity;
 import com.soft.zkrn.weilin_application.Activities.Gift.Gift_Mainpage;
 import com.soft.zkrn.weilin_application.Activities.Message.Message_Mainpage;
@@ -29,7 +28,8 @@ public class HomepageUser extends Fragment {
     private LinearLayout ll_setting;
     private LinearLayout ll_information;
     private TextView tv_id;
-//    private Button bt_signout;
+
+    private int uid;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class HomepageUser extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-//        bt_signout = (Button) getActivity().findViewById(R.id.bt_HomepageUser_signout);
+
         ll_message = getActivity().findViewById(R.id.ll_HomepageUser_message);
         ll_community = getActivity().findViewById(R.id.ll_HomepageUser_community);
         ll_gift = getActivity().findViewById(R.id.ll_HomepageUser_gift);
@@ -50,10 +50,8 @@ public class HomepageUser extends Fragment {
         ll_information = getActivity().findViewById(R.id.ll_HomepageUser_information);
         tv_id = getActivity().findViewById(R.id.tv_id);
 
-        Intent intent = getActivity().getIntent();
-        if(intent.getBooleanExtra("ifID",false) == true){
-            tv_id.setText(String.valueOf(intent.getIntExtra("userID",0)));
-        }
+
+        tv_id.setText(String.valueOf(uid));
 
         ll_information.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -90,13 +88,6 @@ public class HomepageUser extends Fragment {
             }
         });
 
-        ll_setting.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-//                getActivity().startActivity(new Intent(getActivity(),Recharge_Mainpage.class));
-            }
-        });
-
         ll_setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,5 +96,17 @@ public class HomepageUser extends Fragment {
         });
 
     }
+
+//    @Override
+//    public void onAttach(Activity activity) {
+//        super.onAttach(activity);
+//        uid = ((Homepage) activity).getID();
+//    }
+
+    public void setID(int id){
+        uid = id;
+    }
+
+
 
 }

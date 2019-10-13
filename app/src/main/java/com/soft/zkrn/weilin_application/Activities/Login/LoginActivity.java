@@ -16,14 +16,11 @@ import android.widget.Toast;
 
 import com.soft.zkrn.weilin_application.Activities.Home.Homepage;
 import com.soft.zkrn.weilin_application.GsonClass.LoginData;
-import com.soft.zkrn.weilin_application.GsonClass.UserInformationData;
 import com.soft.zkrn.weilin_application.NewGson.CallBackGson;
 import com.soft.zkrn.weilin_application.NewGson.GsonUtil;
 import com.soft.zkrn.weilin_application.R;
-import com.soft.zkrn.weilin_application.okhttp.CallBack_Get;
 import com.soft.zkrn.weilin_application.okhttp.CallBack_Post;
 import com.soft.zkrn.weilin_application.okhttp.HttpUtil;
-
 import java.util.HashMap;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +31,8 @@ public class LoginActivity extends AppCompatActivity{
 
     private HttpUtil httpUtil = new HttpUtil();
     private GsonUtil gsonUtil = new GsonUtil();
+    private String url = "http://119.23.190.83:8080/zhaqsq/user/login";
+    private String url_cookie = "http://119.23.190.83:8080/zhaqsq/cookie/setCookie";
 
     private String userPhonenumber, userPW,userName;
     private int uId;
@@ -48,7 +47,7 @@ public class LoginActivity extends AppCompatActivity{
     private static final int ERROR = 3;
     private static final int SUCCESSID = 4;
     private static final int FAILID = 5;
-
+//    private static final int COOKIE = 6;
 
     private Handler handler = new Handler() {
         @Override
@@ -56,6 +55,9 @@ public class LoginActivity extends AppCompatActivity{
             super.handleMessage(msg);
             //获取数据 //
             switch (msg.what){
+//                case COOKIE:
+//                    login();
+//                    break;
                 case SUCCESS:
                     LoginData data = (LoginData) msg.obj;
 //                    System.out.println("data:" + data.getCode() + " + " + data.getExtend().getUser().getUserName());
@@ -68,7 +70,8 @@ public class LoginActivity extends AppCompatActivity{
                             .putString("userPW",userPW)
                             .putString("userPhone",userPhonenumber)
                             .putInt("userID",uId)
-                            .putString("url","http://www.xinxianquan.xyz:8080/zhaqsq/user/login").commit();
+                            .putString("url",url)
+                            .putBoolean("ifID",true).commit();
 
                     Intent intent1 = new Intent(LoginActivity.this, Homepage.class);
                     intent1.putExtra("ifID",true);
@@ -137,6 +140,17 @@ public class LoginActivity extends AppCompatActivity{
         setContentView(R.layout.activity_login);
 
 
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
+//                // 检查权限状态
+//                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.INTERNET)) {
+//                    //  用户彻底拒绝授予权限，一般会提示用户进入设置权限界面
+//                } else {
+//                    //  用户未彻底拒绝授予权限
+//                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, 1);
+//                }
+//            }
+//        }
 
         IntentFilter close_intentFilter=new IntentFilter("com.example.Close_Community");
         registerReceiver(close_receiver,close_intentFilter);
@@ -157,8 +171,14 @@ public class LoginActivity extends AppCompatActivity{
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btn_login.setEnabled(false);
-                login();
+                if(et_pw.getText().toString().length() > 0 && et_user.getText().toString().length() >0){
+                    btn_login.setEnabled(false);
+//                callForCookie();
+                    login();
+                }else{
+                    Toast.makeText(LoginActivity.this,"请输入完整信息",Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }
@@ -172,7 +192,7 @@ public class LoginActivity extends AppCompatActivity{
         HashMap<String, String> paramsMap = new HashMap<>();
         paramsMap.put("userPhonenumber" ,userPhonenumber);
         paramsMap.put("userPassword",userPW);
-        httpUtil.POST("http://www.xinxianquan.xyz:8080/zhaqsq/user/login", paramsMap, new CallBack_Post() {
+        httpUtil.POST_WITH_COOKIE(LoginActivity.this,url, paramsMap, new CallBack_Post() {
             @Override
             public void onFinish(String response) {
                 gsonUtil.translateJson(response, LoginData.class, new CallBackGson() {
@@ -188,19 +208,24 @@ public class LoginActivity extends AppCompatActivity{
                         }else if(data.getCode() == 200){
                             msg.what = FAIL;
                             handler.sendMessage(msg);
+                            System.out.println("1");
                         }
                     }
 
                     @Override
                     public void onFail(Exception e) {
+                        System.out.println("2");
+                        System.out.println(response);
                         msg.what = ERROR;
                         handler.sendMessage(msg);
+
                     }
                 });
             }
 
             @Override
             public void onError(Exception e) {
+
                 msg.what = ERROR;
                 handler.sendMessage(msg);
             }
@@ -256,5 +281,34 @@ public class LoginActivity extends AppCompatActivity{
 //        }else{
 //            Toast.makeText(LoginActivity.this,"登录失败", Toast.LENGTH_SHORT).show();
 //        }
+//    }
+
+//    private void callForCookie(){
+//        httpUtil.GET(url_cookie, new CallBack_Get() {
+//            @Override
+//            public void onFinish(String response) {
+//                gsonUtil.translateJson(response, StateData.class, new CallBackGson() {
+//                    @Override
+//                    public void onSuccess(Object obj) {
+//                        StateData data = (StateData)obj;
+//                        if(data.getCode() == 100){
+//                            System.out.println("ok");
+//                            Message msg = Message.obtain();
+//                            msg.what = COOKIE;
+//                            msg.obj = data;
+//                            handler.sendMessage(msg);
+//                        }
+//                    }
+//                    @Override
+//                    public void onFail(Exception e) {
+//                        System.out.println("a");
+//                    }
+//                });
+//            }
+//            @Override
+//            public void onError(Exception e) {
+//                System.out.println("b");
+//            }
+//        });
 //    }
 }

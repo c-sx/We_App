@@ -223,30 +223,30 @@
 
         </LinearLayout>
 
-        <View
-            android:background="#7A8B8B"
-            android:layout_width="wrap_content"
-            android:layout_height="1sp"
-            android:layout_marginLeft="5sp"
-            android:layout_marginRight="5sp"/>
+        <!--<View-->
+            <!--android:background="#7A8B8B"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="1sp"-->
+            <!--android:layout_marginLeft="5sp"-->
+            <!--android:layout_marginRight="5sp"/>-->
 
-        <LinearLayout
-            android:id="@+id/ll_UserInformation_CreditCard"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:orientation="horizontal"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp">
+        <!--<LinearLayout-->
+            <!--android:id="@+id/ll_UserInformation_CreditCard"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="80dp"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:paddingLeft="15dp"-->
+            <!--android:paddingRight="15dp">-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:gravity="center"
-                android:layout_gravity="center_vertical"
-                android:text="@string/userinformation_main_creditcard"
-                android:textSize="@dimen/text_1_size"/>
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:gravity="center"-->
+                <!--android:layout_gravity="center_vertical"-->
+                <!--android:text="@string/userinformation_main_creditcard"-->
+                <!--android:textSize="@dimen/text_1_size"/>-->
 
-        </LinearLayout>
+        <!--</LinearLayout>-->
 
         <View
             android:background="#7A8B8B"

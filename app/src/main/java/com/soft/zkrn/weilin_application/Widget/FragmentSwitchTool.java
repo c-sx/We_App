@@ -16,6 +16,8 @@ import java.util.List;
  */
 public class FragmentSwitchTool implements OnClickListener {
 
+    public FragmentJudgement[] judgement;
+
     private FragmentManager fragmentManager;
     private Fragment currentFragment;
     //  private View currentClickableView;
@@ -26,6 +28,7 @@ public class FragmentSwitchTool implements OnClickListener {
     private Bundle[] bundles;
     private int containerId;
     private boolean showAnimator;
+
 
     public FragmentSwitchTool(FragmentManager fragmentManager, int containerId) {
         super();
@@ -38,6 +41,17 @@ public class FragmentSwitchTool implements OnClickListener {
         for (View view : clickableViews) {
             view.setOnClickListener(this);
         }
+    }
+
+    public void displayID(){
+        for(int i=0;i<clickableViews.length;i++){
+            System.out.println("第" + i + "个的id为"+clickableViews[i].getId());
+        }
+    }
+
+    public Fragment getFragment(View v) {
+        System.out.println("v_name=" + v.getId());
+        return fragmentManager.findFragmentByTag(String.valueOf(v.getId()));
     }
 
     public void setSelectedViews(List<View[]> selectedViews) {
@@ -62,10 +76,13 @@ public class FragmentSwitchTool implements OnClickListener {
 
     public void changeTag(View v) {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment fragment = fragmentManager.findFragmentByTag(String.valueOf(v.getId()));
+//        Fragment fragment = fragmentManager.findFragmentByTag(String.valueOf(v.getId()));
+        Fragment fragment = getFragment(v);
+        if(fragment == null)System.out.println("NOOOOO" + v.getId());
         for (int i = 0; i < clickableViews.length; i++) {
             if (v.getId() == clickableViews[i].getId()) {
 
+//                judgement.judge();
 //                //过渡动画
 //                if (showAnimator) {
 //                    int exitIndex = selectedViews.indexOf(currentSelectedView);
@@ -118,9 +135,20 @@ public class FragmentSwitchTool implements OnClickListener {
         }
     }
 
+//    public void addFunction()
+
     @Override
-    public void onClick(View v)
-    {
+    public void onClick(View v) {
+        for (int i = 0; i < clickableViews.length; i++) {
+            if (v.getId() == clickableViews[i].getId()){
+                judgement[i].judge();
+            }
+        }
+
         changeTag(v);
+
     }
+
+
+
 }

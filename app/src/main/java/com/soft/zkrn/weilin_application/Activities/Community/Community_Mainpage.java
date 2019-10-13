@@ -55,13 +55,8 @@ public class Community_Mainpage extends AppCompatActivity {
     private int communityNum = 0;
 
 
-
-    ///////////////////////////
-
 //
-//    /**
-//     * 菜单
-//     */
+//    //菜单
 //    public boolean onOptionsItemSelected(MenuItem item){
 //        switch(item.getItemId()){
 //            case android.R.id.home:
@@ -80,6 +75,7 @@ public class Community_Mainpage extends AppCompatActivity {
 
     private HttpUtil httpUtil = new HttpUtil();
     private GsonUtil gsonUtil = new GsonUtil();
+    private String url = "http://119.23.190.83:8080/zhaqsq/community/all";
 
     private Handler handler = new Handler(){
         @Override
@@ -87,8 +83,6 @@ public class Community_Mainpage extends AppCompatActivity {
             super.handleMessage(msg);
             switch (msg.what){
                 case FORDATA:
-//                    String s = "";
-//                    Log.d(s,"First_Handler");
                     System.out.println("handler");
                     CommunityData data = (CommunityData)msg.obj;
                     List<CommunityData.Extend.Communities> list= data.getExtend().getCommunities();
@@ -150,26 +144,12 @@ public class Community_Mainpage extends AppCompatActivity {
         }
     };
 
-    /**
-     * 录入卡片
-     */
-//    private community[] initData(){
-//        community[] cmy = {
-//            new community(0,12,112322,"音乃木坂","学校"),
-//                    new community(0,43,114514,"下北沢","池沼"),
-//                    new community(0,1111,212111,"红场","广场"),
-//                    new community(0,2,322222,"新日暮里","圣地"),
-//                    new community(0,22,343322,"圣米歇尔山","景点")
-//        };
-//        return cmy;
-//    }
 
     private void initCommunity(){
         communityList.clear();
-        httpUtil.GET("http://www.xinxianquan.xyz:8080/zhaqsq/community/all", new CallBack_Get() {
+        httpUtil.GET(Community_Mainpage.this,url, new CallBack_Get() {
             @Override
             public void onFinish(String response) {
-                System.out.println(response);
                 gsonUtil.translateJson(response, CommunityData.class, new CallBackGson() {
                     @Override
                     public void onSuccess(Object obj) {
@@ -182,14 +162,10 @@ public class Community_Mainpage extends AppCompatActivity {
 //                        TaskData.Extend.Pageinfo pageinfo = dataForPage.getextend().getpageinfo();
 //                        System.out.println("获得页数");
                             handler.sendMessage(msg);
-                        }else{
-                            System.out.println(3);
                         }
                     }
                     @Override
                     public void onFail(Exception e) {
-                        System.out.println(1);
-//                        Toast.makeText(Community_Mainpage.this,"1", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -206,9 +182,7 @@ public class Community_Mainpage extends AppCompatActivity {
 //        }
     }
 
-    /**
-     * 展示选择器
-     */
+    //展示选择器
     private void showPickerView(int n , final TextView tv) {
 //      要展示的数据
         final List<String> listData ;
@@ -244,9 +218,7 @@ public class Community_Mainpage extends AppCompatActivity {
         pvOptions.show();
     }
 
-    /**
-     * 数据
-     */
+    //选择器数据
     private List<String> getData_distance() {
         List<String> list = new ArrayList<>();
         list.add("5百米以内");
@@ -255,7 +227,7 @@ public class Community_Mainpage extends AppCompatActivity {
         list.add("其他");
         return list;
     }
-
+    //选择器数据
     private List<String> getData_type() {
         List<String> list = new ArrayList<>();
         list.add("学校");
@@ -265,7 +237,7 @@ public class Community_Mainpage extends AppCompatActivity {
         list.add("其他");
         return list;
     }
-
+    //选择器数据
     private List<String> getData_num() {
         List<String> list = new ArrayList<>();
         list.add("十人以内");
@@ -275,23 +247,17 @@ public class Community_Mainpage extends AppCompatActivity {
         return list;
     }
 
-    /**
-     * 接受刷新广播
-     *
-     */
-    private BroadcastReceiver receiver =new BroadcastReceiver(){
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if(action.equals("com.example.Refresh_MyCommunity"))
-                finish();
-        }
-    };
+//    //接受刷新广播
+//    private BroadcastReceiver receiver =new BroadcastReceiver(){
+//        @Override
+//        public void onReceive(Context context, Intent intent) {
+//            String action = intent.getAction();
+//            if(action.equals("com.example.Refresh_MyCommunity"))
+//                finish();
+//        }
+//    };
 
-    /**
-     * 接受关闭社区页面广播
-     *
-     */
+    //接受关闭社区页面广播
     private BroadcastReceiver close_receiver =new BroadcastReceiver(){
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -300,8 +266,6 @@ public class Community_Mainpage extends AppCompatActivity {
                 finish();
         }
     };
-
-
 //    private BroadcastReceiver mRefreshBroadcastReceiver = new BroadcastReceiver() {
 //
 //        @Override
@@ -346,22 +310,12 @@ public class Community_Mainpage extends AppCompatActivity {
 //        }).start();
 //    }
 
-
-    /**
-     * 注销广播
-     *
-     */
+    //注销广播
     protected void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(receiver);
+//        unregisterReceiver(receiver);
         unregisterReceiver(close_receiver);
     }
-
-//    protected void onDestroy() {
-//        super.onDestroy();
-//
-//    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -384,8 +338,8 @@ public class Community_Mainpage extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         //刷新页面广播
-        IntentFilter intentFilter=new IntentFilter("com.example.Refresh_MyCommunity");
-        registerReceiver(receiver,intentFilter);
+//        IntentFilter intentFilter=new IntentFilter("com.example.Refresh_MyCommunity");
+//        registerReceiver(receiver,intentFilter);
         //关闭社区页面广播
         IntentFilter close_intentFilter=new IntentFilter("com.example.Close_Community");
         registerReceiver(close_receiver,close_intentFilter);
@@ -442,9 +396,7 @@ public class Community_Mainpage extends AppCompatActivity {
 //            }
 //        });
 
-        /**
-         * 卡片布局
-         */
+        //卡片布局
         initCommunity();
 //         = (RecyclerView)findViewById(R.id.recycler_view);
 //        GridLayoutManager layoutManager = new GridLayoutManager(this,1);

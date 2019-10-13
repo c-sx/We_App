@@ -31,6 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private GsonUtil gson = new GsonUtil();
     private HttpUtil httpUtil = new HttpUtil();
+    private String url = "http://119.23.190.83:8080/zhaqsq/user/register";
 
     private EditText et_user;
     private EditText et_tel;
@@ -154,7 +155,7 @@ public class RegisterActivity extends AppCompatActivity {
         paramsMap.put("userName",setName);
         paramsMap.put("userPassword",setWord);
         paramsMap.put("userPhonenumber",setTel);
-        httpUtil.POST("http://www.xinxianquan.xyz:8080/zhaqsq/user/register", paramsMap, new CallBack_Post() {
+        httpUtil.POST(RegisterActivity.this,url, paramsMap, new CallBack_Post() {
             @Override
             public void onFinish(String response) {
                 gson.translateJson(response, StateData.class, new CallBackGson() {

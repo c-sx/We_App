@@ -71,6 +71,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             final String title = task.getCallTitle();
             final String desp = task.getCallDesp();
             final int money = task.getCallMoney();
+            final long time = task.getEndTime();
+            final int taskId = task.getCallId();
 
             holder.taskState.setText(String.valueOf(state));
             holder.taskTitle.setText(String.valueOf(title));
@@ -81,12 +83,13 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             //通过为条目设置点击事件触发回调
             if (mOnItemClickLitener != null) {
                 holder.cardView.setOnClickListener(
-                        new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                mOnItemClickLitener.onItemClick(view,position,task.getCallId());
-                            }
-                        });
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            mOnItemClickLitener.onItemClick(view,position,taskId,title,desp,money,time);
+                        }
+                    }
+                );
             }
         }
 
@@ -97,7 +100,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     //设置回调接口
     public interface OnItemClickLitener{
-        void onItemClick(View view, int position,int callId);
+        void onItemClick(View view, int position,int callId,String title,String desp,int money,long time);
     }
 
     public void setOnItemClickLitener(TaskAdapter.OnItemClickLitener mOnItemClickLitener){

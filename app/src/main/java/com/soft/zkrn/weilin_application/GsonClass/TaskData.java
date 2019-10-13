@@ -18,8 +18,8 @@ public class TaskData {
             private int pageNum;//当前页
             private int pageSize;//每页的数量
             private int size;//当前页的数量
-            private int  startRow;//当前页面第一个元素在数据库中的行号
-            private int  endRow;//当前页面最后一个元素在数据库中的行号
+            private int startRow;//当前页面第一个元素在数据库中的行号
+            private int endRow;//当前页面最后一个元素在数据库中的行号
             private long total; //总记录数
             private int pages; //总页数
             private List<TaskList> list;//具体范围

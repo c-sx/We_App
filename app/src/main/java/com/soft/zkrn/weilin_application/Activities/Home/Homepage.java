@@ -7,74 +7,41 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.Window;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 import com.soft.zkrn.weilin_application.Activities.Login.LoginActivity;
-import com.soft.zkrn.weilin_application.Widget.FragmentSwitchTool;
 import com.soft.zkrn.weilin_application.R;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 
-//import android.widget.Button;
+import java.util.ArrayList;
+import java.util.List;
 
-
-
-////////////////////////
-//import android.widget.Button;
-//import com.google.gson.Gson;
-//import okhttp3.MediaType;
-//import okhttp3.OkHttpClient;
-//import okhttp3.Request;
-//import okhttp3.RequestBody;
-//import okhttp3.Response;
-///////////////////////
+import static com.soft.zkrn.weilin_application.okhttp.HttpUtil.FILE_NAME;
 
 public class Homepage extends AppCompatActivity {
 
-//    private LinearLayout ll_main, ll_task, ll_user;
-//    private ImageView bt_main, bt_task, bt_user;
-//    private TextView tv_main, tv_task, tv_user;
 //    private FragmentSwitchTool tool;
-//
 //    private DrawerLayout mDrawerLayout;
-
+    private String url = "http://119.23.190.83:8080/zhaqsq/user/login";
     private SharedPreferences userSettings;
-    /**
-     * Fragment
-     */
+
     private HomepageTask fragment_home_task;
     private HomepageMainpage fragment_home_main;
     private HomepageUser fragment_home_user;
 
-    ////////////////////
-//    private OkHttpClient client = new OkHttpClient();
-//    public static final MediaType JSON             = MediaType.get("application/json; charset=utf-8");
-//    private Button btn_json;
-//    private Button btn_get;
-//    private Button btn_post;
-//    private TextView tv_tips1;
-//    private TextView tv_json;
-//    private TextView tv_tips2;
-//    private TextView tv_gson;
-//    private LinearLayout linearLayout1;
-//    private LinearLayout linearLayout2;
+    private int uid;
+    private boolean if_id = false;
+
+//    private PassIDListener mListener;
+
 
     /**
      * BottomNavigation 底部菜单栏使用
      */
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -95,8 +62,12 @@ public class Homepage extends AppCompatActivity {
                     if (fragment_home_user == null) {
                         fragment_home_user = new HomepageUser();
                     }
+                    fragment_home_user.setID(uid);
                     getSupportFragmentManager().beginTransaction().replace(R.id.ll_homepage, fragment_home_user).commitAllowingStateLoss();
+    //                mListener.PassID(uid);
                     return true;
+                default:
+                    break;
             }
             return false;
         }
@@ -117,48 +88,49 @@ public class Homepage extends AppCompatActivity {
 //        return true;
 //    }
 
-    /**
-     * 接受退出广播
-     *
-     */
+    //接受退出广播
     private BroadcastReceiver receiver =new BroadcastReceiver(){
         @Override
         public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if(action.equals("com.example.SignOut")){
-
-                SharedPreferences.Editor editor = userSettings.edit();
-                editor.clear();
-                editor.commit();
-
-                startActivity(new Intent(Homepage.this,LoginActivity.class));
-                finish();
-            }
-
+        String action = intent.getAction();
+        if(action.equals("com.example.SignOut")){
+            SharedPreferences.Editor editor = userSettings.edit();
+            editor.clear();
+            editor.commit();
+            startActivity(new Intent(Homepage.this,LoginActivity.class));
+            finish();
+        }
         }
     };
 
-    /**
-     * 接受关闭社区页面广播
-     *
-     */
+    //接受关闭社区页面广播
     private BroadcastReceiver close_receiver =new BroadcastReceiver(){
         @Override
         public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if(action.equals("com.example.Close_Community"))
-                finish();
+        String action = intent.getAction();
+        if(action.equals("com.example.Close_Community"))
+            finish();
         }
     };
 
-    /**
-     * 注销广播
-     *
-     */
+    //注销广播
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(receiver);
         unregisterReceiver(close_receiver);
+    }
+
+    //获得数据库bool类型
+    private boolean readPsw_Boolean(String s) {
+
+        SharedPreferences sp = getSharedPreferences("setting",MODE_PRIVATE);
+        return sp.getBoolean(s,false);
+    }
+
+    //获得数据库int类型
+    private int readPsw_Int(String s) {
+        SharedPreferences sp = getSharedPreferences("setting",MODE_PRIVATE);
+        return sp.getInt(s,0);
     }
 
     @Override
@@ -167,18 +139,19 @@ public class Homepage extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_homepage);
 
-//        ll_main = (LinearLayout) findViewById(R.id.ll_main);
-//        ll_task = (LinearLayout) findViewById(R.id.ll_task);
-//        ll_user = (LinearLayout) findViewById(R.id.ll_user);
-//
-//        bt_main = (ImageView) findViewById(R.id.bt_main);
-//        bt_task = (ImageView) findViewById(R.id.bt_task);
-//        bt_user = (ImageView) findViewById(R.id.bt_user);
-//
-//        tv_main = (TextView) findViewById(R.id.tv_main);
-//        tv_task = (TextView) findViewById(R.id.tv_task);
-//        tv_user = (TextView) findViewById(R.id.tv_user);
-//
+//        List<String> cookies = new ArrayList<String>();
+//        SharedPreferences userSettingss = getSharedPreferences("setting",MODE_PRIVATE);
+//        int length = userSettingss.getInt("cookies_length",0);
+//        System.out.println("length="+length);
+//        if(cookies.isEmpty() == false){
+//            cookies.clear();
+//        }
+//        for(int i=0;i<length;i++){
+//            cookies.add(userSettingss.getString("cookies"+i,""));
+//        }
+//        System.out.println("cookies="+cookies);
+
+
 //        tool = new FragmentSwitchTool(getFragmentManager(), R.id.flContainer);
 //        tool.setClickableViews(ll_main, ll_task, ll_user);
 //        tool.addSelectedViews(new View[]{bt_main, tv_main}).addSelectedViews(new View[]{bt_task, tv_task}).addSelectedViews(new View[]{bt_user, tv_user});
@@ -196,8 +169,6 @@ public class Homepage extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().add(R.id.ll_homepage, fragment_home_main).commitAllowingStateLoss();
 
 
-
-
 //        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
 //        NavigationView navView = (NavigationView)findViewById(R.id.menu_view);
 //        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
@@ -209,9 +180,7 @@ public class Homepage extends AppCompatActivity {
 //        String s_userPW = intent.getStringExtra("userPW");
         userSettings = getSharedPreferences("setting", MODE_PRIVATE);
         SharedPreferences.Editor editor = userSettings.edit();
-//        editor.putString("userName",s_userName);
-//        editor.putString("userPW",s_userPW);
-        editor.putString("url","http://www.xinxianquan.xyz:8080/zhaqsq/user/login");
+        editor.putString("url",url);
         editor.commit();
 
         //广播退出账号
@@ -220,13 +189,6 @@ public class Homepage extends AppCompatActivity {
 
         IntentFilter close_intentFilter=new IntentFilter("com.example.Close_Community");
         registerReceiver(close_receiver,close_intentFilter);
-
-//        bt_mainpage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
 
 //        /**
 //         * 菜单
@@ -244,15 +206,32 @@ public class Homepage extends AppCompatActivity {
 //            }
 //        });
 
-
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_homepage);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        SharedPreferences sp = getSharedPreferences("setting",MODE_PRIVATE);
+        if(sp.contains("ifID") == true){
+            if_id = readPsw_Boolean("ifID");
+        }
+
+        if(if_id == false){
+            startActivity(new Intent(Homepage.this,LoginActivity.class));
+            finish();
+        }else{
+            uid = readPsw_Int("userID");
+        }
 
     }
 
-//    private void initView() {
+//    public int getID(){
+//        return uid;
+//    }
 //
+//    public interface PassIDListener{
+//        public void PassID(int id);
+//    }
+//    public void setPassIDListener(PassIDListener passIDListener){
+//        this.mListener = passIDListener;
 //    }
 
 

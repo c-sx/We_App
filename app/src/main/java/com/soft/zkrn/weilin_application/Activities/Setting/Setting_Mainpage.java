@@ -1,6 +1,7 @@
 package com.soft.zkrn.weilin_application.Activities.Setting;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -56,10 +57,18 @@ public class Setting_Mainpage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(Setting_Mainpage.this,"已退出账号，这里再补一个登录页面然后start", Toast.LENGTH_SHORT).show();
-                ////之后补充一个登录页面的跳转////
+                SharedPreferences userSettings = getSharedPreferences("setting", MODE_PRIVATE);
+                SharedPreferences.Editor editors = userSettings.edit();
+                editors.putString("userName","")
+                        .putString("userPW","")
+                        .putString("userPhone","")
+                        .putInt("userID",0)
+                        .putBoolean("ifID",false).commit();
+
                 Intent intent = new Intent();
                 intent.setAction("com.example.SignOut");
                 sendBroadcast(intent);
+
 
                 finish();
             }

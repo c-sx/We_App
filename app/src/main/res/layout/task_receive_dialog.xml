@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/btn_white_round">
+
+    <TextView
+        android:id="@+id/tv_dialog_title"
+        android:layout_margin="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/card_title_size"
+        android:layout_gravity="center"
+        android:maxEms="8"
+        android:text="TITLE"/>
+
+    <TextView
+        android:id="@+id/tv_dialog_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp"
+        android:text="content"
+        android:textSize="@dimen/card_content_size"
+        android:maxEms="18"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginVertical="25dp">
+
+        <TextView
+            android:id="@+id/tv_dialog_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="@dimen/card_content_size"
+            android:text="TIME"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/tv_dialog_money"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="@dimen/card_content_size"
+            android:text="MONEY"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/bt_cancel"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/btn_1_size"
+            android:text="@string/task_receive_dialog_cancel"
+            android:background="@null"/>
+
+        <Button
+            android:id="@+id/bt_agree"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/task_receive_dialog_confirm"
+            android:textSize="@dimen/btn_1_size"
+            android:background="@null"/>
+
+    </LinearLayout>
+
+</LinearLayout>
