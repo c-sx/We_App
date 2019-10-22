@@ -25,12 +25,10 @@ public class Setting_Message extends AppCompatActivity {
         slideswitch1.setOnStateChangedListener(new slideswitch.OnStateChangedListener() {
             @Override
             public void onStateChangedListener(boolean state) {
-                if(true == state)
-                {
+                if(true == state) {
                     Toast.makeText(Setting_Message.this, "开关打开", Toast.LENGTH_SHORT).show();
                 }
-                else
-                {
+                else {
                     Toast.makeText(Setting_Message.this, "开关关闭", Toast.LENGTH_SHORT).show();
                 }
 

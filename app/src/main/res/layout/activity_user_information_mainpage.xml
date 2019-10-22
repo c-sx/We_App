@@ -42,7 +42,7 @@
                    android:layout_width="60dp"
                    android:layout_height="60dp"
                    android:scaleType="centerCrop"
-                   android:src="#949494"
+                   android:src="@mipmap/avatar"
                    />
 
            </LinearLayout>

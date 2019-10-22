@@ -2,6 +2,7 @@
 
     <string name="confirm">确定</string>
     <string name="cancel">取消</string>
+    <string name="s_new">NEW</string>
 
     <string name="app_name">生活社区</string>
 
@@ -78,6 +79,8 @@
     <string name="userinformation_main_creditcard">银行卡</string>
     <string name="userinformation_main_address">我的地址</string>
     <string name="userinformation_main_hardware">IMEI号</string>
+    <string name="userinformation_sex_dialog_m">男</string>
+    <string name="userinformation_sex_dialog_f">女</string>
 
     <string name="gift_main_accumulatepoint">我的积分</string>
     <string name="gift_main_record">兑奖记录</string>
@@ -92,7 +95,7 @@
     <string name="userinformation_phone_next">完成</string>
 
     <string name="message_click">点击查看</string>
-
+    <string name="message_empty">没有新的消息</string>
 
     <string name="title_home">主页</string>
     <string name="title_task">任务</string>
@@ -135,6 +138,11 @@
     <string name="setting_feedback_choose2">产品建议：用的不爽，我有建议</string>
     <string name="setting_feedback_choose3">安全问题：密码、隐私、欺诈等</string>
     <string name="setting_feedback_choose4">其他问题</string>
+
+    <string name="setting_safety_dialog">请输入原密码</string>
+
+    <string name="setting_reset_password_1">请为您的账号</string>
+    <string name="setting_reset_password_2">设置一个新密码</string>
 
 
 </resources>

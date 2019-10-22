@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Activities.User.UserInformation_ChangeDescription"></activity>
+        <activity android:name=".Activities.Map.Succour_Center"></activity>
+        <activity android:name=".Activities.User.UserInformation_ChangeDescription" />
         <activity android:name=".Activities.Community.Community_Introduction2" />
         <activity android:name=".Activities.Community.MyCommunity" />
         <activity android:name=".Activities.Task.TaskPublish_setEndTime" />

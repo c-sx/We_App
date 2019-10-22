@@ -114,6 +114,7 @@ public class UserInformation_Mainpage extends AppCompatActivity {
                     break;
                 case SUCCESS_SEX:
                     Toast.makeText(UserInformation_Mainpage.this,"性别修改成功",Toast.LENGTH_SHORT).show();
+                    tv_sex.setText(String.valueOf(msg.obj));
                     break;
                 case SUCCESS_DESP:
                     Toast.makeText(UserInformation_Mainpage.this,"描述修改成功",Toast.LENGTH_SHORT).show();
@@ -341,6 +342,7 @@ public class UserInformation_Mainpage extends AppCompatActivity {
                         StateData data = (StateData) obj;
                         if(data.getCode() == 100){
                             msg.what = SUCCESS_SEX;
+                            msg.obj = sex;
                         }else{
                             msg.what = FAIL_CHANGE;
                         }

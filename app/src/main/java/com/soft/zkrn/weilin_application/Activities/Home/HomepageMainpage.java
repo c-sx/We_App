@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import androidx.fragment.app.Fragment;
+
+import com.soft.zkrn.weilin_application.Activities.Map.Succour_Center;
 import com.soft.zkrn.weilin_application.R;
 
 import androidx.annotation.NonNull;
@@ -35,7 +37,7 @@ public class HomepageMainpage extends Fragment {
         bt_help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), Homepage_Help.class));
+                startActivity(new Intent(getActivity(),Succour_Center.class));
             }
         });
 

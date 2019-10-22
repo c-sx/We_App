@@ -314,7 +314,6 @@ public class TaskCenter extends AppCompatActivity {
 
             @Override
             public void onError(Exception e) {
-                Message msg = Message.obtain();
                 msg.what = FAIL;
                 handler.sendMessage(msg);
             }
@@ -353,7 +352,6 @@ public class TaskCenter extends AppCompatActivity {
 
             @Override
             public void onError(Exception e) {
-                Message msg = Message.obtain();
                 msg.what = FAIL;
                 handler.sendMessage(msg);
             }

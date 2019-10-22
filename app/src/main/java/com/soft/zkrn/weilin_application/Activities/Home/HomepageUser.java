@@ -28,8 +28,10 @@ public class HomepageUser extends Fragment {
     private LinearLayout ll_setting;
     private LinearLayout ll_information;
     private TextView tv_id;
+    private TextView tv_new;
 
     private int uid;
+    private boolean ifNew = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,7 +43,6 @@ public class HomepageUser extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-
         ll_message = getActivity().findViewById(R.id.ll_HomepageUser_message);
         ll_community = getActivity().findViewById(R.id.ll_HomepageUser_community);
         ll_gift = getActivity().findViewById(R.id.ll_HomepageUser_gift);
@@ -49,6 +50,8 @@ public class HomepageUser extends Fragment {
         ll_setting = getActivity().findViewById(R.id.ll_HomepageUser_setting);
         ll_information = getActivity().findViewById(R.id.ll_HomepageUser_information);
         tv_id = getActivity().findViewById(R.id.tv_id);
+        tv_new = getActivity().findViewById(R.id.tv_message_new);
+        tv_new.setVisibility(View.INVISIBLE);
 
 
         tv_id.setText(String.valueOf(uid));
@@ -63,7 +66,15 @@ public class HomepageUser extends Fragment {
         ll_message.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                getActivity().startActivity(new Intent(getActivity(), Message_Mainpage.class));
+                tv_new.setVisibility(View.INVISIBLE);
+                Intent intent = new Intent(getActivity(), Message_Mainpage.class);
+                if(ifNew){
+                    ifNew = false;
+                    intent.putExtra("event",Message_Mainpage.TASK_RECEIVED);
+                }else{
+                    intent.putExtra("event", Message_Mainpage.NULL);
+                }
+                getActivity().startActivity(intent);
             }
         });
 
@@ -107,6 +118,11 @@ public class HomepageUser extends Fragment {
         uid = id;
     }
 
-
+    public void setNew(boolean ifN){
+        ifNew = ifN;
+        if(ifN){
+            tv_new.setVisibility(View.VISIBLE);
+        }
+    }
 
 }

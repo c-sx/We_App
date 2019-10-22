@@ -6,6 +6,80 @@
     android:background="@drawable/oval_card"
     >
 
+    <!--<LinearLayout-->
+        <!--android:layout_marginVertical="60dp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_marginHorizontal="20dp"-->
+        <!--android:gravity="center">-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center_horizontal">-->
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/ll_male"-->
+                <!--android:layout_width="130dp"-->
+                <!--android:layout_height="70dp"-->
+                <!--android:gravity="center"-->
+                <!--&gt;-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/userinformation_sex_dialog_f"-->
+                    <!--android:textSize="@dimen/card_title_size"/>-->
+
+            <!--</LinearLayout>-->
+
+
+
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center">-->
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/ll_female"-->
+                <!--android:layout_width="130dp"-->
+                <!--android:layout_height="70dp"-->
+                <!--android:gravity="center">-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/userinformation_sex_dialog_m"-->
+                    <!--android:textSize="@dimen/card_title_size"/>-->
+
+            <!--</LinearLayout>-->
+
+
+
+            <!--/>-->
+
+
+        <!--</LinearLayout>-->
+
+
+
+
+
+
+
+        <!--&lt;!&ndash;<com.soft.zkrn.weilin_application.Widget.PickerView&ndash;&gt;-->
+        <!--&lt;!&ndash;android:id="@+id/pv_sex"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="160dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="70dp" />&ndash;&gt;-->
+
+
+    <!--</LinearLayout>-->
+
 
     <LinearLayout
         android:layout_marginVertical="60dp"
@@ -21,7 +95,12 @@
             android:layout_height="70dp" />
 
 
+
     </LinearLayout>
+
+
+
+
 
 
 
