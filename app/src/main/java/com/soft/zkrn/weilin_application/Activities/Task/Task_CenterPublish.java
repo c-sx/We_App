@@ -1,6 +1,7 @@
 package com.soft.zkrn.weilin_application.Activities.Task;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -29,6 +30,9 @@ public class Task_CenterPublish extends Fragment {
     private List<Task> taskList = new ArrayList<>();
     private TaskAdapter adapter;
     private RecyclerView recyclerView;
+
+    private int id;
+    private int point;
 
     private static final int GET = 1;
     private static final int MAXSIZE = 10;
@@ -65,18 +69,38 @@ public class Task_CenterPublish extends Fragment {
 //        getActivity().runOnUiThread(new Runnable() {
 //            @Override
 //            public void run() {
-                GridLayoutManager layoutManager = new GridLayoutManager(getActivity(),1);
-                recyclerView.setLayoutManager(layoutManager);
-                adapter = new TaskAdapter(taskList);
+        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(),1);
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new TaskAdapter(taskList);
 //                adapter.notifyDataSetChanged();
-                recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickLitener(new TaskAdapter.OnItemClickLitener() {
+            @Override
+            public void onItemClick(View view, int position, int callId, String title, String desp, int money, long time,String state) {
+                Intent intent = new Intent(getActivity(),TaskIntroduction_Publish.class);
+                intent.putExtra("position",position);
+                intent.putExtra("callId",callId);
+                intent.putExtra("title",title);
+                intent.putExtra("desp",desp);
+                intent.putExtra("money",money);
+                intent.putExtra("time",time);
+                intent.putExtra("state",state);
+                intent.putExtra("uid",id);
+                intent.putExtra("upoint",point);
+                getActivity().startActivity(intent);
+            }
+        });
+        recyclerView.setAdapter(adapter);
 //            }
 //        });
 
     }
 
     public void dealWithData(TaskData_PublishedOrReceived pr){
-        System.out.println("dealWithData");
+//        recyclerView = null;
+        tasksNum = 0;
+        adapter = null;
         List<TaskData_PublishedOrReceived.Extend.Calls> list = pr.getExtend().getCalls();
         System.out.println("size = " + list.size());
         taskList.clear();
@@ -101,6 +125,11 @@ public class Task_CenterPublish extends Fragment {
         }
 
         displayRecyclerView();
+    }
+
+    public void getInformation(int uid,int upoint){
+        id = uid;
+        point = upoint;
     }
 
 }

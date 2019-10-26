@@ -58,6 +58,7 @@ public class UserInformation_Mainpage extends AppCompatActivity {
     private TextView tv_id;
     private TextView tv_sex;
     private TextView tv_phone;
+    private TextView tv_name;
 
     private int uid;//	int	用户id
     private String userName;//	string	昵称
@@ -93,6 +94,7 @@ public class UserInformation_Mainpage extends AppCompatActivity {
                     UserInformationData data = (UserInformationData) msg.obj;
                     UserInformationData.Extend.User user = data.getExtend().getUser();
                     uid = user.getUid();
+                    userName = user.getUserName();
                     userPhonenumber = user.getUserPhonenumber();
                     userCreditlevel = user.getUserCreditlevel();
                     userSex = user.getUserSex();
@@ -108,6 +110,7 @@ public class UserInformation_Mainpage extends AppCompatActivity {
                     tv_id.setText(String.valueOf(uid));
                     tv_phone.setText(String.valueOf(userPhonenumber));
                     tv_sex.setText(userSex);
+                    tv_name.setText(userName);
                     break;
                 case FAIL:
                     Toast.makeText(UserInformation_Mainpage.this, "获取个人信息失败，请检查网络状况", Toast.LENGTH_SHORT).show();
@@ -153,6 +156,7 @@ public class UserInformation_Mainpage extends AppCompatActivity {
         tv_id = findViewById(R.id.tv_UserInformation_TrueID);
         tv_sex = findViewById(R.id.tv_UserInformation_Sex);
         tv_phone = findViewById(R.id.tv_UserInformation_PhoneNumber);
+        tv_name = findViewById(R.id.tv_UserInformation_Nickname);
 
         uid = readPsw("userID");
         System.out.println("userName :" + userName);

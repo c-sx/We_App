@@ -23,7 +23,7 @@ public class HomepageUser extends Fragment {
 
     private LinearLayout ll_message;
     private LinearLayout ll_community;
-    private LinearLayout ll_gift;
+//    private LinearLayout ll_gift;
     private LinearLayout ll_recharge;
     private LinearLayout ll_setting;
     private LinearLayout ll_information;
@@ -45,7 +45,7 @@ public class HomepageUser extends Fragment {
 
         ll_message = getActivity().findViewById(R.id.ll_HomepageUser_message);
         ll_community = getActivity().findViewById(R.id.ll_HomepageUser_community);
-        ll_gift = getActivity().findViewById(R.id.ll_HomepageUser_gift);
+//        ll_gift = getActivity().findViewById(R.id.ll_HomepageUser_gift);
         ll_recharge = getActivity().findViewById(R.id.ll_HomepageUser_recharge);
         ll_setting = getActivity().findViewById(R.id.ll_HomepageUser_setting);
         ll_information = getActivity().findViewById(R.id.ll_HomepageUser_information);
@@ -53,7 +53,9 @@ public class HomepageUser extends Fragment {
         tv_new = getActivity().findViewById(R.id.tv_message_new);
         tv_new.setVisibility(View.INVISIBLE);
 
-
+        if(ifNew){
+            tv_new.setVisibility(View.VISIBLE);
+        }
         tv_id.setText(String.valueOf(uid));
 
         ll_information.setOnClickListener(new View.OnClickListener(){
@@ -66,6 +68,7 @@ public class HomepageUser extends Fragment {
         ll_message.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+
                 tv_new.setVisibility(View.INVISIBLE);
                 Intent intent = new Intent(getActivity(), Message_Mainpage.class);
                 if(ifNew){
@@ -85,12 +88,12 @@ public class HomepageUser extends Fragment {
             }
         });
 
-        ll_gift.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                getActivity().startActivity(new Intent(getActivity(), Gift_Mainpage.class));
-            }
-        });
+//        ll_gift.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v) {
+//                getActivity().startActivity(new Intent(getActivity(), Gift_Mainpage.class));
+//            }
+//        });
 
         ll_recharge.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -120,9 +123,7 @@ public class HomepageUser extends Fragment {
 
     public void setNew(boolean ifN){
         ifNew = ifN;
-        if(ifN){
-            tv_new.setVisibility(View.VISIBLE);
-        }
+
     }
 
 }

@@ -5,76 +5,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorGray"
     tools:context=".Activities.Setting.Setting_Currency">
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_setting_currency"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar9"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#ffaaaa"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+    <LinearLayout
+        android:background="@color/colorTextWhite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_setting_currency">
 
-            <TextView
-                android:id="@+id/text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="通用"
-                android:textColor="#000000"
-                android:textSize="24sp" />
-
-        </androidx.appcompat.widget.Toolbar>
-        <LinearLayout
-            android:layout_marginTop="5dp"
+        <TextView
             android:id="@+id/jiemiansetting"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:showDividers="end"
-            android:divider="@drawable/devide_line">
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-            <TextView
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="界面设置"
+            android:textSize="20sp" />
 
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="10dp"
-                android:text="界面设置"
-                android:textSize="15dp"
-                android:gravity="center" />
-            </RelativeLayout>
-        </LinearLayout>
+        <View style="@style/Divider" />
 
-        <LinearLayout
-
+        <TextView
             android:id="@+id/messagesetting"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:showDividers="end"
-            android:divider="@drawable/devide_line">
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="消息设置"
+            android:textSize="20sp" />
 
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="10dp"
-                    android:text="消息设置"
-                    android:textSize="15dp"
-                    android:gravity="center" />
-            </RelativeLayout>
-        </LinearLayout>
+        <View style="@style/Divider" />
 
     </LinearLayout>
 

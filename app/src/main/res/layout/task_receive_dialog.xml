@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/btn_white_round">
+    android:background="@drawable/dialog_white_round">
 
     <TextView
         android:id="@+id/tv_dialog_title"
@@ -15,6 +15,7 @@
         android:text="TITLE"/>
 
     <TextView
+        android:background="@color/colorGray"
         android:id="@+id/tv_dialog_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="@dimen/card_content_size"
-            android:text="TIME"
+            android:text="-"
             android:gravity="center"
             />
 

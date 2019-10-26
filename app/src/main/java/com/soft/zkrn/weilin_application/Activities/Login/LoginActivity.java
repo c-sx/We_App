@@ -1,10 +1,12 @@
 package com.soft.zkrn.weilin_application.Activities.Login;
 
+import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -24,6 +26,7 @@ import com.soft.zkrn.weilin_application.okhttp.HttpUtil;
 import java.util.HashMap;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 
 public class LoginActivity extends AppCompatActivity{
@@ -48,6 +51,8 @@ public class LoginActivity extends AppCompatActivity{
     private static final int SUCCESSID = 4;
     private static final int FAILID = 5;
 //    private static final int COOKIE = 6;
+    private static final int BAIDU_READ_PHONE_STATE = 100;
+
 
     private Handler handler = new Handler() {
         @Override
@@ -71,7 +76,7 @@ public class LoginActivity extends AppCompatActivity{
                             .putString("userPhone",userPhonenumber)
                             .putInt("userID",uId)
                             .putString("url",url)
-                            .putBoolean("ifID",true).commit();
+                            .putBoolean("ifID",true).apply();
 
                     Intent intent1 = new Intent(LoginActivity.this, Homepage.class);
                     intent1.putExtra("ifID",true);
@@ -138,8 +143,6 @@ public class LoginActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 //            if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
 //                // 检查权限状态
@@ -151,7 +154,6 @@ public class LoginActivity extends AppCompatActivity{
 //                }
 //            }
 //        }
-
         IntentFilter close_intentFilter=new IntentFilter("com.example.Close_Community");
         registerReceiver(close_receiver,close_intentFilter);
 
@@ -181,6 +183,8 @@ public class LoginActivity extends AppCompatActivity{
 
             }
         });
+
+        showLocMap();
     }
 
     private void login(){
@@ -311,4 +315,17 @@ public class LoginActivity extends AppCompatActivity{
 //            }
 //        });
 //    }
+    public void showLocMap() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED
+                || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED
+                || ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(LoginActivity.this, new String[]{
+                    Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_PHONE_STATE
+            }, BAIDU_READ_PHONE_STATE);
+        }
+    }
 }

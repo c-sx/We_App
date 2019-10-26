@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/oval_card"
+    android:background="@drawable/dialog_white_round"
     >
 
     <TextView
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="25dp"
         android:text="@string/creation_join"
-        android:textSize="@dimen/card_title_size"
+        android:textSize="@dimen/text_1_size"
         android:gravity="center"/>
 
     <LinearLayout

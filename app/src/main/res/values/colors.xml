@@ -24,4 +24,8 @@
     <color name="colorSignOut">#FF3030</color>
     <color name="colorOut">#555555</color>
 
+    <color name="colorGray">#F2F2F2</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorRed">#d9001b</color>
+    <color name="colorWhite">#ffffff</color>
 </resources>

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.Login.LoginActivity">
+    tools:context=".Activities.Login.LoginActivity"
+    android:background="@mipmap/background_dawn">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,7 +25,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="18dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -48,16 +50,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="18dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:inputType="text"
+
                 android:text="密码："
                 android:textColor="@color/colorText"
                 android:textSize="20dp" />
+            <!--android:inputType="text"-->
 
             <EditText
                 android:id="@+id/et_log_pw"

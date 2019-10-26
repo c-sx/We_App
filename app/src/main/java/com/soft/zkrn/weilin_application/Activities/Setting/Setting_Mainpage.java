@@ -63,7 +63,7 @@ public class Setting_Mainpage extends AppCompatActivity {
                         .putString("userPW","")
                         .putString("userPhone","")
                         .putInt("userID",0)
-                        .putBoolean("ifID",false).commit();
+                        .putBoolean("ifID",false).apply();
 
                 Intent intent = new Intent();
                 intent.setAction("com.example.SignOut");

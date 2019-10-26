@@ -65,7 +65,6 @@
                 android:text="180****3146"
                 android:textSize="15dp"
                 android:gravity="center"
-                android:layout_toRightOf="@+id/phonenumber"
                 android:layout_marginLeft="180dp"/>
         </RelativeLayout>
     </LinearLayout>

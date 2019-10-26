@@ -197,24 +197,77 @@ public class Task_CenterWhole extends Fragment {
      * 处理来自activity的数据
      */
     public void dealWithWholeData(TaskData_PublishedOrReceived dataPublish,TaskData_PublishedOrReceived dataReceive){
-        dataList = dataReceive.getExtend().getCalls() ;
-        dataList.addAll(dataPublish.getExtend().getCalls());
+//        dataList = new ArrayList<>();
+//        for(int i=0;i<dataPublish.getExtend().getCalls().size()){
+//            TaskData_PublishedOrReceived.Extend.Calls
+//        }
+//        dataList = dataReceive.getExtend().getCalls() ;
+//        dataList.addAll(dataPublish.getExtend().getCalls());
 
+        tasksNum = 0;
+//        recyclerView = null;
+        adapter = null;
+
+        taskList.clear();
         System.out.println("deal");
-        for(int i = 0; i < dataList.size(); i ++){
+        for(int i = 0; i < dataPublish.getExtend().getCalls().size(); i ++){
             Task tk = new Task(
-                dataList.get(i).getCallId(),
-                dataList.get(i).getSubId(),
-                dataList.get(i).getSubTime(),
-                dataList.get(i).getEndTime(),
-                dataList.get(i).getCallTitle(),
-                dataList.get(i).getCallDesp(),
-                dataList.get(i).getCallMoney(),
-                dataList.get(i).getCallNow(),
-                dataList.get(i).getRecId(),
-                dataList.get(i).getSubName(),
-                dataList.get(i).getRecName(),
-                dataList.get(i).getCallAddress()
+                    dataPublish.getExtend().getCalls().get(i).getCallId(),
+                    dataPublish.getExtend().getCalls().get(i).getSubId(),
+                    dataPublish.getExtend().getCalls().get(i).getSubTime(),
+                    dataPublish.getExtend().getCalls().get(i).getEndTime(),
+                    dataPublish.getExtend().getCalls().get(i).getCallTitle(),
+                    dataPublish.getExtend().getCalls().get(i).getCallDesp(),
+                    dataPublish.getExtend().getCalls().get(i).getCallMoney(),
+                    dataPublish.getExtend().getCalls().get(i).getCallNow(),
+                    dataPublish.getExtend().getCalls().get(i).getRecId(),
+                    dataPublish.getExtend().getCalls().get(i).getSubName(),
+                    dataPublish.getExtend().getCalls().get(i).getRecName(),
+                    dataPublish.getExtend().getCalls().get(i).getCallAddress()
+//                dataList.get(i).getCallId(),
+//                dataList.get(i).getSubId(),
+//                dataList.get(i).getSubTime(),
+//                dataList.get(i).getEndTime(),
+//                dataList.get(i).getCallTitle(),
+//                dataList.get(i).getCallDesp(),
+//                dataList.get(i).getCallMoney(),
+//                dataList.get(i).getCallNow(),
+//                dataList.get(i).getRecId(),
+//                dataList.get(i).getSubName(),
+//                dataList.get(i).getRecName(),
+//                dataList.get(i).getCallAddress()
+            );
+            tasksNum ++;
+            taskList.add(tk);
+            if(tasksNum >= MAXSIZE)
+                break;
+        }
+        for(int i = 0; i < dataReceive.getExtend().getCalls().size(); i ++){
+            Task tk = new Task(
+                    dataReceive.getExtend().getCalls().get(i).getCallId(),
+                    dataReceive.getExtend().getCalls().get(i).getSubId(),
+                    dataReceive.getExtend().getCalls().get(i).getSubTime(),
+                    dataReceive.getExtend().getCalls().get(i).getEndTime(),
+                    dataReceive.getExtend().getCalls().get(i).getCallTitle(),
+                    dataReceive.getExtend().getCalls().get(i).getCallDesp(),
+                    dataReceive.getExtend().getCalls().get(i).getCallMoney(),
+                    dataReceive.getExtend().getCalls().get(i).getCallNow(),
+                    dataReceive.getExtend().getCalls().get(i).getRecId(),
+                    dataReceive.getExtend().getCalls().get(i).getSubName(),
+                    dataReceive.getExtend().getCalls().get(i).getRecName(),
+                    dataReceive.getExtend().getCalls().get(i).getCallAddress()
+//                dataList.get(i).getCallId(),
+//                dataList.get(i).getSubId(),
+//                dataList.get(i).getSubTime(),
+//                dataList.get(i).getEndTime(),
+//                dataList.get(i).getCallTitle(),
+//                dataList.get(i).getCallDesp(),
+//                dataList.get(i).getCallMoney(),
+//                dataList.get(i).getCallNow(),
+//                dataList.get(i).getRecId(),
+//                dataList.get(i).getSubName(),
+//                dataList.get(i).getRecName(),
+//                dataList.get(i).getCallAddress()
             );
             tasksNum ++;
             taskList.add(tk);
@@ -225,6 +278,23 @@ public class Task_CenterWhole extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         adapter = new TaskAdapter(taskList);
         recyclerView.setAdapter(adapter);
+        if(adapter != null) {
+            adapter.setOnItemClickLitener(new TaskAdapter.OnItemClickLitener() {
+                @Override
+                public void onItemClick(View view, int position,int callId,String title,String desp,int money,long time,String state) {
+                    Intent intent = new Intent(getActivity(),TaskIntroduction_Receive.class);
+                    intent.putExtra("position",position);
+                    intent.putExtra("callId",callId);
+                    intent.putExtra("title",title);
+                    intent.putExtra("desp",desp);
+                    intent.putExtra("money",money);
+                    intent.putExtra("time",time);
+                    intent.putExtra("state",state);
+                    getActivity().startActivity(intent);
+                }
+            });
+            recyclerView.setAdapter(adapter);
+        }
 //        if(adapter != null) {
 //            adapter.setOnItemClickLitener(new TaskAdapter.OnItemClickLitener() {
 //                @Override

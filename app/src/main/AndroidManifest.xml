@@ -2,7 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.soft.zkrn.weilin_application">
-
+    <!-- 读取手机状态，必须 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 定位必须要有这个功能,GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 存储状态 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 开启蓝牙 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" /> <!-- 网络 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 连接网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 改变WIFI状态 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -14,7 +23,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Activities.Map.Succour_Center"></activity>
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="YUt8cP2qoPeTsvT2rsPwOsUezX74b2Os" />
+
+        <activity android:name=".Activities.Task.TaskIntroduction_Receive"/>
+        <activity android:name=".Activities.Task.TaskIntroduction_Publish" />
+        <activity android:name=".Activities.Map.Succour_Center" />
         <activity android:name=".Activities.User.UserInformation_ChangeDescription" />
         <activity android:name=".Activities.Community.Community_Introduction2" />
         <activity android:name=".Activities.Community.MyCommunity" />
@@ -90,6 +106,11 @@
         <!-- <activity android:name=".HomepageTask" /> -->
         <!-- <activity android:name=".HomepageMainpage" /> -->
         <activity android:name=".UserList" />
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
     </application>
 
 </manifest>

@@ -72,8 +72,30 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.View
         final String title = community.getTitle();
         final String description = community.getDescription();
 
+//        社区种类，1：学校，2：公司，3：校区，4：其他
+        if(type == null){
+            holder.communityType.setText("种类："+ "其他");
+        }else{
+            switch(type){
+                case "1":
+                    holder.communityType.setText("种类："+ "学校");
+                    break;
+                case "2":
+                    holder.communityType.setText("种类："+ "公司");
+                    break;
+                case "3":
+                    holder.communityType.setText("种类："+ "校区");
+                    break;
+                case "4":
+                default:
+                    holder.communityType.setText("种类："+ "其他");
+                    break;
+            }
+        }
+
+
         holder.communityName.setText(community.getTitle());
-        holder.communityType.setText("种类："+ type);
+
         holder.communityNum.setText("人数："+ String.valueOf(num));
         if(community.getHead_portrait() != null)
             Glide.with(mContext).load(community.getHead_portrait()).into(holder.communityImage);

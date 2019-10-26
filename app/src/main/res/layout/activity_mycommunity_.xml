@@ -153,10 +153,12 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_margin="15dp"
-                        android:background="@drawable/oval_button"
+                        android:paddingVertical="15dp"
+                        android:paddingHorizontal="50dp"
+                        android:background="@drawable/btn_green_round"
                         android:text="@string/mycommunity_create"
                         android:textColor="#ffffff"
-                        android:textSize="22sp"/>
+                        android:textSize="@dimen/btn_1_size"/>
 
                 </LinearLayout>
 

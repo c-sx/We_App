@@ -46,7 +46,7 @@
     <string name="homepage_task">任务</string>
     <string name="homepage_user">我的</string>
 
-    <string name="homepage_mainpage_button">一键呼救</string>
+    <string name="homepage_mainpage_button">定位紧急救护人</string>
 
     <string name="homepage_task_headline">任务</string>
     <string name="homepage_task_center">任务中心</string>
@@ -72,6 +72,7 @@
     <string name="recharge_main_withdraw">我要提现</string>
 
     <string name="userinformation_main_headportrait">头像</string>
+    <string name="userinformation_main_nickname">昵称</string>
     <string name="userinformation_main_id">用户ID</string>
     <string name="userinformation_main_sex">性别</string>
     <string name="userinformation_main_description">描述</string>
@@ -97,6 +98,8 @@
     <string name="message_click">点击查看</string>
     <string name="message_empty">没有新的消息</string>
 
+    <string name="map_return">我的位置</string>
+
     <string name="title_home">主页</string>
     <string name="title_task">任务</string>
     <string name="title_mine">我的</string>
@@ -105,6 +108,7 @@
     <string name="task_receive">领取任务</string>
     <string name="task_center">任务中心</string>
     <string name="task_statistics">任务统计</string>
+    <string name="task_center_empty">暂无内容</string>
     <string name="task_publish_dialog_title">请选择任务截止日期</string>
     <string name="task_publish_dialog_day">日</string>
     <string name="task_publish_dialog_month">月</string>
@@ -114,7 +118,15 @@
     <string name="task_receive_dialog_cancel">再看看</string>
     <string name="task_receive_dialog_confirm">接受</string>
     <string name="task_receive_other_xml">没有能接收的任务</string>
-    <string name="account_integrals">¥520</string>
+    <string name="task_center_publish_introduction_title">任务详细</string>
+    <string name="task_center_publish_introduction_content">任务描述</string>
+    <string name="task_center_publish_introduction_state">任务状态</string>
+    <string name="task_center_publish_introduction_money">任务奖励</string>
+    <string name="task_center_publish_introduction_time">截止时间</string>
+    <string name="task_center_publish_introduction_finish">确认完成</string>
+    <string name="task_center_receive_introduction_finish">我要接收</string>
+
+    <string name="account_integrals">我的积分 0</string>
     <string name="title_activity_task_category">TaskCategory</string>
     <string name="title_activity_task_module">TaskModule</string>
     <string name="title_activity_task_publish">发布任务</string>
@@ -138,11 +150,14 @@
     <string name="setting_feedback_choose2">产品建议：用的不爽，我有建议</string>
     <string name="setting_feedback_choose3">安全问题：密码、隐私、欺诈等</string>
     <string name="setting_feedback_choose4">其他问题</string>
+    <string name="setting_feedback_submit">提交</string>
 
     <string name="setting_safety_dialog">请输入原密码</string>
 
     <string name="setting_reset_password_1">请为您的账号</string>
     <string name="setting_reset_password_2">设置一个新密码</string>
+
+    <string name="setting_contacts_notice">添加紧急联系人后，当您开启一键求救功能时，您的求救信号将会通过短信自动分享给紧急联系人。</string>
 
 
 </resources>

@@ -66,6 +66,8 @@ public class Homepage extends AppCompatActivity {
     private int received_num;
     private int complete_num;
     private boolean ifChecked = false;
+    private boolean ifUserFragmentOn = false;
+    private boolean ifNew = false;
     //private boolean ifNew = false;
     private List<Boolean>statement;
 
@@ -93,15 +95,19 @@ public class Homepage extends AppCompatActivity {
                             temp_completed++;
                         }
                     }
-                    if(if_id == false){
-                        if_id = true;
+                    if(ifChecked == false){
+                        ifChecked = true;
                         received_num = temp_received;
                         complete_num = temp_completed;
                     }else{
                         if(temp_completed + temp_received > received_num + complete_num){
                             //用户页面改变
-                            fragment_home_user.setNew(true);
-                            badge.setVisibility(View.VISIBLE);
+
+                            if(fragment_home_user != null)
+                                fragment_home_user.setNew(true);
+                            ifNew = true;
+                            if(!ifUserFragmentOn)
+                                badge.setVisibility(View.VISIBLE);
                         }
                     }
                     break;
@@ -130,12 +136,14 @@ public class Homepage extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
+                    ifUserFragmentOn = false;
                     if (fragment_home_main == null) {
                         fragment_home_main = new HomepageMainpage();
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.ll_homepage, fragment_home_main).commitAllowingStateLoss();
                     return true;
                 case R.id.navigation_task:
+                    ifUserFragmentOn = false;
                     if (fragment_home_task == null) {
                         fragment_home_task = new HomepageTask();
                     }
@@ -143,14 +151,17 @@ public class Homepage extends AppCompatActivity {
                     return true;
                 case R.id.navigation_mine:
                     badge.setVisibility(View.INVISIBLE);
-
+                    ifUserFragmentOn = true;
                     if (fragment_home_user == null) {
                         fragment_home_user = new HomepageUser();
                     }
                     fragment_home_user.setID(uid);
                     getSupportFragmentManager().beginTransaction().replace(R.id.ll_homepage, fragment_home_user).commitAllowingStateLoss();
     //                mListener.PassID(uid);
-
+                    if(ifNew){
+                        fragment_home_user.setNew(true);
+                        ifNew = false;
+                    }
                     return true;
                 default:
                     break;
@@ -174,6 +185,21 @@ public class Homepage extends AppCompatActivity {
 //        return true;
 //    }
 
+    //接受消红点广播
+    private BroadcastReceiver move_receiver =new BroadcastReceiver(){
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if(action.equals("com.example.Move_point")){
+                SharedPreferences.Editor editor = userSettings.edit();
+                editor.clear();
+                editor.apply();
+                startActivity(new Intent(Homepage.this,LoginActivity.class));
+                finish();
+            }
+        }
+    };
+
     //接受退出广播
     private BroadcastReceiver receiver =new BroadcastReceiver(){
         @Override
@@ -182,7 +208,7 @@ public class Homepage extends AppCompatActivity {
         if(action.equals("com.example.SignOut")){
             SharedPreferences.Editor editor = userSettings.edit();
             editor.clear();
-            editor.commit();
+            editor.apply();
             startActivity(new Intent(Homepage.this,LoginActivity.class));
             finish();
         }
@@ -206,6 +232,7 @@ public class Homepage extends AppCompatActivity {
         super.onDestroy();
         unregisterReceiver(receiver);
         unregisterReceiver(close_receiver);
+        unregisterReceiver(move_receiver);
     }
 
     //获得数据库bool类型
@@ -226,19 +253,6 @@ public class Homepage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_homepage);
-//        List<String> cookies = new ArrayList<String>();
-//        SharedPreferences userSettingss = getSharedPreferences("setting",MODE_PRIVATE);
-//        int length = userSettingss.getInt("cookies_length",0);
-//        System.out.println("length="+length);
-//        if(cookies.isEmpty() == false){
-//            cookies.clear();
-//        }
-//        for(int i=0;i<length;i++){
-//            cookies.add(userSettingss.getString("cookies"+i,""));
-//        }
-//        System.out.println("cookies="+cookies);
-
-
 //        tool = new FragmentSwitchTool(getFragmentManager(), R.id.flContainer);
 //        tool.setClickableViews(ll_main, ll_task, ll_user);
 //        tool.addSelectedViews(new View[]{bt_main, tv_main}).addSelectedViews(new View[]{bt_task, tv_task}).addSelectedViews(new View[]{bt_user, tv_user});
@@ -263,7 +277,7 @@ public class Homepage extends AppCompatActivity {
         userSettings = getSharedPreferences("setting", MODE_PRIVATE);
         SharedPreferences.Editor editor = userSettings.edit();
         editor.putString("url",url);
-        editor.commit();
+        editor.apply();
 
 //        thread.setDaemon(true);
 //        thread.start();
@@ -273,6 +287,8 @@ public class Homepage extends AppCompatActivity {
         registerReceiver(receiver,intentFilter);
         IntentFilter close_intentFilter=new IntentFilter("com.example.Close_Community");
         registerReceiver(close_receiver,close_intentFilter);
+        IntentFilter move_intentFilter=new IntentFilter("com.example.Move_point");
+        registerReceiver(move_receiver,move_intentFilter);
 //        /**
 //         * 菜单
 //         */
@@ -320,6 +336,9 @@ public class Homepage extends AppCompatActivity {
         }
 
 
+        Refresh_Thread thread = new Refresh_Thread();
+        thread.setDaemon(true);
+        thread.start();
 
 
 
@@ -402,8 +421,8 @@ public class Homepage extends AppCompatActivity {
                     System.out.println("NO");
                 }
                 try {
-                    //1000s * 60 * 2
-                    Thread.sleep(120000);
+                    //1000 * 30
+                    Thread.sleep(30000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

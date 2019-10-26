@@ -69,7 +69,7 @@ public class TaskReceive extends AppCompatActivity {
     private GsonUtil gsonUtil = new GsonUtil();
 //    private String get_url = "http://119.23.190.83:8080/zhaqsq/call/calls";
     private String get_url = "http://119.23.190.83:8080/zhaqsq/call/getcomcall";
-    private String revamp_url = "http://119.23.190.83:8080/ZHAQSQ/call/update/{callId}";
+    private String revamp_url = "http://119.23.190.83:8080/zhaqsq/call/update/{callId}";
 
     private Handler handler = new Handler(){
         @Override
@@ -83,6 +83,8 @@ public class TaskReceive extends AppCompatActivity {
                 case SUCCESS:
                     dialog.dismiss();
                     Toast.makeText(TaskReceive.this,"接受成功",Toast.LENGTH_SHORT).show();
+                    taskList.clear();
+                    initData();
                     break;
                 case ADD:
                     TaskData_TaskReceive taskData = (TaskData_TaskReceive) msg.obj;
@@ -117,7 +119,7 @@ public class TaskReceive extends AppCompatActivity {
                         if(adapter != null) {
                             adapter.setOnItemClickLitener(new TaskAdapter.OnItemClickLitener() {
                                 @Override
-                                public void onItemClick(View view, int position,int callId,String title,String desp,int money,long time) {
+                                public void onItemClick(View view, int position,int callId,String title,String desp,int money,long time,String state) {
                                     showDialog(callId,title,desp,money,time);
 //                                Intent intent = new Intent(getActivity(), Community_Introduction.class);
 //                                intent.putExtra("extra_id",callId);
@@ -324,6 +326,7 @@ public class TaskReceive extends AppCompatActivity {
     }
 
     //请求接受
+//    callNow	否	string	状态
     private void callForReceive(int cid){
 
         HashMap<String, String> paramsMap = new HashMap<>();
@@ -331,6 +334,7 @@ public class TaskReceive extends AppCompatActivity {
         System.out.println("callid="+cid);
         paramsMap.put("recId",String.valueOf(uId));
         paramsMap.put("callId",String.valueOf(cid));
+        paramsMap.put("callNow","2");
         Message msg = Message.obtain();
         httpUtil.PUT(TaskReceive.this,revamp_url, paramsMap, new CallBack_Put() {
             @Override
@@ -383,7 +387,7 @@ public class TaskReceive extends AppCompatActivity {
         tv_title.setText(title);
         tv_content.setText(desp);
         tv_money.setText("￥"+money);
-        tv_time.setText(time+"前");
+//        tv_time.setText(time+"前");
 
 
         btn_cancel.setOnClickListener(new View.OnClickListener() {

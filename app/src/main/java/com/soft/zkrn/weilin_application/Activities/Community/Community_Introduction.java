@@ -162,11 +162,13 @@ public class Community_Introduction extends AppCompatActivity {
                 uId = readPsw_Int("userID");
 
                 if(uId == 0)getID();
+                else{
+                    System.out.println("得到uid为" + uId);
+                    Message msg = Message.obtain();
+                    msg.what = SUCCESSID;
+                    handler.sendMessage(msg);
+                }
 
-                System.out.println("得到uid为" + uId);
-                Message msg = Message.obtain();
-                msg.what = SUCCESSID;
-                handler.sendMessage(msg);
 
 
 
@@ -320,10 +322,12 @@ public class Community_Introduction extends AppCompatActivity {
 
     }
 
+//    cBan	是	int	该用户是否被禁封 1、不是 2、是
     private void callForJoin(){
         HashMap<String, String> paramsMap = new HashMap<>();
         paramsMap.put("uId" , String.valueOf(uId));
         paramsMap.put("cId", String.valueOf(cId));
+        paramsMap.put("cBan","1");
         Message msg = Message.obtain();
         httpUtil.POST(Community_Introduction.this,join_url, paramsMap, new CallBack_Post() {
             @Override

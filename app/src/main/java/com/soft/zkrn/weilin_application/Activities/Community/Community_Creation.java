@@ -167,16 +167,17 @@ public class Community_Creation extends AppCompatActivity {
     }
 
     //选择框
+//    社区种类，1：学校，2：公司，3：校区，4：其他
     private List<String> getData() {
         List<String> list = new ArrayList<>();
         list.add("学校");
-        list.add("生活小区");
-        list.add("工作单位");
-        list.add("娱乐场所");
+        list.add("公司");
+        list.add("校区");
         list.add("其他");
         return list;
     }
 
+    /*
     //调取相册
     private void openAlbum(){
         Intent intent = new Intent("android.intent.action.GET_CONTENT");
@@ -265,7 +266,7 @@ public class Community_Creation extends AppCompatActivity {
         }
     }
     //调取相册
-
+*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -277,7 +278,7 @@ public class Community_Creation extends AppCompatActivity {
         bt_complete = findViewById(R.id.bt_complete);
         et_name = findViewById(R.id.et_name);
         et_description = findViewById(R.id.et_content);
-        iv_add = findViewById(R.id.iv_add);
+//        iv_add = findViewById(R.id.iv_add);
 
         /**
          * toolbar component
@@ -301,16 +302,16 @@ public class Community_Creation extends AppCompatActivity {
             }
         });
 
-        iv_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(ContextCompat.checkSelfPermission(Community_Creation.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-                    ActivityCompat.requestPermissions(Community_Creation.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
-                }else {
-                    openAlbum();
-                }
-            }
-        });
+//        iv_add.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(ContextCompat.checkSelfPermission(Community_Creation.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+//                    ActivityCompat.requestPermissions(Community_Creation.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
+//                }else {
+//                    openAlbum();
+//                }
+//            }
+//        });
 
         bt_complete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -358,7 +359,22 @@ public class Community_Creation extends AppCompatActivity {
 //        comPicture	否	byte[]	社区头像
         HashMap<String, String> paramsMap = new HashMap<>();
         paramsMap.put("comTitle", communityName);
-        paramsMap.put("comCategory",communityType);
+        //    社区种类，1：学校，2：公司，3：校区，4：其他
+        switch (communityType){
+            case "学校":
+                paramsMap.put("comCategory","1");
+                break;
+            case "公司":
+                paramsMap.put("comCategory","2");
+                break;
+            case "校区":
+                paramsMap.put("comCategory","3");
+                break;
+            case "其他":
+            default:
+                paramsMap.put("comCategory","4");
+        }
+
         paramsMap.put("comNumber", String.valueOf(communityNumber));
         paramsMap.put("comDesp", communityDescription);
         paramsMap.put("comAddress", "");

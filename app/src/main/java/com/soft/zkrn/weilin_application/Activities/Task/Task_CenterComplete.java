@@ -1,6 +1,7 @@
 package com.soft.zkrn.weilin_application.Activities.Task;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +45,10 @@ public class Task_CenterComplete extends Fragment {
      * 处理来自activity的数据
      */
     public void dealWithData(TaskData_PublishedOrReceived pr){
+        tasksNum = 0;
+//        recyclerView = null;
+        adapter = null;
+        taskList.clear();
         TaskData_PublishedOrReceived taskData = pr;
         List<TaskData_PublishedOrReceived.Extend.Calls> list = taskData.getExtend().getCalls();
         for(int i = 0; i < taskData.getExtend().getCalls().size(); i ++){
@@ -75,7 +80,16 @@ public class Task_CenterComplete extends Fragment {
         if(adapter != null) {
             adapter.setOnItemClickLitener(new TaskAdapter.OnItemClickLitener() {
                 @Override
-                public void onItemClick(View view, int position,int callId,String title,String desp,int money,long time) {
+                public void onItemClick(View view, int position,int callId,String title,String desp,int money,long time,String state) {
+                    Intent intent = new Intent(getActivity(),TaskIntroduction_Receive.class);
+                    intent.putExtra("position",position);
+                    intent.putExtra("callId",callId);
+                    intent.putExtra("title",title);
+                    intent.putExtra("desp",desp);
+                    intent.putExtra("money",money);
+                    intent.putExtra("time",time);
+                    intent.putExtra("state",state);
+                    getActivity().startActivity(intent);
                 }
             });
             recyclerView.setAdapter(adapter);

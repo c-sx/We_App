@@ -74,7 +74,24 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             final long time = task.getEndTime();
             final int taskId = task.getCallId();
 
-            holder.taskState.setText(String.valueOf(state));
+//            1.未接取，2.未完成，3，未评价，4.已评价
+            switch (state){
+                case "1":
+                    holder.taskState.setText("未接取");
+                    break;
+                case "2":
+                    holder.taskState.setText("未完成");
+                    break;
+                case "3":
+                    holder.taskState.setText("已完成");
+                    break;
+                case "4":
+                    holder.taskState.setText("已评价");
+                    break;
+                default:
+                    break;
+            }
+
             holder.taskTitle.setText(String.valueOf(title));
             holder.taskDesp.setText(String.valueOf(desp));
             holder.taskMoney.setText(String.valueOf(money));
@@ -86,7 +103,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
                     new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            mOnItemClickLitener.onItemClick(view,position,taskId,title,desp,money,time);
+                            mOnItemClickLitener.onItemClick(view,position,taskId,title,desp,money,time,state);
                         }
                     }
                 );
@@ -100,7 +117,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     //设置回调接口
     public interface OnItemClickLitener{
-        void onItemClick(View view, int position,int callId,String title,String desp,int money,long time);
+        void onItemClick(View view, int position,int callId,String title,String desp,int money,long time,String state);
     }
 
     public void setOnItemClickLitener(TaskAdapter.OnItemClickLitener mOnItemClickLitener){

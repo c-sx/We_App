@@ -16,6 +16,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 import static android.content.Context.MODE_PRIVATE;
+import static okhttp3.internal.Util.EMPTY_REQUEST;
 
 public class HttpUtil {
 
@@ -40,6 +41,30 @@ public class HttpUtil {
     private String postJson;
     private String postResponse;
     public static final String FILE_NAME = "setting";
+
+
+    //仅参数没参数名的GET方法
+    public <T> void GET(final Context context,final String url,final T parmValue, final CallBack_Get callBack_get){
+        SharedPreferences userSettings = context.getSharedPreferences("setting",MODE_PRIVATE);//(FILE_NAME, MODE_PRIVATE);
+        int length = userSettings.getInt("cookies_length",0);
+        for(int i=0;i<length;i++){
+            cookie += userSettings.getString("cookies_"+i,"");
+        }
+
+        new Thread() {
+            public void run() {
+                try {
+                    Request request = new Request.Builder().url((url + parmValue).replaceFirst("\"","")).addHeader("Cookie", String.valueOf(cookie)).build();
+                    Response response = client.newCall(request).execute();
+                    callBack_get.onFinish(response.body().string());
+                } catch (IOException e) {
+//                    e.printStackTrace();
+                    callBack_get.onError(e);
+                }
+            }
+        }.start();
+    }
+
 
     //有一组参数的GET方法
     public void GET(final Context context,final String url, final String parmName, final String parmValue, final CallBack_Get callBack_get){
@@ -218,10 +243,23 @@ public class HttpUtil {
             cookie += userSettings.getString("cookies_"+i,"");
         }
 
-        FormBody body = getFormBody(paramsMap);
+        System.out.println("3");
+        String s = url;
+        boolean which = false;
+        for (String key : paramsMap.keySet()) {
+            System.out.println(key + "=" + paramsMap.get(key));
+            if(which == false){
+                s = s + "?" + key + "=" + paramsMap.get(key);
+                which = true;
+            }else{
+                s = s + "&" + key + "=" + paramsMap.get(key);
+            }
+        }
+
+//        FormBody body = getFormBody(paramsMap);
         Request request = new Request.Builder()
-                .url(url)
-                .delete(body)
+                .url(s)
+                .delete()
                 .addHeader("Cookie", String.valueOf(cookie))
                 .build();
         client.newCall(request).enqueue(new Callback() {
@@ -236,6 +274,7 @@ public class HttpUtil {
             }
         });
     }
+
 
 
 //    public void PUT(final String url,final HashMap<String, String> paramsMap,final CallBack_Put callBack_put){
@@ -298,6 +337,7 @@ public class HttpUtil {
         }
         return formBody.build();
     }
+
 
     public String getGetJson() {
         return getJson;

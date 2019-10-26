@@ -234,7 +234,31 @@ public class Community_Introduction2 extends AppCompatActivity {
 
         tv_num.setText(num);
         tv_type.setText(type);
-        tv_description.setText(des);
+        if(des == null || des == ""){
+            tv_description.setText("暂无描述");
+        }else{
+            tv_description.setText(des);
+        }
+        if(type == null){
+            tv_type.setText("其他");
+        }else{
+            switch(type){
+                case "1":
+                    tv_type.setText("学校");
+                    break;
+                case "2":
+                    tv_type.setText("公司");
+                    break;
+                case "3":
+                    tv_type.setText("校区");
+                    break;
+                case "4":
+                default:
+                    tv_type.setText("其他");
+                    break;
+            }
+        }
+
 
         bt_join.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -285,6 +309,7 @@ public class Community_Introduction2 extends AppCompatActivity {
     }
 
     //请求删除用户社区关系
+
     private void quit(){
         HashMap<String, String> paramsMap = new HashMap<>();
         paramsMap.put("uId" , String.valueOf(uId));
@@ -292,6 +317,10 @@ public class Community_Introduction2 extends AppCompatActivity {
         System.out.println("cId" + String.valueOf(cId));
         paramsMap.put("cId", String.valueOf(cId));
         Message msg = Message.obtain();
+        System.out.println("1");
+        for (String key : paramsMap.keySet()) {
+            System.out.println(key + "=" + paramsMap.get(key));
+        }
         httpUtil.DELETE(Community_Introduction2.this,quit_url, paramsMap, new CallBack_Delete() {
             @Override
             public void onFinish(String response) {

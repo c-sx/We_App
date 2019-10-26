@@ -1,5 +1,6 @@
 package com.soft.zkrn.weilin_application.Activities.Task;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -50,7 +51,7 @@ public class TaskPublish extends AppCompatActivity {
 
     private String title;
     private String content;
-    private String type;
+//    private String type;
     private int money;
 
     private long SetTime = 0;
@@ -159,8 +160,8 @@ public class TaskPublish extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_task_publish);
         setSupportActionBar(toolbar);
 
-        Intent intent = getIntent();
-        type = intent.getStringExtra("type");
+//        Intent intent = getIntent();
+//        type = intent.getStringExtra("type");
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -381,7 +382,7 @@ public class TaskPublish extends AppCompatActivity {
         System.out.println("read:" + readPsw_Int("userID"));
 
         TextView tv_title = v.findViewById(R.id.dialog_publish_tv_title);
-        TextView tv_category = v.findViewById(R.id.dialog_publish_tv_category);
+//        TextView tv_category = v.findViewById(R.id.dialog_publish_tv_category);
         TextView tv_time = v.findViewById(R.id.dialog_publish_tv_time);
         TextView tv_content = v.findViewById(R.id.dialog_publish_tv_content);
         TextView tv_money = v.findViewById(R.id.dialog_publish_tv_money);
@@ -395,22 +396,22 @@ public class TaskPublish extends AppCompatActivity {
         tv_content.setText(content);
         tv_money.setText(String.valueOf(money));
         tv_time.setText(String.valueOf(getSetTime));
-        switch (type){
-            case "receive":
-                tv_category.setText("代收");
-                break;
-            case "send":
-                tv_category.setText("代送");
-                break;
-            case "borrow":
-                tv_category.setText("借物");
-                break;
-            case "other":
-                tv_category.setText("其他");
-                break;
-            default:
-                break;
-        }
+//        switch (type){
+//            case "receive":
+//                tv_category.setText("代收");
+//                break;
+//            case "send":
+//                tv_category.setText("代送");
+//                break;
+//            case "borrow":
+//                tv_category.setText("借物");
+//                break;
+//            case "other":
+//                tv_category.setText("其他");
+//                break;
+//            default:
+//                break;
+//        }
 
 
         Button btn_confirm = v.findViewById(R.id.dialog_publish_btn_confirm);
@@ -548,7 +549,8 @@ public class TaskPublish extends AppCompatActivity {
 
     public long dateToStamp(String s) throws ParseException {
 //        String res;
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT+8"));
         Date date = simpleDateFormat.parse(s);
         System.out.println("date:" + date);
@@ -610,7 +612,7 @@ public class TaskPublish extends AppCompatActivity {
         paramsMap.put("callTitle",title);
         paramsMap.put("callDesp",content);
         paramsMap.put("callMoney",String.valueOf(money));
-        paramsMap.put("callNow","y");
+        paramsMap.put("callNow","1");
         paramsMap.put("recId","");
         paramsMap.put("subName",readPsw_String("userName"));
         paramsMap.put("recName","");

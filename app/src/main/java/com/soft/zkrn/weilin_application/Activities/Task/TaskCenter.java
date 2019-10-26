@@ -1,6 +1,9 @@
 package com.soft.zkrn.weilin_application.Activities.Task;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -34,9 +37,12 @@ public class TaskCenter extends AppCompatActivity {
 
     private static String publish_url = "http://119.23.190.83:8080/zhaqsq/call/getBysub";
     private static String complete_url = "http://119.23.190.83:8080/zhaqsq/call/getByrec";
+    private static String url = "http://119.23.190.83:8080/zhaqsq/user/get";
 
     //用户ID
     private int uid = 0;
+    private boolean ifOrigin = true;
+    private int point = 0;
     //判断是否需要载入数据
     private boolean ifRefreshedWholeFragment = false;
     private boolean ifRefreshedPublishFragment = false;
@@ -55,6 +61,7 @@ public class TaskCenter extends AppCompatActivity {
     private TextView tv_publish;
     private TextView tv_complete;
     private TextView tv_comment;
+    private TextView tv_point;
 
     private LinearLayout ll_whole;
     private LinearLayout ll_publish;
@@ -69,6 +76,7 @@ public class TaskCenter extends AppCompatActivity {
     private static final int SUCCESS_PUBLISH = 1;
     private static final int SUCCESS_RECEIVE = 2;
     private static final int FAIL = 3;
+    private static final int SUCCESS_POINT = 4;
 
 
     private Handler handler = new Handler(){
@@ -85,34 +93,39 @@ public class TaskCenter extends AppCompatActivity {
                 receivedContent = (TaskData_PublishedOrReceived)msg.obj;
 //                Task_CenterWhole cw = (Task_CenterWhole)tool.getFragment(ll_whole);
 //                cw.dealWithWholeData(publishedContent,receivedContent);
-                System.out.println("receive.size="+receivedContent.getExtend().getCalls().size());
+//                System.out.println("receive.size="+receivedContent.getExtend().getCalls().size());
 //                tool.changeTag(ll_whole);
-                System.out.println("RECEIVE");
+//                System.out.println("RECEIVE");
 
-                tool.changeTag(ll_complete);
-                tool.changeTag(ll_comment);
-                tool.changeTag(ll_publish);
-                tool.changeTag(ll_whole);
+                if(ifOrigin){
+                    tool.changeTag(ll_complete);
+                    tool.changeTag(ll_comment);
+                    tool.changeTag(ll_publish);
+                    tool.changeTag(ll_whole);
 
-                task_centerWhole = (Task_CenterWhole)tool.getFragment(ll_whole);
-                task_centerPublish = (Task_CenterPublish)tool.getFragment(ll_publish);
-                task_centerComplete = (Task_CenterComplete)tool.getFragment(ll_complete);
-                task_centerComment = (Task_CenterComment)tool.getFragment(ll_comment);
+                    task_centerWhole = (Task_CenterWhole)tool.getFragment(ll_whole);
+                    task_centerPublish = (Task_CenterPublish)tool.getFragment(ll_publish);
+                    task_centerComplete = (Task_CenterComplete)tool.getFragment(ll_complete);
+                    task_centerComment = (Task_CenterComment)tool.getFragment(ll_comment);
 
-//        tool.changeTag(ll_whole);
-//        tool.changeTag(ll_complete);
-//        tool.changeTag(ll_comment);
-//        tool.changeTag(ll_publish);
-
-                if(task_centerWhole == null)System.out.println("no_llwh");
-                if(task_centerPublish == null)System.out.println("no_llpb");
-                if(task_centerComplete == null)System.out.println("no_llcl");
-                if(task_centerComment == null)System.out.println("no_llcm");
-
-                setToolInterface();
-
-                tool.onClick(ll_whole);
+                    if(task_centerWhole == null)System.out.println("no_llwh");
+                    if(task_centerPublish == null)System.out.println("no_llpb");
+                    if(task_centerComplete == null)System.out.println("no_llcl");
+                    if(task_centerComment == null)System.out.println("no_llcm");
+                    setToolInterface();
+                    tool.onClick(ll_whole);
+                }else{
+                    taskOfWhole();
+                    taskOfReceive();
+                    taskOfPublish();
+                    taskOfComment();
+                }
+                getUserInformation();
                 break;
+            case SUCCESS_POINT:
+                UserInformationData data = (UserInformationData)msg.obj;
+                point = data.getExtend().getUser().getUserPoint();
+                tv_point.setText("我的积分:" + point);
             case FAIL:
                 break;
             default:
@@ -121,16 +134,43 @@ public class TaskCenter extends AppCompatActivity {
         }
     };
 
+    //接受关闭社区页面广播
+    private BroadcastReceiver refresh_receiver =new BroadcastReceiver(){
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if(action.equals("com.example.Refresh_TaskCenter")){
+                ifRefreshedWholeFragment = true;
+                ifRefreshedPublishFragment = true;
+                ifRefreshedReceiveFragment = true;
+                ifRefreshedCommentFragment = true;
+                ifOrigin = false;
+
+                callTaskOfPublish();
+            }
+        }
+    };
+
+    //注销广播
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(refresh_receiver);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_task_center);
 
+        IntentFilter intentFilter=new IntentFilter("com.example.Refresh_TaskCenter");
+        registerReceiver(refresh_receiver,intentFilter);
+
         tv_whole = findViewById(R.id.tv_center_whole);
         tv_publish = findViewById(R.id.tv_center_publish);
         tv_comment = findViewById(R.id.tv_center_comment);
         tv_complete = findViewById(R.id.tv_center_complete);
+        tv_point = findViewById(R.id.tv_task_center_point);
 
         ll_whole = findViewById(R.id.ll_center_whole);
         ll_publish = findViewById(R.id.ll_center_publish);
@@ -139,24 +179,26 @@ public class TaskCenter extends AppCompatActivity {
 
         uid = readPsw_Int("userID");
 
+        initTool();
+
+
+    }
+
+    private void initTool(){
         tool = new FragmentSwitchTool(getFragmentManager(), R.id.flContainer);
         tool.setClickableViews(ll_whole, ll_publish, ll_complete ,ll_comment);
         tool
-            .addSelectedViews(new View[]{tv_whole})
-            .addSelectedViews(new View[]{tv_publish})
-            .addSelectedViews(new View[]{tv_complete})
-            .addSelectedViews(new View[]{tv_comment});
+                .addSelectedViews(new View[]{tv_whole})
+                .addSelectedViews(new View[]{tv_publish})
+                .addSelectedViews(new View[]{tv_complete})
+                .addSelectedViews(new View[]{tv_comment});
 
         tool.setFragments(
-            Task_CenterWhole.class,
-            Task_CenterPublish.class,
-            Task_CenterComplete.class,
-            Task_CenterComment.class
+                Task_CenterWhole.class,
+                Task_CenterPublish.class,
+                Task_CenterComplete.class,
+                Task_CenterComment.class
         );
-
-
-
-
 //        tool.changeTag(ll_whole);
 //        tool.changeTag(ll_complete);
 //        tool.changeTag(ll_comment);
@@ -165,7 +207,6 @@ public class TaskCenter extends AppCompatActivity {
         tool.changeTag(ll_complete);
         tool.changeTag(ll_comment);
         tool.changeTag(ll_publish);
-
 //        if(tool.getFragment(ll_whole) == null)System.out.println("no_ll");
 //        task_centerWhole = (Task_CenterWhole)tool.getFragment(ll_whole);
 //        task_centerPublish = (Task_CenterPublish)tool.getFragment(ll_publish);
@@ -189,7 +230,6 @@ public class TaskCenter extends AppCompatActivity {
                 new FragmentJudgement() {
                     @Override
                     public void judge() {
-//                    if(tool.getFragment(ll_whole) == null)System.out.println("no_llwh");
                         if(ifRefreshedWholeFragment == false){
                             ifRefreshedWholeFragment = true;
                             taskOfWhole();
@@ -199,7 +239,6 @@ public class TaskCenter extends AppCompatActivity {
                 new FragmentJudgement() {
                     @Override
                     public void judge() {
-//                    if(tool.getFragment(ll_publish) == null)System.out.println("no_llpb");
                         if(ifRefreshedPublishFragment == false){
                             ifRefreshedPublishFragment = true;
                             taskOfPublish();
@@ -209,10 +248,8 @@ public class TaskCenter extends AppCompatActivity {
                 new FragmentJudgement() {
                     @Override
                     public void judge() {
-//                    if(tool.getFragment(ll_complete) == null)System.out.println("no_llcl");
                         if(ifRefreshedReceiveFragment == false){
                             ifRefreshedReceiveFragment = true;
-                            System.out.println("receive.size="+receivedContent.getExtend().getCalls().size());
                             taskOfReceive();
                         }
                     }
@@ -220,7 +257,10 @@ public class TaskCenter extends AppCompatActivity {
                 new FragmentJudgement() {
                     @Override
                     public void judge() {
-//                    if(tool.getFragment(ll_comment) == null)System.out.println("no_llcm");
+                        if(ifRefreshedCommentFragment == false){
+                            ifRefreshedCommentFragment = true;
+                            taskOfComment();
+                        }
                     }
                 }
         };
@@ -255,7 +295,6 @@ public class TaskCenter extends AppCompatActivity {
      * 载入whole碎片的数据
      */
     public void taskOfWhole(){
-//        callTaskOfPublish();
         task_centerWhole.dealWithWholeData(publishedContent,receivedContent);
     }
 
@@ -263,8 +302,6 @@ public class TaskCenter extends AppCompatActivity {
      * 载入complete碎片的数据
      */
     public void taskOfReceive(){
-        System.out.println("content.size=" + String.valueOf(receivedContent.getExtend().getCalls().size()));
-//        Task_CenterComplete tc = (Task_CenterComplete)tool.getFragment(ll_complete);
         task_centerComplete.dealWithData(receivedContent);
     }
 
@@ -272,14 +309,15 @@ public class TaskCenter extends AppCompatActivity {
      *载入publish碎片的数据
      */
     private void taskOfPublish(){
-//        Task_CenterPublish tp = (Task_CenterPublish)tool.getFragment(ll_publish);
         task_centerPublish.dealWithData(publishedContent);
+        task_centerPublish.getInformation(uid,point);
     }
 
     /**
      * 载入comment碎片的数据
      */
-    private void taskOfComment(TaskData_PublishedOrReceived data){
+    private void taskOfComment(){
+        task_centerComment.dealWithWholeData(publishedContent,receivedContent);
     }
 
     /**
@@ -290,7 +328,7 @@ public class TaskCenter extends AppCompatActivity {
         httpUtil.GET(TaskCenter.this,publish_url, "subId", String.valueOf(uid), new CallBack_Get() {
             @Override
             public void onFinish(String response) {
-//                System.out.println(response);
+                System.out.println("1st = " + response);
                 gsonUtil.translateJson(response, TaskData_PublishedOrReceived.class, new CallBackGson() {
                     @Override
                     public void onSuccess(Object obj) {
@@ -328,7 +366,7 @@ public class TaskCenter extends AppCompatActivity {
         httpUtil.GET(TaskCenter.this,complete_url, "recId", String.valueOf(uid), new CallBack_Get() {
             @Override
             public void onFinish(String response) {
-                System.out.println(response);
+                System.out.println("2rd" + response);
                 gsonUtil.translateJson(response, TaskData_PublishedOrReceived.class, new CallBackGson() {
                     @Override
                     public void onSuccess(Object obj) {
@@ -358,5 +396,46 @@ public class TaskCenter extends AppCompatActivity {
         });
     }
 
+
+    private void getUserInformation(){
+        httpUtil.GET(TaskCenter.this,url, "uid", String.valueOf(uid), new CallBack_Get() {
+            @Override
+            public void onFinish(String response) {
+                System.out.println("json:" +response);
+                gsonUtil.translateJson(response, UserInformationData.class, new CallBackGson() {
+                    @Override
+                    public void onSuccess(Object obj) {
+                        Message msg = Message.obtain();
+                        UserInformationData data = (UserInformationData) obj;
+                        if(data.getCode() == 100){
+                            msg.what = SUCCESS_POINT;
+                            msg.obj = obj;
+                            System.out.println(1);
+                        }else{
+                            msg.what = FAIL;
+                            System.out.println(2);
+                        }
+                        handler.sendMessage(msg);
+                    }
+
+                    @Override
+                    public void onFail(Exception e) {
+                        Message msg = Message.obtain();
+                        msg.what = FAIL;
+                        System.out.println(3);
+                        handler.sendMessage(msg);
+                    }
+                });
+            }
+
+            @Override
+            public void onError(Exception e) {
+                Message msg = Message.obtain();
+                msg.what = FAIL;
+                System.out.println(4);
+                handler.sendMessage(msg);
+            }
+        });
+    }
 
 }

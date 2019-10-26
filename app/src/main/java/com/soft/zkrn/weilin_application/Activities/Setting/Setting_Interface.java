@@ -14,18 +14,14 @@ public class Setting_Interface extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting_interface);
-        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar10);
-        toolbar.setTitle(" ");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+
     }
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:
-                this.finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()){
+//            case android.R.id.home:
+//                this.finish();
+//                return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 }

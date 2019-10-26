@@ -18,7 +18,7 @@ public class Setting_AddContact extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting_add_contacts);
-        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar13);
+        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar_setting_add_contacts);
         toolbar.setTitle(" ");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

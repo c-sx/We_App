@@ -155,6 +155,7 @@ public class RegisterActivity extends AppCompatActivity {
         paramsMap.put("userName",setName);
         paramsMap.put("userPassword",setWord);
         paramsMap.put("userPhonenumber",setTel);
+        paramsMap.put("userDept","1");
         httpUtil.POST(RegisterActivity.this,url, paramsMap, new CallBack_Post() {
             @Override
             public void onFinish(String response) {

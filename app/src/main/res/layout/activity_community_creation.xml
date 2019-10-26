@@ -25,13 +25,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/iv_add"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="60dp"
-                android:src="@drawable/communitycreation_add"/>
+            <!--<ImageView-->
+                <!--android:id="@+id/iv_add"-->
+                <!--android:layout_width="150dp"-->
+                <!--android:layout_height="150dp"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:layout_marginTop="60dp"-->
+                <!--android:src="@drawable/communitycreation_add"/>-->
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -135,10 +135,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/createcommunity_create"
-                android:textSize="22sp"
+                android:textSize="@dimen/btn_1_size"
                 android:textColor="#ffffff"
                 android:layout_margin="40dp"
-                android:padding="20dp"
+                android:paddingVertical="15dp"
+                android:paddingHorizontal="50dp"
+
                 android:background="@drawable/btn_green_round"/>
 
 
